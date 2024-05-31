@@ -1,0 +1,19 @@
+/* Blocchi di codice dove possiamo passare dei parametri e avere un risultato*/
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* esempio */
+@mixin background-cover($img_url){
+    background: url($img_url) no-repeat center center;
+    width: 100vw;
+    height: 100vh;
+}
+  /* esempio */
+ @mixin responsive-height($x, $y){
+    height: 0px;
+    padding-bottom: ($y/$x *100%);
+ }
