@@ -1,4 +1,59 @@
-/* Serve per definire precise proprietà es. tipografia, header, footer*/
+/* ----- TIPOGRAFIA ----- */
 
-$primary-color: blue;
-$secondary-color: white;
+$type-ultra-thin : 100;
+$type-thin : 200;
+$type-extra-light : 300;
+$type-light : 400;
+$type-regular : 500;
+$type-medium : 600;
+$type-bold : 700;
+$type-black : 900;
+
+
+//  Dimensioni del corpo tipografico */
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-md: 16px;
+$font-size-lg: 20px;
+$font-size-xl: 24px;
+
+//  Dimensesioni interlinea 
+
+$line-height-xs: 1.2;
+$line-height-sm: 1.4;
+$line-height-md: 1.6;
+$line-height-lg: 1.8;
+$line-height-xl: 2.0;
+
+
+/* ------ CROMIE ------*/
+
+$color-primary: #3498db;
+$color-secondary: #2ecc71;
+$color-base: #e74c3c;
+
+
+/* ----- DIMENSIONI LAYOUT ----- */
+
+// Varianti responsive per margini e padding
+$sm-1: 4px;
+$sm-2: 8px;
+$sm-3: 16px;
+
+$md-1: 8px;
+$md-2: 16px;
+$md-3: 24px;
+
+$lg-1: 16px;
+$lg-2: 16px;
+$låg-3: 16px;
+
+$breakpoint-1: 768px;
+$breakpoint-2: 1024px;
+$breakpoint-2: 1440px;
+
+
+// Animations 
+
+$animate-height: 0;
+$animate-width: 0;
