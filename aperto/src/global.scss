@@ -4,8 +4,14 @@
 @import './styles/tipography';
 @import './styles/layout';
 @import './styles/colors';
-@import './style/temp'
 
 /* Definisci le variabili che desideri utilizzare in tutto il progetto. 
 Queste potrebbero includere colori, dimensioni di font, spaziatura, ecc.*/
 
+h1{
+    color: yellowgreen;
+}
+
+h2{
+    color:blue;
+}
