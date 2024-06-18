@@ -11,27 +11,29 @@ $type-black : 900;
 
 
 //  Dimensioni del corpo tipografico */
-$font-size-xs: 12px;
-$font-size-sm: 14px;
-$font-size-md: 16px;
-$font-size-lg: 20px;
-$font-size-xl: 24px;
+$font-size-xs: clamp(1.125rem, 4vw, 1.875rem);
+$font-size-sm: clamp(1.125rem, 4.5vw, 2.938rem);
+$font-size-md: clamp(1.563rem, 5vw, 3.1258rem);
+$font-size-lg: clamp(1.563rem, 6vw, 4.375rem);
+$font-size-xl: clamp(2.813rem, 8vw, 8.125rem);
+
+
+
 
 //  Dimensesioni interlinea 
 
-$line-height-xs: 1.2;
-$line-height-sm: 1.4;
-$line-height-md: 1.6;
+$line-height-sm: 0.9;
+$line-height-md: 1;
 $line-height-lg: 1.8;
 $line-height-xl: 2.0;
 
 
 /* ------ CROMIE ------*/
 
-$color-primary: #3498db;
-$color-secondary: #2ecc71;
-$color-base: #e74c3c;
-
+$color-primary: #786ED6;
+$color-secondary: #FF8761;
+$color-black: #000000;
+$color-white: #FFFFFF;
 
 /* ----- DIMENSIONI LAYOUT ----- */
 
