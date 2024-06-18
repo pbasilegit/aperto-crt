@@ -1,10 +1,17 @@
 <template>
-    <div>
-      <section v-if="seminarDetails">
+
+      <main v-if="seminarDetails">
+        <hr>
+        <header>
         <h1>{{ seminarDetails.title.rendered }}</h1>
+        </header>
+       <hr>
+        <section class="data-luogo">
         <h2>{{ formattedDate }}</h2>
         <h2>{{ seminarDetails.seminario_location }}</h2>
-        <section>
+        </section>
+        <hr>
+        <section id="intro">
           <p>{{ seminarDetails.descrizione }}</p>
         </section>
 
@@ -57,12 +64,9 @@
         </div>
 
        
-
-
-
-      </section>
+      </main>
       <p v-else>Caricamento...</p>
-    </div>
+
   </template>
   
   <script>

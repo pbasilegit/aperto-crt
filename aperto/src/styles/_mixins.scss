@@ -6,6 +6,11 @@
     align-items: center;
   }
 
+  @mixin flex-space-between{
+    display: flex;
+    justify-content: space-between;
+  }
+
   /* esempio */
 @mixin background-cover($img_url){
     background: url($img_url) no-repeat center center;

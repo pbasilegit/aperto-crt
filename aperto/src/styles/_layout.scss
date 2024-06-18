@@ -1,0 +1,17 @@
+/*Include spaziature e caratteristiche dei moduli*/
+
+section, header{
+    padding: 0 1vw 0 1vw;
+}
+
+.data-luogo{
+    @include flex-space-between;
+}
+
+/*Varianti respnsive al layout*/
+
+@media screen and (min-width: $breakpoint-1){
+    section, header {
+        padding: 0 3vw 0 3vw;
+    }
+}
