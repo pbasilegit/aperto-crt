@@ -7,32 +7,56 @@
         <section>
           <p>{{ seminarDetails.descrizione }}</p>
         </section>
+
+        <!-- FACULTY -->
+        <div class="accordion-item">
+          <div class="accordion-header" @click="toggle(0)">
+            <h3>FACULTY</h3>
+          </div>
+          <div v-show="activeIndex === 0" class="accordion-content">
+            <div v-for="faculty in seminarDetails.seminario_faculty_member" :key="faculty.id">
+              <h4>{{ faculty.post_title }}</h4>
+              <p>{{ faculty.faculty_member_bio }}</p>
+              <figure>
+                <img :src="faculty.faculty_member_foto" :alt="faculty.post_title" style="width:100%">
+                <figcaption></figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
         
-        <div v-for="faculty in seminarDetails.seminario_faculty_member" :key="faculty.id">
-
-          <h4>{{ faculty.post_title }}</h4>
-          <p>{{ faculty.faculty_member_bio }}</p>
-          <figure>
-            <img :src="faculty.faculty_member_foto" :alt="faculty.post_title" style="width:100%">
-            <figcaption></figcaption>
-          </figure>
+        <!-- PARTNER -->
+        <div class="accordion-item">
+          <div class="accordion-header" @click="toggle(1)">
+            <h3>PARTNER</h3>
+          </div>
+          <div v-show="activeIndex === 1" class="accordion-content">
+            <div v-for="partner in seminarDetails.seminario_partner_nome" :key="partner.id">
+              <figure>
+                <img :src="partner.logo_partner" :alt="partner.nome_partner" style="width:100%">
+                <figcaption></figcaption>
+              </figure>
+              <h4>{{ partner.nome_partner }}</h4>
+            </div>
+          </div>
         </div>
 
-        <div v-for="partner in seminarDetails.seminario_partner_nome" :key="partner.id">
-          <figure>
-            <img :src="partner.logo_partner" :alt="partner.nome_partner" style="width:100%">
-            <figcaption></figcaption>
-          </figure>
-          <h4>{{ partner.nome_partner }}</h4>
+        <div class="accordion-item">
+          <div class="accordion-header" @click="toggle(2)">
+            <h3>PROMOTORE</h3>
+          </div>
+          <div v-show="activeIndex === 2" class="accordion-content">
+            <div v-for="promotore in seminarDetails.seminario_promotore_nome" :key="promotore.id">
+              <figure>
+                <img :src="promotore.logo_partner" :alt="promotore.nome_partner" style="width:100%">
+                <figcaption></figcaption>
+              </figure>
+              <h4>{{ promotore.nome_partner }}</h4>
+            </div>
+          </div>
         </div>
 
-        <div v-for="promotore in seminarDetails.seminario_promotore_nome" :key="promotore.id">
-          <figure>
-            <img :src="promotore.logo_partner" :alt="promotore.nome_partner" style="width:100%">
-            <figcaption></figcaption>
-          </figure>
-          <h4>{{ promotore.nome_partner }}</h4>
-        </div>
+       
 
 
 
@@ -51,6 +75,12 @@
       const route = useRoute();
       const seminarDetails = ref(null);
       const axios = inject('axios');
+
+      const activeIndex = ref(null);
+
+      const toggle = (index) => {
+        activeIndex.value = activeIndex.value === index ? null : index;
+      };
   
       const fetchSeminarDetails = async () => {
         try {
@@ -102,13 +132,28 @@
   
       return {
         seminarDetails,
-        formattedDate
+        formattedDate,
+        activeIndex,
+        toggle
       };
     }
   };
   </script>
   
   <style scoped>
-  /* Aggiungi qui i tuoi stili */
+  .accordion-header {
+    padding: 15px;
+    cursor: pointer;
+    background-color: #f7f7f7;
+  }
+  
+  .accordion-header h3 {
+    margin: 0;
+  }
+  
+  .accordion-content {
+    padding: 15px;
+    background-color: #fff;
+  }
   </style>
   
