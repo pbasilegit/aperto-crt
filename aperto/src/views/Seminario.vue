@@ -14,24 +14,31 @@
         <section id="intro">
           <p>{{ seminarDetails.descrizione }}</p>
         </section>
-
+        <hr>
         <!-- FACULTY -->
         <div class="accordion-item">
           <div class="accordion-header" @click="toggle(0)">
-            <h3>FACULTY</h3>
+            <h3>DOCENTI</h3>
           </div>
-          <div v-show="activeIndex === 0" class="accordion-content">
-            <div v-for="faculty in seminarDetails.seminario_faculty_member" :key="faculty.id">
-              <h4>{{ faculty.post_title }}</h4>
-              <p>{{ faculty.faculty_member_bio }}</p>
-              <figure>
-                <img :src="faculty.faculty_member_foto" :alt="faculty.post_title" style="width:100%">
-                <figcaption></figcaption>
-              </figure>
+          <div v-show="activeIndex === 0" class="accordion-content row-grap-big">
+            <div class="accordion-elementi" v-for="faculty in seminarDetails.seminario_faculty_member" :key="faculty.id">
+              <div class="fotonome">
+                <figure>
+                  <img :src="faculty.faculty_member_foto" :alt="faculty.post_title">
+                  <figcaption></figcaption>
+                </figure>
+                <h4>{{ faculty.post_title }}</h4>
+              </div>
+              <p>{{ faculty.faculty_member_bio }}
+
+                <hr>
+              </p>
+              
             </div>
+
           </div>
         </div>
-        
+        <hr>
         <!-- PARTNER -->
         <div class="accordion-item">
           <div class="accordion-header" @click="toggle(1)">
@@ -47,7 +54,7 @@
             </div>
           </div>
         </div>
-
+        <hr>
         <div class="accordion-item">
           <div class="accordion-header" @click="toggle(2)">
             <h3>PROMOTORE</h3>
@@ -143,21 +150,4 @@
     }
   };
   </script>
-  
-  <style scoped>
-  .accordion-header {
-    padding: 15px;
-    cursor: pointer;
-    background-color: #f7f7f7;
-  }
-  
-  .accordion-header h3 {
-    margin: 0;
-  }
-  
-  .accordion-content {
-    padding: 15px;
-    background-color: #fff;
-  }
-  </style>
   

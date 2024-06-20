@@ -1,17 +1,53 @@
 /*Include spaziature e caratteristiche dei moduli*/
 
-section, header{
-    padding: 0 1vw 0 1vw;
+section, header, .accordion-item{
+    padding: 0 2vw 0 2vw;
 }
 
 .data-luogo{
     @include flex-space-between;
 }
 
-/*Varianti respnsive al layout*/
+.accordion-elementi {
+    padding-bottom: $lg-2;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto;
+    gap: 2em;
+    grid-template-areas: "fotonome fotonome"
+    "info info";
+}
 
+.fotonome{
+    grid-area: fotonome;
+    display: grid;
+    grid-template-columns: 50% auto;
+    gap: 2rem;
+}
+
+.accordion-elementi p {
+    grid-area: info;
+}
+
+.fotonome > figure > img {
+    width: 100%;
+}
+
+/*Varianti responsive del layout*/
 @media screen and (min-width: $breakpoint-1){
-    section, header {
+    section, header, .accordion-item {
         padding: 0 3vw 0 3vw;
     }
 }
+
+@media screen and (min-width: $breakpoint-2){
+
+    .accordion-elementi {
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: 25% 25% auto;
+        gap: 2em;
+        grid-template-areas: "fotonome fotonome info";
+    }
+}
+

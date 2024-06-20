@@ -11,6 +11,11 @@
     justify-content: space-between;
   }
 
+  @mixin flex-start{
+    display: flex;
+    justify-content: start;
+  }
+
   /* esempio */
 @mixin background-cover($img_url){
     background: url($img_url) no-repeat center center;
