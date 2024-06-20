@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <nav>
-      <router-link to="/">NAVIGAZIONE</router-link>
+      <Home/>
+      <!-- <router-link to="/">NAVIGAZIONE</router-link> -->
       <!-- <router-link to="/about">About</router-link> -->
     </nav>
 
@@ -21,6 +22,8 @@
 
 
 <script>
+import Home from './views/Home.vue';
+
 export default {
   name: 'App',
 };
