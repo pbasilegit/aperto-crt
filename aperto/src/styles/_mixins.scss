@@ -27,3 +27,8 @@
     height: 0px;
     padding-bottom: ($y/$x *100%);
  }
+
+ 
+ @mixin border{
+  border: 1px solid red;
+}

@@ -1,7 +1,7 @@
 /*Include spaziature e caratteristiche dei moduli*/
 
 section, header, .accordion-item{
-    padding: 0 2vw 0 2vw;
+    padding: $md-2 2vw $md-2 2vw;
 }
 
 .data-luogo{
@@ -10,15 +10,21 @@ section, header, .accordion-item{
 
 .accordion-elementi {
     padding-bottom: $lg-2;
+    padding-top: $lg-2;
     display: grid;
     grid-template-rows: auto auto;
     grid-template-columns: auto auto;
     gap: 2em;
     grid-template-areas: "fotonome fotonome"
     "info info";
+    border-bottom: 2px solid $color-secondary;
 }
 
-.fotonome{
+.accordion-elementi:nth-last-child(1){
+    border-bottom: none;
+}
+
+.colonne{
     grid-area: fotonome;
     display: grid;
     grid-template-columns: 50% auto;
@@ -29,18 +35,18 @@ section, header, .accordion-item{
     grid-area: info;
 }
 
-.fotonome > figure > img {
+.colonne > figure > img {
     width: 100%;
 }
 
 /*Varianti responsive del layout*/
 @media screen and (min-width: $breakpoint-1){
     section, header, .accordion-item {
-        padding: 0 3vw 0 3vw;
+        padding: $md-2 3vw $md-2 3vw;
     }
 }
 
-@media screen and (min-width: $breakpoint-2){
+@media screen and (min-width: $breakpoint-3){
 
     .accordion-elementi {
         display: grid;
