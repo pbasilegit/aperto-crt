@@ -5,10 +5,11 @@
       <img src="../../public/logo_01.svg" alt="Sticky Image">
     </div>
     <div class="content" @scroll="handleScroll" ref="content" style="border: 5px solid blue">
-      
         <p v-if="testoHome" v-html="testoHome.content.rendered"></p>
 
-
+        <h1 style="border: 5px solid red"> TESTO PER FARE VOLUME</h1>
+        <p v-if="testoHome" v-html="testoHome.content.rendered"></p><br>
+        <p v-if="testoHome" v-html="testoHome.content.rendered"></p>
 
     </div>
 

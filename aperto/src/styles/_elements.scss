@@ -1,3 +1,17 @@
 hr {
     border: 1px solid $color-secondary;
 }
+nav {
+    transition: transform 0.5s ease-in-out;
+    position: fixed;
+    transform-origin: center left;
+    background-color: white;
+  }
+  
+  .scale-100 {
+    transform: scale(1);
+  }
+  
+  .scale-80 {
+    transform: scale(0.8);
+  }

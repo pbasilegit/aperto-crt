@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <nav>
-      <Home/>
-      <!-- <router-link to="/">NAVIGAZIONE</router-link> -->
+    <Header/>
+      <!--<router-link to="/">NAVIGAZIONE</router-link> -->
       <!-- <router-link to="/about">About</router-link> -->
     </nav>
-
+ 
     <router-view>
     </router-view>
 
@@ -23,9 +23,14 @@
 
 <script>
 import Home from './views/Home.vue';
+import Header from './components/Header.vue'
 
 export default {
   name: 'App',
+  components: {
+    Home,
+    Header
+  },
 };
 </script>
 
