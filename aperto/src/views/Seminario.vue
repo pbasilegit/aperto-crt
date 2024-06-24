@@ -41,16 +41,14 @@
           <div class="accordion-header" @click="toggle(1)">
             <h3>PARTNER</h3>
           </div>
-          <div v-show="activeIndex === 1" class="accordion-content">
-            <div class="accordion-elementi" v-for="partner in seminarDetails.seminario_partner_nome" :key="partner.id">
-              <figure>
-                <img :src="partner.logo_partner" :alt="partner.nome_partner" style="width:100%">
-                <figcaption></figcaption>
-              </figure>
+          <div v-show="activeIndex === 1" class="accordion-content partner">
+            <div class="elemento-partner" v-for="partner in seminarDetails.seminario_partner_nome" :key="partner.id">
+                <img :src="partner.logo_partner" :alt="partner.nome_partner">
              <!-- <h4>{{ partner.nome_partner }}</h4>
               <p>{{ partner.partnership_info }}
               </p>
             -->
+              <div class="maggiori-informazioni" role="button"><p class="nascosto">scopri di più su {{ partner.nome_partner }}</p>+</div>
             </div>
           </div>
         </div>

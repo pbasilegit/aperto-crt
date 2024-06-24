@@ -39,10 +39,32 @@ section, header, .accordion-item{
     width: 100%;
 }
 
+
+/*Accordion Partner*/
+.partner{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+.elemento-partner {
+
+}
+.elemento-partner > img {
+    height: 130px;
+}
+.maggiori-informazioni{
+    text-align: right;
+}
+
 /*Varianti responsive del layout*/
 @media screen and (min-width: $breakpoint-1){
     section, header, .accordion-item {
         padding: $md-2 3vw $md-2 3vw;
+    }
+    .partner{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 2rem;
     }
 }
 
