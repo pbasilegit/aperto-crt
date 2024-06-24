@@ -1,21 +1,49 @@
 <template>
+
   <div>
     <div>
-    <div :class="['sticky-image', { sticky: isSticky }]">
-      <img src="../../public/logo_01.svg" alt="Sticky Image">
-    </div>
-    <div class="content" @scroll="handleScroll" ref="content" style="border: 5px solid blue">
-        <p v-if="testoHome" v-html="testoHome.content.rendered"></p>
 
-        <h1 style="border: 5px solid red"> TESTO PER FARE VOLUME</h1>
-        <p v-if="testoHome" v-html="testoHome.content.rendered"></p><br>
-        <p v-if="testoHome" v-html="testoHome.content.rendered"></p>
+      <!-- prima immagine header mobile -->
+      <div :class="['sticky-image', { sticky: isSticky }]"> 
+        <img class="mobile-hero-image" src="../../public/logo_01.svg" alt="Sticky Image"> 
+      </div>
 
-    </div>
+      <!-- prima immagine header desktop -->
+      <div :class="['sticky-image', { sticky: isSticky }]"> 
+        <img class="desktop-hero-image" src="../../public/ape.svg" alt="Sticky Image"> 
+      </div>
+
+      <div class="hero-colonne">
+
+      <!-- immagine r header desktop -->
+        <div :class="['sticky-image-r', { sticky: isSticky }]"> 
+          <img class="desktop-hero-image immagine-r" src="../../public/r.svg" alt="Sticky Image"> 
+        </div>
+
+        <div class="hero-content" @scroll="handleScroll" ref="hero-content" style="border: 5px solid blue"> 
+          <p id="intro" v-if="testoHome" v-html="testoHome.content.rendered"></p> 
+        </div>
+
+      </div>
+
 
   </div>
-  <img src="../../public/logo_02.svg" alt="Sticky Image">
 
+      <!-- seconda immagine header mobile -->
+  <img class="mobile-hero-image" src="../../public/logo_02.svg" alt="Sticky Image">
+
+  <div class="hero-colonne">
+     <!-- seconda immagine header desktop -->
+  <img class="immagine-to desktop-hero-image" src="../../public/to.svg" alt="Sticky Image">
+
+</div>
+
+
+
+
+
+
+  
     <h1>Elenco dei Seminari</h1>
    
       <div v-for="seminario in sortedSeminari" :key="seminario.id">
@@ -25,11 +53,11 @@
           <p style="color:red;  margin-bottom: 10px;">{{ seminario.seminario_data_inizio }}</p>
         </router-link>
       </div>
-
-
-    
   </div>
 </template>
+
+
+
 
 <script>
 import { defineComponent, ref, computed, onMounted, onBeforeUnmount, inject } from 'vue';
@@ -98,10 +126,9 @@ export default {
     };
 
     onMounted(() => {
-      const contentEl = content.value;
-      contentEl.addEventListener('scroll', handleScroll);
       fetchSeminari();
-      loadTestoHome()
+      loadTestoHome();
+      const contentEl = content.value;
     });
 
     return {
@@ -116,33 +143,3 @@ export default {
   }
 };
 </script>
-<style scoped>
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.sticky-image {
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  top: 0;
-  background-color: white;
-  padding: 10px;
-  z-index: 1000;
-  transition: all 0.3s ease-in-out;
-}
-
-.sticky-image.sticky {
-  position: sticky;
-}
-
-.content {
-  overflow-y: scroll;
-  padding-top: 20px;
-}
-
-.content p {
-  margin: 20px 0;
-}
-</style>
