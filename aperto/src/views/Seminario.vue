@@ -48,7 +48,7 @@
               <p>{{ partner.partnership_info }}
               </p>
             -->
-              <div class="maggiori-informazioni" role="button"><p class="nascosto">scopri di più su {{ partner.nome_partner }}</p>+</div>
+              <div class="maggiori-informazioni" role="button">+</div>
             </div>
           </div>
         </div>

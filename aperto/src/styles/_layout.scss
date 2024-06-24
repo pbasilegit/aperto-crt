@@ -47,13 +47,15 @@ section, header, .accordion-item{
     gap: 2rem;
 }
 .elemento-partner {
-
+    @include border;
 }
 .elemento-partner > img {
     height: 130px;
 }
 .maggiori-informazioni{
     text-align: right;
+    @include border;
+
 }
 
 /*Varianti responsive del layout*/
@@ -64,7 +66,6 @@ section, header, .accordion-item{
     .partner{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 2rem;
     }
 }
 
