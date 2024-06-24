@@ -18,9 +18,11 @@
 
     <h1>Elenco dei Seminari</h1>
    
-      <div v-for="seminario in seminari" :key="seminario.id">
+      <div v-for="seminario in sortedSeminari" :key="seminario.id">
         <router-link :to="{ name: 'Seminario', params: { id: seminario.id } }">
           {{ seminario.title.rendered }}
+          <p style="color:black;">{{ seminario.stato[0].name }}</p>
+          <p style="color:red;  margin-bottom: 10px;">{{ seminario.seminario_data_inizio }}</p>
         </router-link>
       </div>
 
@@ -30,7 +32,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, onMounted, onBeforeUnmount, inject } from 'vue';
+import { defineComponent, ref, computed, onMounted, onBeforeUnmount, inject } from 'vue';
 
 export default {
   name: 'Home',
@@ -54,10 +56,27 @@ export default {
       }
     };
 
-    onMounted(() => {
-      const contentEl = content.value;
-      contentEl.addEventListener('scroll', handleScroll);
+    const sortedSeminari = computed(() => {
+      return seminari.value.slice().sort((a, b) => {
+        const stateOrder = {
+          'Futuro': 3,
+          'Corrente': 2,
+          'Archiviato': 1
+        };
+        
+        if (stateOrder[a.stato[0].name] < stateOrder[b.stato[0].name]) {
+          return -1;
+        } else if (stateOrder[a.stato[0].name] > stateOrder[b.stato[0].name]) {
+          return 1;
+        } else {
+          // Se entrambi hanno lo stesso stato, ordinamento per data
+          const dateA = new Date(a['seminario_data_inizio']);
+          const dateB = new Date(b['seminario_data_inizio']);
+          return dateA - dateB;
+        }
+      });
     });
+
 
     onBeforeUnmount(() => {
       const contentEl = content.value;
@@ -79,6 +98,8 @@ export default {
     };
 
     onMounted(() => {
+      const contentEl = content.value;
+      contentEl.addEventListener('scroll', handleScroll);
       fetchSeminari();
       loadTestoHome()
     });
@@ -87,6 +108,7 @@ export default {
       seminari,
       isSticky,
       handleScroll,
+      sortedSeminari,
       content,
       testoHome,
       paragraphs: Array(30).fill('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut lectus euismod, vehicula quam eu, egestas ante.')
