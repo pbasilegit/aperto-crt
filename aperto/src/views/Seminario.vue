@@ -12,7 +12,12 @@
         </section>
         <hr>
         <section id="intro">
-          <p>{{ seminarDetails.descrizione }}</p>
+          <p>
+            {{ truncatedDescription }}
+            <span v-if="shouldShowMoreDescription" @click="toggleMoreDescription">
+            </span>
+          </p>
+          <button @click="toggleMoreDescription"> {{ showMoreDescription ? '-' : '+' }}</button>
         </section>
         <hr>
         <!-- FACULTY -->
@@ -30,8 +35,14 @@
                 </figure>
                 <h4>{{ faculty.post_title }}</h4>
               </div>
-              <p>{{ faculty.faculty_member_bio }}
+              <p>
+                {{ truncatedBio(faculty, index) }}
+                <span v-if="shouldShowMore(faculty)"  class="more-toggle">
+                  
+                </span>
+                
               </p>
+              <button @click="toggleMore(index)">{{ showMoreIndices.includes(index) ? '-' : '+' }}</button>
             </div>
           </div>
         </div>
@@ -137,15 +148,65 @@
         ];
         return months[monthIndex];
       }
-  
+
+      
+      const showMoreIndices = ref([]);
+      const showMoreDescription = ref(false);
+
+
+      const toggleMore = (index) => {
+        const i = showMoreIndices.value.indexOf(index);
+        if (i > -1) {
+          showMoreIndices.value.splice(i, 1);
+        } else {
+          showMoreIndices.value.push(index);
+        }
+      };
+
+      const toggleMoreDescription = () => {
+        showMoreDescription.value = !showMoreDescription.value;
+      };
+
+      const truncatedBio = (faculty, index) => {
+        if (showMoreIndices.value.includes(index) || faculty.faculty_member_bio.length <= 400) {
+          return faculty.faculty_member_bio;
+        } else {
+          return faculty.faculty_member_bio.slice(0, 400) + '...';
+        }
+      };
+
+      const truncatedDescription = computed(() => {
+        if (showMoreDescription.value || seminarDetails.value.descrizione.length <= 400) {
+          return seminarDetails.value.descrizione;
+        } else {
+          return seminarDetails.value.descrizione.slice(0, 400) + '...';
+        }
+      });
+
+      const shouldShowMore = (faculty) => {
+        return faculty.faculty_member_bio.length > 200;
+      };
+
+      const shouldShowMoreDescription = computed(() => {
+        return seminarDetails.value.descrizione.length > 400;
+      });
+    
       onMounted(() => {
         fetchSeminarDetails();
       });
-  
+
       return {
         seminarDetails,
         formattedDate,
         activeIndex,
+        showMoreIndices,
+        showMoreDescription,
+        toggleMore,
+        truncatedBio,
+        truncatedDescription,
+        shouldShowMore,
+        shouldShowMoreDescription,
+        toggleMoreDescription,
         toggle
       };
     }
