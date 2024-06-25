@@ -35,7 +35,7 @@ nav {
     position: sticky;
     top: 0;
     background-color: white;
-    padding: 10px;
+    //padding: 10px;
     z-index: 1000;
     transition: all 0.3s ease-in-out;
   }
@@ -44,11 +44,19 @@ nav {
     position: sticky;
   }
   
-  .hero-content {
-    overflow-y: scroll;
-  }
-
  .tipografia-2024{
   width: 100%;
  }
- 
+
+ .desktop-hero{
+  display: none;
+ }
+
+ @media screen and (min-width: $breakpoint-1){
+  .mobile-hero {
+      display: none;
+  }
+  .desktop-hero {
+    display: block;
+}
+}

@@ -1,24 +1,61 @@
 <template>
 
-
-
   <main id="home">
-    <!--Inizio Hero-->
-    <div>
-      <!-- prima immagine header mobile -->
-      <div :class="['sticky-image', { sticky: isSticky }]"> 
-        <img class="mobile-hero-image" src="../../public/logo_01.svg" alt="aperto logo"> 
-      </div>
+    <!--Inizio Hero mobile -->
+    <header class="mobile-hero">
+      <div>
+        <!-- prima immagine header mobile -->
+        <div :class="['sticky-image', { sticky: isSticky }]">
+          <img src="../../public/logo_01.svg" alt="aperto logo" style="width: 100%;">
+        </div>
 
         <!-- Testo introduttivo -->
-        <div class="hero-content" @scroll="handleScroll" ref="hero-content" style="border: 5px solid blue"> 
-          
+        <div class="hero-content" @scroll="handleScroll" ref="hero-content">
+
           <!--questo titolo non è visibile ha una posizione absolute fuori dal viewport-->
           <h1>Aperto</h1>
-          <p id="intro" v-if="testoHome" v-html="testoHome.content.rendered"></p> 
+          <p id="intro" v-if="testoHome" v-html="testoHome.content.rendered"></p>
         </div>
-    </div>
-  <img class="mobile-hero-image" src="../../public/logo_02.svg" alt="aperto logo">
+      </div>
+      <img src="../../public/logo_02.svg" alt="aperto logo" style="width: 100%;">
+    </header>
+    <!--Fine Hero mobile -->
+
+
+
+    <!--Inizio Hero desktop -->
+    <header class="desktop-hero" >
+      <div style="display: grid; grid-template-columns: 1fr 2fr;">
+        <!-- prima immagine header mobile -->
+        <div :class="['sticky-image', { sticky: isSticky }]" style="align-self: flex-start;  padding: 10px">
+          <img src="../../public/dkstp_logo_01.svg" alt="aperto logo" style="width: 100%;">
+        </div>
+
+        <!-- Testo introduttivo -->
+        <div class="hero-content" @scroll="handleScroll" ref="hero-content" >
+
+          <!--questo titolo non è visibile ha una posizione absolute fuori dal viewport-->
+          <h1>Aperto</h1>
+          <p id="intro" v-if="testoHome" v-html="testoHome.content.rendered"></p>
+          <div style="display: flex;">
+            <div style="flex-basis: 50%; padding: 10px">
+              <img src="../../public/dkstp_logo_02.svg" alt="aperto logo" style="width: 100%;" >
+            </div>
+            
+            <div style="flex-basis: 50%; padding: 10px;">
+              <img src="../../public/dkstp_logo_03.svg" alt="aperto logo" style="width: 100%;" >
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    
+    </header>
+    <!--Fine Hero desktop -->
+
+
+
 
     <!--Inizio lista seminari 2024-->
 
@@ -27,17 +64,17 @@
 
     <img class="tipografia-2024" src="../../public/2024.svg" alt="aperto logo">
 
-      <section class="homeSeminari-lista--elemento" v-for="seminario in sortedSeminari" :key="seminario.id">
-        <router-link :to="{ name: 'Seminario', params: { id: seminario.id } }">
-          <header>
-            <p>Seminario {{ seminario.seminari_numero }}</p>
-            <p>{{ seminario.stato[0].name }}</p>
-          </header>
-          <h2>{{ seminario.title.rendered }}</h2>
-          <h3 style="color:red;  margin-bottom: 10px;">{{ seminario.seminario_data_inizio }}</h3>
-        </router-link>
-      </section>
-    </main>
+    <section class="homeSeminari-lista--elemento" v-for="seminario in sortedSeminari" :key="seminario.id">
+      <router-link :to="{ name: 'Seminario', params: { id: seminario.id } }">
+        <header>
+          <p>Seminario {{ seminario.seminari_numero }}</p>
+          <p>{{ seminario.stato[0].name }}</p>
+        </header>
+        <h2>{{ seminario.title.rendered }}</h2>
+        <h3 style="color:red;  margin-bottom: 10px;">{{ seminario.seminario_data_inizio }}</h3>
+      </router-link>
+    </section>
+  </main>
 </template>
 
 
@@ -60,8 +97,8 @@ export default {
       console.log('scroll top', contentEl.scrollTop)
       console.log('clientHeight', contentEl.clientHeight)
       console.log('scrollHeight', contentEl.scrollHeight)
-      console.log('somma',contentEl.scrollTop + contentEl.clientHeight )
-      if (contentEl.scrollTop + contentEl.clientHeight >= contentEl.scrollHeight ) {
+      console.log('somma', contentEl.scrollTop + contentEl.clientHeight)
+      if (contentEl.scrollTop + contentEl.clientHeight >= contentEl.scrollHeight) {
         isSticky.value = false;
       } else {
         isSticky.value = true;
@@ -75,7 +112,7 @@ export default {
           'Corrente': 2,
           'Archiviato': 1
         };
-        
+
         if (stateOrder[a.stato[0].name] < stateOrder[b.stato[0].name]) {
           return -1;
         } else if (stateOrder[a.stato[0].name] > stateOrder[b.stato[0].name]) {
