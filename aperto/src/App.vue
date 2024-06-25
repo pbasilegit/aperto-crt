@@ -1,11 +1,10 @@
 <template>
   <div id="app">
   
-    <Header/>
+    <Header v-if="showHeader"/>
       <!--<router-link to="/">NAVIGAZIONE</router-link> -->
       <!-- <router-link to="/about">About</router-link> -->
-  
- 
+
     <router-view>
     </router-view>
 
@@ -31,6 +30,7 @@ export default {
     Home,
     Header
   },
+  computed: { showHeader() { return this.$route.name !== 'Home'; } }
 };
 </script>
 

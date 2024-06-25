@@ -1,5 +1,8 @@
 <template>
-
+    <header>
+        <nav><router-link to="/about">about</router-link>
+      </nav>
+    </header>
   <main id="home">
     <!--Inizio Hero mobile -->
     <header class="mobile-hero">
