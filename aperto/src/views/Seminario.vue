@@ -27,7 +27,7 @@
           </div>
 
           <div v-show="activeIndex === 0" class="accordion-content row-grap-big">
-            <div class="accordion-elementi" v-for="faculty in seminarDetails.seminario_faculty_member" :key="faculty.id">
+            <div class="accordion-elementi" v-for="(faculty, index) in seminarDetails.seminario_faculty_member" :key="faculty.id">
               <div class="colonne">
                 <figure>
                   <img :src="faculty.faculty_member_foto" :alt="faculty.post_title">
