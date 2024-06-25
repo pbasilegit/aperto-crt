@@ -79,3 +79,9 @@ section, header, .accordion-item{
     }
 }
 
+   /* HOME */
+   .homeSeminari-lista--elemento a{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-decoration: none;
+   }

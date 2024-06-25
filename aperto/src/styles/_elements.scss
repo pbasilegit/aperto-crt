@@ -21,6 +21,8 @@ nav {
     visibility: hidden;
   }
 
+   /* HOME */
+
   /*capire a cosa serve questo*/
   .container {
     max-width: 800px;
@@ -38,62 +40,15 @@ nav {
     transition: all 0.3s ease-in-out;
   }
   
-  .sticky-image-r {
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-    top: 400px;
-    background-color: white;
-    padding: 10px;
-    z-index: 1000;
-  }
-
   .sticky-image.sticky {
     position: sticky;
   }
   
-  .hero-colonne {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  .immagine-r{
-    grid-column: 1 / 2;
-  }
-
   .hero-content {
     overflow-y: scroll;
-    grid-column: 2 / 4;
-  }
-  
-
-  .immagine-to{
-    grid-column: 2 / 4;
   }
 
-  .hero-content p {
-    margin: 20px 0;
-  }
-
-
-  .mobile-hero-image {
-    width: 100%;
-  }
-
-  .desktop-hero-image{
-    width: 100%;
-    display: none;
-  }
-
-
-
-  @media screen and (min-width: $breakpoint-1){
-    .mobile-hero-image {
-      display: none;
-    }
-    .desktop-hero-image{
-      width: 100%;
-      display: inline;
-    }
-}
-
+ .tipografia-2024{
+  width: 100%;
+ }
  

@@ -1,55 +1,43 @@
 <template>
 
-  <div>
-    <div>
 
+
+  <main id="home">
+    <!--Inizio Hero-->
+    <div>
       <!-- prima immagine header mobile -->
       <div :class="['sticky-image', { sticky: isSticky }]"> 
-        <img class="mobile-hero-image" src="../../public/logo_01.svg" alt="Sticky Image"> 
+        <img class="mobile-hero-image" src="../../public/logo_01.svg" alt="aperto logo"> 
       </div>
 
-      <!-- prima immagine header desktop -->
-      <div :class="['sticky-image', { sticky: isSticky }]"> 
-        <img class="desktop-hero-image" src="../../public/ape.svg" alt="Sticky Image"> 
-      </div>
-
-      <div class="hero-colonne">
-
-      <!-- immagine r header desktop -->
-        <div :class="['sticky-image-r', { sticky: isSticky }]"> 
-          <img class="desktop-hero-image immagine-r" src="../../public/r.svg" alt="Sticky Image"> 
-        </div>
-
+        <!-- Testo introduttivo -->
         <div class="hero-content" @scroll="handleScroll" ref="hero-content" style="border: 5px solid blue"> 
+          
+          <!--questo titolo non è visibile ha una posizione absolute fuori dal viewport-->
+          <h1>Aperto</h1>
           <p id="intro" v-if="testoHome" v-html="testoHome.content.rendered"></p> 
         </div>
+    </div>
+  <img class="mobile-hero-image" src="../../public/logo_02.svg" alt="aperto logo">
 
-      </div>
+    <!--Inizio lista seminari 2024-->
 
+    <!--questo titolo non è visibile ha una posizione absolute fuori dal viewport-->
+    <h2>Seminari 2024</h2>
 
-  </div>
+    <img class="tipografia-2024" src="../../public/2024.svg" alt="aperto logo">
 
-      <!-- seconda immagine header mobile -->
-  <img class="mobile-hero-image" src="../../public/logo_02.svg" alt="Sticky Image">
-
-  <div class="hero-colonne">
-     <!-- seconda immagine header desktop -->
-  <img class="immagine-to desktop-hero-image" src="../../public/to.svg" alt="Sticky Image">
-
-</div>
-
-
-
-    <h1>2024</h1>
-   
-      <div v-for="seminario in sortedSeminari" :key="seminario.id">
+      <section class="homeSeminari-lista--elemento" v-for="seminario in sortedSeminari" :key="seminario.id">
         <router-link :to="{ name: 'Seminario', params: { id: seminario.id } }">
-          {{ seminario.title.rendered }}
-          <p style="color:black;">{{ seminario.stato[0].name }}</p>
-          <p style="color:red;  margin-bottom: 10px;">{{ seminario.seminario_data_inizio }}</p>
+          <header>
+            <p>Seminario {{ seminario.seminari_numero }}</p>
+            <p>{{ seminario.stato[0].name }}</p>
+          </header>
+          <h2>{{ seminario.title.rendered }}</h2>
+          <h3 style="color:red;  margin-bottom: 10px;">{{ seminario.seminario_data_inizio }}</h3>
         </router-link>
-      </div>
-  </div>
+      </section>
+    </main>
 </template>
 
 

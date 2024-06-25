@@ -43,3 +43,25 @@ h4{
     line-height: $line-height-md;
     font-weight: $type-regular;
 }
+
+/* ELEMENTI HOME */
+#home > h2{
+    position: absolute;
+    left: -8000px;
+}
+
+.hero-content h1{
+    position: absolute;
+    left: -8000px;
+  }
+
+  .hero-content p {
+    margin: 20px 0;
+    padding: 10px;
+  }
+
+  .homeSeminari-lista--elemento a{
+    h2{
+        color: #000;
+    }
+  }
