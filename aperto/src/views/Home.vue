@@ -40,11 +40,7 @@
 
 
 
-
-
-
-  
-    <h1>Elenco dei Seminari</h1>
+    <h1>2024</h1>
    
       <div v-for="seminario in sortedSeminari" :key="seminario.id">
         <router-link :to="{ name: 'Seminario', params: { id: seminario.id } }">
@@ -105,11 +101,6 @@ export default {
       });
     });
 
-
-    onBeforeUnmount(() => {
-      const contentEl = content.value;
-      contentEl.removeEventListener('scroll', handleScroll);
-    });
 
     const loadTestoHome = async () => {
       const response = await axios.get('/wp/v2/pages/2')

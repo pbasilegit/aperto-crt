@@ -115,8 +115,8 @@
       };
 
       const formattedDate = computed(() => {
-        const startDate = seminarDetails.value["seminario_data-inizio"];
-        const endDate = seminarDetails.value["seminario_data-fine"];
+        const startDate = seminarDetails.value["seminario_data_inizio"];
+        const endDate = seminarDetails.value["seminario_data_fine"];
 
         if (startDate && endDate) {
           return formatSeminarDates(startDate, endDate);
