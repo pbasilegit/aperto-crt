@@ -1,14 +1,12 @@
 /*Include spaziature e caratteristiche dei moduli*/
 
-section, header, .accordion-item{
-    padding: $md-2 2vw $md-2 2vw;
+section, header{
+    padding: 0 2vw 0 2vw;
 }
 
-.data-luogo{
+.data-luogo {
     @include flex-space-between;
 }
-
-
 
 .accordion-elementi {
     padding-bottom: $lg-2;
@@ -18,15 +16,15 @@ section, header, .accordion-item{
     grid-template-columns: auto auto;
     gap: 2em;
     grid-template-areas: "fotonome fotonome"
-    "info info";
+        "info info";
     border-bottom: 2px solid $color-secondary;
 }
 
-.accordion-elementi:nth-last-child(1){
+.accordion-elementi:nth-last-child(1) {
     border-bottom: none;
 }
 
-.colonne{
+.colonne {
     grid-area: fotonome;
     display: grid;
     grid-template-columns: 50% auto;
@@ -37,40 +35,47 @@ section, header, .accordion-item{
     grid-area: info;
 }
 
-.colonne > figure > img {
+.colonne>figure>img {
     width: 100%;
 }
 
 
 /*Accordion Partner*/
-.partner{
+.partner {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
 }
+
 .elemento-partner {
     @include border;
 }
-.elemento-partner > img {
+
+.elemento-partner>img {
     height: 130px;
 }
-.maggiori-informazioni{
+
+.maggiori-informazioni {
     text-align: right;
     @include border;
 }
 
 /*Varianti responsive del layout*/
-@media screen and (min-width: $breakpoint-1){
-    section, header, .accordion-item {
+@media screen and (min-width: $breakpoint-1) {
+
+    section,
+    header,
+    .accordion-item {
         padding: $md-2 3vw $md-2 3vw;
     }
-    .partner{
+
+    .partner {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }
 
-@media screen and (min-width: $breakpoint-3){
+@media screen and (min-width: $breakpoint-3) {
 
     .accordion-elementi {
         display: grid;
@@ -81,9 +86,50 @@ section, header, .accordion-item{
     }
 }
 
-   /* HOME */
-   .homeSeminari-lista--elemento a{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    text-decoration: none;
-   }
+/* HOME */
+.homeSeminari-lista--elemento {
+    border-bottom: 2px solid $color-primary;
+    a {
+        * {
+            align-content: center;
+        }
+
+        display: grid;
+        grid-template-columns: repeat(2 1fr);
+        grid-auto-rows: repeat(3 1fr);
+        grid-template-areas: "numero stato"
+        "nome nome"
+        "data data";
+        row-gap: $md-3;
+        padding: $sm-3 0 $sm-3 0;
+
+        .homeSeminari-lista--numero {
+            grid-area: numero;
+        }
+
+        .homeSeminari-lista--stato {
+            grid-area: stato;
+        }
+
+        h2 {
+            grid-area: nome;
+        }
+
+        h3 {
+            grid-area: data;
+        }
+
+        @media screen and (min-width: $breakpoint-1) {
+            grid-template-columns: repeat(3 1fr);
+            grid-auto-rows: repeat(2 1fr);
+            grid-template-areas: "numero data stato"
+                "nome nome nome";
+            row-gap: $lg-3;
+            padding: $sm-2 0 $lg-1 0;
+        }
+    }
+}
+
+.homeSeminari-lista--elemento:last-of-type {
+    border-bottom: none;
+}

@@ -11,9 +11,9 @@ $type-black : 900;
 
 
 //  Dimensioni del corpo tipografico */
-$font-size-xs: clamp(1.125rem, 4vw, 1.575rem);
-$font-size-sm: clamp(1.125rem, 4.5vw, 2.938rem);
-$font-size-md: clamp(1.563rem, 5vw, 3.1258rem);
+$font-size-xs: clamp(1.125rem, 3.8vw, 1.575rem);
+$font-size-sm: clamp(1.125rem, 4.2vw, 2.938rem);
+$font-size-md: clamp(1.563rem, 5vw, 3.5258rem);
 $font-size-lg: clamp(1.563rem, 6vw, 4.375rem);
 $font-size-xl: clamp(2.813rem, 8vw, 8.125rem);
 
@@ -38,7 +38,7 @@ $md-3: 24px;
 
 $lg-1: 32px;
 $lg-2: 40px;
-$lag-3: 48px;
+$lg-3: 48px;
 
 
 $breakpoint-1: 768px;

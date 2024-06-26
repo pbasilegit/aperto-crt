@@ -1,8 +1,8 @@
 <template>
-    <header>
-        <nav><router-link to="/about">about</router-link>
-      </nav>
-    </header>
+  <header>
+    <nav><router-link to="/about">about</router-link>
+    </nav>
+  </header>
   <main id="home">
     <!--Inizio Hero mobile -->
     <header class="mobile-hero">
@@ -24,10 +24,8 @@
     </header>
     <!--Fine Hero mobile -->
 
-
-
     <!--Inizio Hero desktop -->
-    <header class="desktop-hero" >
+    <header class="desktop-hero">
       <div style="display: grid; grid-template-columns: 1fr 2fr;">
         <!-- prima immagine header mobile -->
         <div :class="['sticky-image', { sticky: isSticky }]" style="align-self: flex-start;  padding: 10px">
@@ -35,30 +33,25 @@
         </div>
 
         <!-- Testo introduttivo -->
-        <div class="hero-content" @scroll="handleScroll" ref="hero-content" >
+        <div class="hero-content" @scroll="handleScroll" ref="hero-content">
 
           <!--questo titolo non è visibile ha una posizione absolute fuori dal viewport-->
           <h1>Aperto</h1>
           <p id="intro" v-if="testoHome" v-html="testoHome.content.rendered"></p>
           <div style="display: flex;">
             <div style="flex-basis: 50%; padding: 10px">
-              <img src="../../public/dkstp_logo_02.svg" alt="aperto logo" style="width: 100%;" >
+              <img src="../../public/dkstp_logo_02.svg" alt="aperto logo" style="width: 100%;">
             </div>
-            
+
             <div style="flex-basis: 50%; padding: 10px;">
-              <img src="../../public/dkstp_logo_03.svg" alt="aperto logo" style="width: 100%;" >
+              <img src="../../public/dkstp_logo_03.svg" alt="aperto logo" style="width: 100%;">
             </div>
-
           </div>
-
         </div>
       </div>
-    
+
     </header>
     <!--Fine Hero desktop -->
-
-
-
 
     <!--Inizio lista seminari 2024-->
 
@@ -69,12 +62,12 @@
 
     <section class="homeSeminari-lista--elemento" v-for="seminario in sortedSeminari" :key="seminario.id">
       <router-link :to="{ name: 'Seminario', params: { id: seminario.id } }">
-        <header>
-          <p>Seminario {{ seminario.seminari_numero }}</p>
-          <p>{{ seminario.stato[0].name }}</p>
-        </header>
+
+          <p class="homeSeminari-lista--numero">Seminario {{ seminario.seminari_numero }}</p>
+          <p class="homeSeminari-lista--stato">{{ seminario.stato[0].name }}</p>
+
         <h2>{{ seminario.title.rendered }}</h2>
-        <h3 style="color:red;  margin-bottom: 10px;">{{ seminario.seminario_data_inizio }}</h3>
+        <h3>{{ seminario.seminario_data_inizio }}</h3>
       </router-link>
     </section>
   </main>

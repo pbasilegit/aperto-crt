@@ -1,62 +1,65 @@
 hr {
-    border: 1px solid $color-secondary;
+  border: 1px solid $color-primary;
 }
 
 nav {
-    transition: transform 0.5s ease-in-out;
-    position: fixed;
-    transform-origin: center left;
-    background-color: white;
-  }
-  
-  .scale-100 {
-    transform: scale(1);
-  }
-  
-  .scale-80 {
-    transform: scale(0.8);
-  }
+  transition: transform 0.5s ease-in-out;
+  position: fixed;
+  transform-origin: center left;
+  background-color: white;
+}
 
-  .nascosto {
-    visibility: hidden;
-  }
+.scale-100 {
+  transform: scale(1);
+}
 
-   /* HOME */
+.scale-80 {
+  transform: scale(0.8);
+}
 
-  /*capire a cosa serve questo*/
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .sticky-image {
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-    top: 0;
-    background-color: white;
-    //padding: 10px;
-    z-index: 1000;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .sticky-image.sticky {
-    position: sticky;
-  }
-  
- .tipografia-2024{
+.nascosto {
+  visibility: hidden;
+}
+
+/* HOME */
+
+/*capire a cosa serve questo*/
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.sticky-image {
+  position: -webkit-sticky;
+  /* Safari */
+  position: sticky;
+  top: 0;
+  background-color: white;
+  //padding: 10px;
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
+}
+
+.sticky-image.sticky {
+  position: sticky;
+}
+
+.tipografia-2024 {
   width: 100%;
- }
+  border-bottom: 2px solid $color-primary;
+}
 
- .desktop-hero{
+.desktop-hero {
   display: none;
- }
+}
 
- @media screen and (min-width: $breakpoint-1){
+@media screen and (min-width: $breakpoint-1) {
   .mobile-hero {
-      display: none;
+    display: none;
   }
+
   .desktop-hero {
     display: block;
-}
+  }
 }
