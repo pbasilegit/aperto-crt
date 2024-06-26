@@ -12,10 +12,8 @@
         </section>
         <hr>
         <section id="intro">
-          <p>
-            {{ truncatedDescription }}
-            <span v-if="shouldShowMoreDescription" @click="toggleMoreDescription">
-            </span>
+          <p v-html="truncatedDescription">
+           
           </p>
           <button @click="toggleMoreDescription"> {{ showMoreDescription ? '-' : '+' }}</button>
         </section>
@@ -24,6 +22,7 @@
         <div class="accordion-item">
           <div class="accordion-header" @click="toggle(0)">
             <h3>DOCENTI</h3>
+            <img :src="activeIndex === 0 ? upArrow : downArrow" alt="Toggle arrow">
           </div>
 
           <div v-show="activeIndex === 0" class="accordion-content row-grap-big">
@@ -51,6 +50,7 @@
         <div class="accordion-item">
           <div class="accordion-header" @click="toggle(1)">
             <h3>PARTNER</h3>
+            <img :src="activeIndex === 1 ? upArrow : downArrow" alt="Toggle arrow">
           </div>
           <div v-show="activeIndex === 1" class="accordion-content partner">
             <div class="elemento-partner" v-for="partner in seminarDetails.seminario_partner_nome" :key="partner.id">
@@ -67,6 +67,7 @@
         <div class="accordion-item">
           <div class="accordion-header" @click="toggle(2)">
             <h3>PROMOTORE</h3>
+            <img :src="activeIndex === 2 ? upArrow : downArrow" alt="Toggle arrow">
           </div>
           <div v-show="activeIndex === 2" class="accordion-content">
             <div class="accordion-elementi" v-for="promotore in seminarDetails.seminario_promotore_nome" :key="promotore.id">
@@ -176,11 +177,24 @@
       };
 
       const truncatedDescription = computed(() => {
+      if(seminarDetails.value.stato[0].name === "Archiviato"){
+
+        if (showMoreDescription.value || seminarDetails.value.seminario_archiviato_descrizione.length <= 400) {
+          return seminarDetails.value.seminario_archiviato_descrizione;
+        } else {
+          return seminarDetails.value.seminario_archiviato_descrizione.slice(0, 400) + '...';
+        }
+
+      }else{
+
         if (showMoreDescription.value || seminarDetails.value.descrizione.length <= 400) {
           return seminarDetails.value.descrizione;
         } else {
           return seminarDetails.value.descrizione.slice(0, 400) + '...';
         }
+
+      }
+        
       });
 
       const shouldShowMore = (faculty) => {
@@ -207,7 +221,9 @@
         shouldShowMore,
         shouldShowMoreDescription,
         toggleMoreDescription,
-        toggle
+        toggle,
+        downArrow: '../../public/arrow_down.svg', // Path to your down arrow image
+        upArrow: '../../public/arrow_up.svg', 
       };
     }
   };
