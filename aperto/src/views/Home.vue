@@ -61,14 +61,36 @@
     <img class="tipografia-2024" src="../../public/2024.svg" alt="aperto logo">
 
     <section class="homeSeminari-lista--elemento" v-for="seminario in sortedSeminari" :key="seminario.id">
-      <router-link :to="{ name: 'Seminario', params: { id: seminario.id } }">
 
-          <p class="homeSeminari-lista--numero">Seminario {{ seminario.seminari_numero }}</p>
-          <p class="homeSeminari-lista--stato">{{ seminario.stato[0].name }}</p>
+      <!--Archiviato e Corrente-->
+      <router-link v-if="seminario.stato[0].name === 'Archiviato' || seminario.stato[0].name == 'Corrente' " 
+                        :to="{ name: 'Seminario', params: { id: seminario.id } }" :class="[{'homeSeminari--elementoCorrente' : seminario.stato[0].name == 'Corrente' }]">
+
+        <p class="homeSeminari-lista--numero">Seminario {{ seminario.seminari_numero }}</p>
+
+        <p  class="homeSeminari-lista--stato">{{ seminario.stato[0].name }}</p>
+
+        <button v-if="seminario.stato[0].name == 'Corrente' ">Freccia</button>
 
         <h2>{{ seminario.title.rendered }}</h2>
         <h3>{{ seminario.seminario_data_inizio }}</h3>
+
       </router-link>
+
+      <!--Archiviato e Futturo-->
+
+      <a v-else>
+        <p class="homeSeminari-lista--numero">Seminario {{ seminario.seminari_numero }}</p>
+
+        <p  class="homeSeminari-lista--stato">{{ seminario.stato[0].name }}</p>
+
+        <h2>{{ seminario.title.rendered }}</h2>
+        <h3>{{ seminario.seminario_data_inizio }}</h3>
+
+      </a>
+
+
+
     </section>
   </main>
 </template>

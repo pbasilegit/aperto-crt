@@ -64,6 +64,13 @@ h4 {
     padding: 10px;
 }
 
+.homeSeminari--elementoCorrente{
+    * {
+        color: $color-secondary !important;
+    }
+    
+}
+
 .homeSeminari-lista--elemento a {
     text-decoration: none;
 
@@ -98,3 +105,4 @@ h4 {
     }
 
 }
+
