@@ -59,7 +59,9 @@
               <p>{{ partner.partnership_info }}
               </p>
             -->
-              <div class="maggiori-informazioni" role="button">+</div>
+              <div class="maggiori-informazioni" role="button">
+                <img src="../../public/plus.svg" alt="Maggiori informazioni" >
+              </div>
             </div>
           </div>
         </div>
