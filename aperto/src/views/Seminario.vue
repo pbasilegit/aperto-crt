@@ -53,12 +53,22 @@
             <img :src="activeIndex === 1 ? upArrow : downArrow" alt="Toggle arrow">
           </div>
           <div v-show="activeIndex === 1" class="accordion-content partner">
-            <div class="elemento-partner" v-for="partner in seminarDetails.seminario_partner_nome" :key="partner.id">
+            <div class="elemento-partner" v-for="(partner, index) in seminarDetails.seminario_partner_nome"
+            :key="partner.id">
                 <img :src="partner.logo_partner" :alt="partner.nome_partner">
-             <!-- <h4>{{ partner.nome_partner }}</h4>
-              <p>{{ partner.partnership_info }}
-              </p>
-            -->
+              <!-- <h4>{{ partner.nome_partner }}</h4>
+                <p>{{ partner.partnership_info }}
+                </p>
+              -->
+                <Modal
+                :text="partner.partnership_info"
+                :imagePath="partner.logo_partner"
+                :index="index"
+                :visibleIndex="visibleIndex"
+                @update:visibleIndex="updateVisibleIndex"
+                />
+                <button @click="openModal(index)">Open Modal</button>
+
               <div class="maggiori-informazioni" role="button">+</div>
             </div>
           </div>
@@ -73,6 +83,7 @@
             <div class="accordion-elementi" v-for="promotore in seminarDetails.seminario_promotore_nome" :key="promotore.id">
               <figure>
                 <img :src="promotore.logo_partner" :alt="promotore.nome_partner" style="width:100%">
+                
                 <figcaption></figcaption>
               </figure>
               <!--<h4>{{ promotore.nome_partner }}</h4>
@@ -92,15 +103,33 @@
   <script>
   import { ref, onMounted, inject , computed} from 'vue';
   import { useRoute } from 'vue-router';
+  import Modal from './../components/Modal.vue';
+
   
   export default {
     name: 'Seminario',
+    components: {
+    Modal
+    },
     setup() {
       const route = useRoute();
       const seminarDetails = ref(null);
       const axios = inject('axios');
 
       const activeIndex = ref(null);
+
+      
+      const modalText = ref('Hello from the modal! This is a simple modal component.');
+
+      const visibleIndex = ref(-1); // -1 significa che nessuna modale è visibile
+
+      const openModal = (index) => {
+        visibleIndex.value = index;
+      };
+
+      const updateVisibleIndex = (index) => {
+        visibleIndex.value = index;
+      };
 
       const toggle = (index) => {
         activeIndex.value = activeIndex.value === index ? null : index;
@@ -224,6 +253,10 @@
         toggle,
         downArrow: '../../public/arrow_down.svg', // Path to your down arrow image
         upArrow: '../../public/arrow_up.svg', 
+        openModal,
+        modalText,
+        visibleIndex,
+        updateVisibleIndex
       };
     }
   };
