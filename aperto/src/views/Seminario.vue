@@ -68,7 +68,7 @@
         <hr>
         <div class="accordion-item">
           <div class="accordion-header" @click="toggle(2)">
-            <h3>PROMOTORE</h3>
+            <h3>ORGANIZZATORE</h3>
             <img :src="activeIndex === 2 ? upArrow : downArrow" alt="Toggle arrow">
           </div>
           <div v-show="activeIndex === 2" class="accordion-content">
