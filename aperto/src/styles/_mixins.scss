@@ -55,7 +55,10 @@
 }
 
 @mixin border-bottom {
-  border-bottom: 4px solid $color-primary;
+  border-bottom: 2px solid $color-primary;
+  @media screen and (min-width: $breakpoint-1) {
+    border-bottom: 4px solid $color-primary;
+  }
 }
 @mixin border-top {
   border-top: 4px solid $color-primary;

@@ -181,8 +181,8 @@ header,
             grid-template-areas:
                 "numero numero data data stato stato stato stato"
                 "nome nome nome nome nome nome freccia freccia";
-            row-gap: $lg-3;
-            padding: $sm-2 0 $lg-1 0;
+            row-gap: $md-1;
+            padding: $sm-2 0 $md-1 0;
         }
     }
 }

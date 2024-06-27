@@ -91,8 +91,8 @@ h4 {
 
     p, h3 {
         @media screen and (min-width: $breakpoint-1) {
-            font-size: $font-size-sm;
-            font-weight: $type-regular;
+            font-size: $font-size-xs;
+            font-weight: $type-medium;
         }
     }
     
