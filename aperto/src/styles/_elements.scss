@@ -1,5 +1,5 @@
 hr {
-  border: 3px solid $color-primary;
+  border: 2px solid $color-primary;
 }
 
 nav {
@@ -46,8 +46,10 @@ nav {
 }
 
 .tipografia-2024 {
+  padding-top: $lg-3;
   width: 100%;
   @include border-bottom;
+
 }
 
 .desktop-hero {
@@ -64,3 +66,16 @@ nav {
   }
 }
 
+.accordion-header{
+
+  @include flex-space-between;
+  img{
+    width: 35px;
+    height: auto;
+  }
+  @media screen and (min-width: $breakpoint-1) {
+   img {
+      width: 60px;
+    }
+  }
+}

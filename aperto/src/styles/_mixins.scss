@@ -6,6 +6,12 @@
     align-items: center;
   }
 
+  @mixin flex-center-end {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+
   @mixin flex-space-between{
     display: flex;
     justify-content: space-between;
@@ -43,5 +49,5 @@
 }
 
 @mixin border-bottom{
-  border-bottom: 3px solid $color-primary;
+  border-bottom: 4px solid $color-primary;
   }
