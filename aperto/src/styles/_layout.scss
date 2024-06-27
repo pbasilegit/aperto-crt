@@ -17,8 +17,9 @@ header,
     grid-template-rows: auto auto;
     grid-template-columns: auto auto;
     gap: 2em;
-    grid-template-areas: "fotonome fotonome"
-        "info info";
+    grid-template-areas: 
+    "fotonome fotonome"
+    "info info";
     @include border-bottom;
 }
 
@@ -88,7 +89,7 @@ header,
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 
-    .elemento-partner {
+    .elemento-partner:not(:first-child) {
         @include border-left;
     }
 
