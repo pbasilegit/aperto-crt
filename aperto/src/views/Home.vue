@@ -70,7 +70,7 @@
 
         <p  class="homeSeminari-lista--stato">{{ seminario.stato[0].name == 'Archiviato' ? 'Closed' : 'Open Call' }}</p>
 
-        <button v-if="seminario.stato[0].name == 'Corrente' ">Freccia</button>
+        <button v-if="seminario.stato[0].name == 'Corrente' "> <img src="../../public/arrow_left.svg" alt="scopri di più"></button>
 
         <h2>{{ seminario.title.rendered }}</h2>
         <h3>{{ seminario.seminario_data_inizio }}</h3>

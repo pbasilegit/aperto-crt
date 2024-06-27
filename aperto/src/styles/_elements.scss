@@ -1,5 +1,5 @@
 hr {
-  border: 1px solid $color-primary;
+  border: 3px solid $color-primary;
 }
 
 nav {
@@ -47,7 +47,7 @@ nav {
 
 .tipografia-2024 {
   width: 100%;
-  border-bottom: 2px solid $color-primary;
+  @include border-bottom;
 }
 
 .desktop-hero {
@@ -63,3 +63,4 @@ nav {
     display: block;
   }
 }
+

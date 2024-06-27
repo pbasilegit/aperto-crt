@@ -48,7 +48,7 @@ section, header{
 }
 
 .elemento-partner {
-    @include border;
+    @include border-dev;
 }
 
 .elemento-partner>img {
@@ -57,7 +57,7 @@ section, header{
 
 .maggiori-informazioni {
     text-align: right;
-    @include border;
+    @include border-dev;
 }
 
 /*Varianti responsive del layout*/
@@ -88,7 +88,7 @@ section, header{
 
 /* HOME */
 .homeSeminari-lista--elemento {
-    border-bottom: 2px solid $color-primary;
+    @include border-bottom;
     a {
         * {
             align-content: center;
@@ -99,7 +99,7 @@ section, header{
         grid-auto-rows: repeat(3 1fr);
         grid-template-areas: "numero stato"
         "nome nome"
-        "data data";
+        "data freccia";
         row-gap: $md-3;
         padding: $sm-3 0 $sm-3 0;
 
@@ -119,11 +119,26 @@ section, header{
             grid-area: data;
         }
 
+        button{
+            grid-area: freccia;
+            max-width: 50px;
+            background-color: rgba(250, 250, 250, 0);
+            border: none;
+            img {
+              width: 35px;
+              height: auto;
+              @media screen and (min-width: $breakpoint-1) {
+                  width: 90px;
+                  height: auto;
+            }
+            }
+          }
+
         @media screen and (min-width: $breakpoint-1) {
             grid-template-columns: repeat(3 1fr);
             grid-auto-rows: repeat(2 1fr);
             grid-template-areas: "numero data stato"
-                "nome nome nome";
+                "nome nome freccia";
             row-gap: $lg-3;
             padding: $sm-2 0 $lg-1 0;
         }

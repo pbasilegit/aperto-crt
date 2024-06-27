@@ -38,6 +38,10 @@
     padding-bottom: ($y/$x *100%);
  }
 
- @mixin border{
+ @mixin border-dev{
   border: 1px solid red;
 }
+
+@mixin border-bottom{
+  border-bottom: 3px solid $color-primary;
+  }
