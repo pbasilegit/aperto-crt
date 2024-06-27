@@ -69,27 +69,26 @@
                 />
                 <button @click="openModal(index)">Open Modal</button>
 
-              <div class="maggiori-informazioni" role="button">+</div>
+              <div class="maggiori-informazioni" role="button">
+                <img src="../../public/plus.svg" alt="Maggiori informazioni" >
+              </div>
             </div>
           </div>
         </div>
         <hr>
         <div class="accordion-item">
           <div class="accordion-header" @click="toggle(2)">
-            <h3>PROMOTORE</h3>
+            <h3>ORGANIZZATORE</h3>
             <img :src="activeIndex === 2 ? upArrow : downArrow" alt="Toggle arrow">
           </div>
-          <div v-show="activeIndex === 2" class="accordion-content">
-            <div class="accordion-elementi" v-for="promotore in seminarDetails.seminario_promotore_nome" :key="promotore.id">
-              <figure>
-                <img :src="promotore.logo_partner" :alt="promotore.nome_partner" style="width:100%">
+
+          <div v-show="activeIndex === 2" class="accordion-content partner">
+            <div class="elemento-partner" v-for="promotore in seminarDetails.seminario_promotore_nome" :key="promotore.id">
+                <img :src="promotore.logo_partner" :alt="promotore.nome_partner">
                 
-                <figcaption></figcaption>
-              </figure>
-              <!--<h4>{{ promotore.nome_partner }}</h4>
-              <p>{{ promotore.partnership_info }}
-              </p>
-              -->
+                <div class="maggiori-informazioni" role="button">
+                <img src="../../public/plus.svg" alt="Maggiori informazioni" >
+              </div>
             </div>
           </div>
         </div>
