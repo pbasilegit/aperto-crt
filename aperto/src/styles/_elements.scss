@@ -19,16 +19,14 @@ nav {
   @include border-bottom;
 }
 
-nav > a > img{
 
-}
 
 .scale-100 {
-  width: 20vw;
+  width: 30vw;
   transition: width 0.3s ease-in-out;
 }
 .scale-80 {
-  width: 150px;
+  width: 20vw;
   transition: width 0.3s ease-in-out;
 }
 
@@ -57,8 +55,14 @@ nav > a > img{
 }
 
 .sticky-image.sticky {
+  padding-top: 3.5vh;
   position: sticky;
-  top: 116px;
+  top: 3.5vh;
+  @media screen and (min-width: $breakpoint-1) {
+    padding-top: 0;
+    top: 15vh;
+    
+  }
 }
 
 .tipografia-2024 {

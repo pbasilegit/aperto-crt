@@ -49,6 +49,16 @@ h4 {
     font-weight: $type-regular;
 }
 
+nav{
+    a{
+        text-decoration: none;
+        font-size: $font-size-xs;
+        line-height: $line-height-md;
+        font-weight: $type-regular;
+        color: $color-primary;
+    }
+}
+
 /* ELEMENTI HOME */
 #home>h2 {
     position: absolute;
@@ -61,8 +71,11 @@ h4 {
 }
 
 .hero-content p {
-    margin: 20px 0;
+    margin: 40px 0 2% 0;
     padding: 10px;
+    @media screen and (min-width: $breakpoint-1) {
+        margin: 2% 0 2% 0;
+      }
 }
 
 .homeSeminari-lista--elemento a {
