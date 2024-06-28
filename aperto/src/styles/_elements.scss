@@ -19,7 +19,12 @@ nav {
   @include border-bottom;
 }
 
-
+.bottone-toggle{
+  cursor: pointer;
+  display: block;
+  width: 40px;
+  height: 40px;
+}
 
 .scale-100 {
   width: 30vw;
@@ -87,7 +92,7 @@ nav {
 }
 
 .accordion-header {
-
+  cursor: pointer;
   @include flex-space-between;
 
   img {
@@ -115,15 +120,43 @@ nav {
   z-index: 10001;
 }
 
-.modal-content {
+.modal-content { 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: 
+  "logo close"
+  "testo testo";
+  color: $color-primary;
   text-align: left;
-  display: flex;
-  flex-direction: row;
-  align-items: start;
-  justify-content: center;
-  gap: 10vh;
+  gap: 2rem;
   background: white;
   padding: 4vw;
   height: 90vh;
   width: 90vw;
+  overflow-y: scroll;
+  @media screen and (min-width: $breakpoint-2) {
+    gap: 2 rem;
+    justify-content:first baseline;
+    align-items: start;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: 
+    "logo testo testo testo testo close";
+  }
+}
+.logo-modale{
+  grid-area: logo;
+}
+.testo-modale{
+  grid-area: testo;
+}
+.bottone-close{
+  justify-self: self-end;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  grid-area: close;
+  img{
+    width: 40px;
+    height: 40px;
+  }
 }

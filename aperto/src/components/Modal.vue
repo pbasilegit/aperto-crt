@@ -2,9 +2,9 @@
   <div v-if="isVisible" class="modal-overlay" @click="closeModal">
 
     <div class="modal-content" @click.stop>
-      <img v-if="imagePath" :src="imagePath" alt="Modal Image" />
-      <p>{{ text }}</p>
-      <button @click="closeModal"><img src="../../public/close.svg" alt="Close" ></button> 
+      <img class="logo-modale" v-if="imagePath" :src="imagePath" alt="Modal Image" />
+      <p class="testo-modale">{{ text }}</p>
+      <button class="bottone-close" @click="closeModal"><img src="../../public/close.svg" alt="Close" ></button> 
     </div>
   </div>
 </template>

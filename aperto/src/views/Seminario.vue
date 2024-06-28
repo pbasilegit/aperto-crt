@@ -15,8 +15,10 @@
       <p v-html="truncatedDescription">
 
       </p>
-      <img @click="toggleMoreDescription"
-        :src="showMoreDescription ? '../../public/menus.svg' : '../../public/plus.svg'" alt="Toggle Description" />
+      <button @click="toggleMoreDescription" class="bottone-toggle">
+        <img :src="showMoreDescription ? '../../public/menus.svg' : '../../public/plus.svg'" alt="Toggle Description" />
+      </button>
+
     </section>
     <hr>
     <!-- FACULTY -->
@@ -38,13 +40,13 @@
           </div>
           <p>
             {{ truncatedBio(faculty, index) }}
-            <span v-if="shouldShowMore(faculty)" class="more-toggle">
-
-            </span>
+            <span v-if="shouldShowMore(faculty)" class="more-toggle "></span>
 
           </p>
-          <img @click="toggleMore(index)"
+        <button  @click="toggleMore(index)" class="bottone-toggle">
+          <img
             :src="showMoreIndices.includes(index) ? '../../public/menus.svg' : '../../public/plus.svg'" alt="Toggle" />
+          </button>
         </div>
       </div>
     </div>
@@ -68,7 +70,7 @@
 
 
           <div class="maggiori-informazioni" role="button">
-            <img  src="../../public/plus.svg" alt="Maggiori informazioni">
+            <img src="../../public/plus.svg" alt="Maggiori informazioni">
           </div>
         </div>
       </div>
@@ -81,7 +83,8 @@
       </div>
 
       <div v-show="activeIndex === 2" class="accordion-content partner">
-        <div class="elemento-partner" v-for="(promotore, index) in seminarDetails.seminario_promotore_nome" :key="promotore.id"  @click="openModal(index)">
+        <div class="elemento-partner" v-for="(promotore, index) in seminarDetails.seminario_promotore_nome"
+          :key="promotore.id" @click="openModal(index)">
           <img :src="promotore.logo_partner" :alt="promotore.nome_partner">
 
           <Modal :text="promotore.partnership_info" :imagePath="promotore.logo_partner" :index="index"
