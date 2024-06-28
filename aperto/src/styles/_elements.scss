@@ -6,25 +6,30 @@ hr {
   }
 }
 
-
 nav {
-  @include flex-space-between;
-  height: 100px;
+@include flex-space-between;
+  padding-top: $md-1;
+  padding-bottom: $md-1;
   z-index:10000;
-  width: 100%;
+  width:100vw;
   top: 0;
   left:0;
   position: fixed;
-  transform-origin: center left;
   background-color: white;
+  @include border-bottom;
 }
+
+nav > a > img{
+
+}
+
 .scale-100 {
-  transform: scale(1);
-  transition: transform 0.5s ease-in-out;
+  width: 20vw;
+  transition: width 0.3s ease-in-out;
 }
 .scale-80 {
-  transform: scale(0.8);
-  transition: transform 0.5s ease-in-out;
+  width: 150px;
+  transition: width 0.3s ease-in-out;
 }
 
 .nascosto {
@@ -53,6 +58,7 @@ nav {
 
 .sticky-image.sticky {
   position: sticky;
+  top: 116px;
 }
 
 .tipografia-2024 {

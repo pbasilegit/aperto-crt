@@ -1,8 +1,8 @@
 <template>
 
       <main v-if="seminarDetails">
-        <hr>
-        <header>
+
+        <header class="head-space-top">
         <h1>{{ seminarDetails.title.rendered }}</h1>
         </header>
        <hr>

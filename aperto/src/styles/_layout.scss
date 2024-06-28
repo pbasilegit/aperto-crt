@@ -1,12 +1,14 @@
 /*Include spaziature e caratteristiche dei moduli*/
-main{
-    margin-top: 100px;
-}
 
 section,
 header,
-.accordion-item {
+.accordion-item,
+nav{
     padding: 0 2vw 0 2vw;
+}
+
+.head-space-top{
+    margin-top: 116px;
 }
 
 .data-luogo {
@@ -106,7 +108,8 @@ header,
 
     section,
     header,
-    .accordion-item {
+    .accordion-item,
+    nav {
         padding: $md-1 3vw $md-1 3vw;
     }
 }

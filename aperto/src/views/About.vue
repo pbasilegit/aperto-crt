@@ -1,8 +1,11 @@
 <template>
 
-  <section id="intro">
-    <p v-if="testoAbout" v-html="testoAbout.content.rendered"></p>
-  </section>
+  <main>
+    <section id="intro" class="head-space-top">
+      <p v-if="testoAbout" v-html="testoAbout.content.rendered"></p>
+    </section>
+
+  </main>
 </template>
 
 <script>

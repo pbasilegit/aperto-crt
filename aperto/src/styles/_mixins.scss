@@ -58,7 +58,7 @@
   border-bottom: 2px solid $color-primary;
 
   @media screen and (min-width: $breakpoint-1) {
-    border-bottom: 4px solid $color-primary;
+    border-bottom: 3px solid $color-primary;
   }
 }
 
@@ -66,7 +66,7 @@
   border-top: 2px solid $color-primary;
 
   @media screen and (min-width: $breakpoint-1) {
-    border-top: 4px solid $color-primary;
+    border-top: 3px solid $color-primary;
   }
 }
 
@@ -74,7 +74,7 @@
   border-right: 2px solid $color-primary;
 
   @media screen and (min-width: $breakpoint-1) {
-    border-right: 4px solid $color-primary;
+    border-right: 3px solid $color-primary;
   }
 }
 
@@ -82,7 +82,7 @@
   border-left: 2px solid $color-primary;
 
   @media screen and (min-width: $breakpoint-1) {
-    border-left: 4px solid $color-primary;
+    border-left: 3px solid $color-primary;
   }
 }
 
@@ -91,7 +91,7 @@
   border-bottom: 2px solid $color-primary;
 
   @media screen and (min-width: $breakpoint-1) {
-    border-left: 4wx solid $color-primary;
-    border-bottom: 4px solid $color-primary;
+    border-left: 3wx solid $color-primary;
+    border-bottom: 3px solid $color-primary;
   }
 }
