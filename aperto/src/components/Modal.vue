@@ -1,5 +1,6 @@
 <template>
-    <div v-if="isVisible" class="modal-overlay" @click="closeModal">
+    <div v-if="isVisible" class="modal-overlay" @click="closeModal" >
+
       <div class="modal-content" @click.stop>
         <img v-if="imagePath" :src="imagePath" alt="Modal Image" />
         <p>{{ text }}</p>

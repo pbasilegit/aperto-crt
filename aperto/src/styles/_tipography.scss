@@ -68,6 +68,7 @@ h4 {
 .homeSeminari-lista--elemento a {
     text-decoration: none;
     color: $color-primary;
+
     * {
         text-transform: uppercase;
     }
@@ -84,23 +85,25 @@ h4 {
 
     h2 {
         font-weight: $type-medium;
+
         @media screen and (min-width: $breakpoint-1) {
             font-size: $font-size-xl;
         }
     }
 
-    p, h3 {
+    p,
+    h3 {
         @media screen and (min-width: $breakpoint-1) {
             font-size: $font-size-xs;
             font-weight: $type-medium;
         }
     }
-    
+
 }
 
-a.homeSeminari--elementoCorrente{
+a.homeSeminari--elementoCorrente {
     * {
         color: $color-secondary;
     }
-    
+
 }

@@ -1,25 +1,30 @@
 hr {
   border: 1px solid $color-primary;
+
   @media screen and (min-width: $breakpoint-1) {
     border: 2px solid $color-primary;
   }
 }
 
 
-
 nav {
-  transition: transform 0.5s ease-in-out;
+  @include flex-space-between;
+  height: 100px;
+  z-index:10000;
+  width: 100%;
+  top: 0;
+  left:0;
   position: fixed;
   transform-origin: center left;
   background-color: white;
 }
-
 .scale-100 {
   transform: scale(1);
+  transition: transform 0.5s ease-in-out;
 }
-
 .scale-80 {
   transform: scale(0.8);
+  transition: transform 0.5s ease-in-out;
 }
 
 .nascosto {
@@ -71,15 +76,17 @@ nav {
   }
 }
 
-.accordion-header{
+.accordion-header {
 
   @include flex-space-between;
-  img{
+
+  img {
     width: 35px;
     height: auto;
   }
+
   @media screen and (min-width: $breakpoint-1) {
-   img {
+    img {
       width: 60px;
     }
   }
