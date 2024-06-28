@@ -1,7 +1,7 @@
 <template>
   <div id="app">
   
-    <Header v-if="showHeader"/>
+    <Header/>
       <!--<router-link to="/">NAVIGAZIONE</router-link> -->
       <!-- <router-link to="/about">About</router-link> -->
 

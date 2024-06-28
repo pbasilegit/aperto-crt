@@ -1,12 +1,10 @@
 <template>
-    <header>
-        <nav :class="{ 'scale-100': isScale100, 'scale-80':!isScale100 }">
-          <router-link to="/" >
-            <img src="../../public/header_aperto.svg" alt="Sticky Image">
-          </router-link>
-            
+      <nav>
+        <router-link to="/" >
+          <img src="../../public/header_aperto.svg" alt="Sticky Image" :class="{ 'scale-100': isScale100, 'scale-80':!isScale100 }">
+        </router-link> 
+        <router-link to="/about">about</router-link>  
       </nav>
-    </header>
   </template>
   
   <script setup>
