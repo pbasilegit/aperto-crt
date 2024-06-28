@@ -101,3 +101,29 @@ nav {
     }
   }
 }
+
+.modal-overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+}
+
+.modal-content {
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: center;
+  gap: 10vh;
+  background: white;
+  padding: 4vw;
+  height: 90vh;
+  width: 90vw;
+}
