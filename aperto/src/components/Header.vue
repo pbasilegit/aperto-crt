@@ -24,7 +24,6 @@ onUnmounted(() => {
 
 function handleScroll() {
   const scrollTop = window.scrollY 
-  console.log(scrollY)
   if (scrollTop ==0) {
     // Scroll verso il basso
     isScale100.value = true;
