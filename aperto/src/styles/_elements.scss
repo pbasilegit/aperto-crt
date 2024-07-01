@@ -192,10 +192,10 @@ footer {
   grid-template-columns: 1fr;
   background-color: #000;
   color: $color-white;
-  padding: $lg-3 0 $lg-3 0;
+
   @media screen and (min-width: $breakpoint-2) {
     grid-template-columns: repeat(3, 1fr) ;
-    padding: $lg-3 0 $lg-3 0;
+    padding-top: $lg-3;
   }
 }
 
