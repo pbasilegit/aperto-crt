@@ -30,6 +30,10 @@ footer {
         "fotonome fotonome"
         "info info";
     @include border-bottom;
+    
+    .bottone-toggle{
+        grid-column: 2;
+    }
 }
 
 .accordion-elementi:nth-last-child(1) {
@@ -46,6 +50,8 @@ footer {
 .accordion-elementi p {
     grid-area: info;
 }
+
+
 
 .colonne>figure>img {
     width: 100%;

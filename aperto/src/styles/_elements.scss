@@ -4,27 +4,28 @@ hr {
 }
 
 nav {
-@include flex-space-between;
+  @include flex-space-between;
   padding-top: $md-1;
   padding-bottom: $md-1;
-  z-index:10000;
-  width:100vw;
+  z-index: 10000;
+  width: 100vw;
   top: 0;
-  left:0;
+  left: 0;
   position: fixed;
   background-color: white;
   @include border-bottom;
 }
 
-.nav-links--about{
+.nav-links--about {
   margin: auto 0;
 }
 
 .active-link {
-  text-decoration: underline; /* Sottolinea il testo del link */
+  text-decoration: underline;
+  /* Sottolinea il testo del link */
 }
 
-.bottone-toggle{
+.bottone-toggle {
   cursor: pointer;
   display: block;
   width: 40px;
@@ -35,6 +36,7 @@ nav {
   width: 30vw;
   transition: width 0.3s ease-in-out;
 }
+
 .scale-80 {
   width: 20vw;
   transition: width 0.3s ease-in-out;
@@ -68,10 +70,11 @@ nav {
   padding-top: 3.5vh;
   position: sticky;
   top: 3.5vh;
+
   @media screen and (min-width: $breakpoint-1) {
     padding-top: 0;
     top: 15vh;
-    
+
   }
 }
 
@@ -125,12 +128,12 @@ nav {
   z-index: 10001;
 }
 
-.modal-content { 
+.modal-content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-areas: 
-  "logo close"
-  "testo testo";
+  grid-template-areas:
+    "logo close"
+    "testo testo";
   color: $color-primary;
   text-align: left;
   gap: 2rem;
@@ -139,49 +142,68 @@ nav {
   height: 90vh;
   width: 90vw;
   overflow-y: scroll;
+
   @media screen and (min-width: $breakpoint-2) {
     height: auto;
     padding-top: 10vw;
     padding-bottom: 10vw;
     gap: 2 rem;
-    justify-content:first baseline;
+    justify-content: first baseline;
     align-items: start;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-areas: 
-    "logo testo testo testo testo close";
+    grid-template-areas:
+      "logo testo testo testo testo close";
   }
 }
-.logo-modale{
+
+.logo-modale {
   grid-area: logo;
   align-self: self-end;
+
   @media screen and (min-width: $breakpoint-2) {
     align-self: flex-start;
   }
 }
-.testo-modale{
+
+.testo-modale {
   grid-area: testo;
 
 }
-.bottone-close{
+
+.bottone-close {
   justify-self: self-end;
   align-self: flex-start;
   cursor: pointer;
   grid-area: close;
-  img{
+
+  img {
     width: 40px;
     height: 40px;
   }
 }
 
 
-#intro{
-  display: flex;
-  flex-direction: column;
+#intro {
+
+   img {
+    padding-top: $md-3;
+    width: 35px;
+    height: auto;
+  }
+
+  @media screen and (min-width: $breakpoint-1) {
+     img {
+      padding-top: $md-3;
+      width: 60px;
+    }
+  }
 }
 
-.bottone-toggle{
-  align-self: end;
-  grid-column: 2;
+.bottone-toggle {
+  padding: 0;
+  text-align: right;
+  height: auto;
+  width: 100%;
 }
 
 
@@ -194,15 +216,16 @@ footer {
   color: $color-white;
 
   @media screen and (min-width: $breakpoint-2) {
-    grid-template-columns: repeat(3, 1fr) ;
+    grid-template-columns: repeat(3, 1fr);
     padding-top: $lg-3;
     padding-bottom: $lg-3;
   }
 }
 
-.footer-header{
+.footer-header {
   border-bottom: 2px solid $color-white;
   padding: $lg-3 0 $lg-3 0;
+
   @media screen and (min-width: $breakpoint-2) {
     border-bottom: none;
     border-right: 3px solid $color-white;
@@ -212,19 +235,21 @@ footer {
   }
 }
 
-.footer-sezioneLoghi{
+.footer-sezioneLoghi {
   padding: $lg-3 0 $lg-3 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto, auto, auto;
   gap: $lg-3;
   border-bottom: 2px solid $color-white;
+
   @media screen and (min-width: $breakpoint-2) {
     border-bottom: none;
     border-right: 3px solid $color-white;
     padding: 0 $lg-3 0 $lg-3;
   }
-  h4{
+
+  h4 {
     grid-column: 1 / 4;
     padding-bottom: $lg-3;
     font-size: clamp(0.8rem, 2.5vw, 1em);
@@ -238,26 +263,28 @@ footer {
   }
 }
 
-.footer-sezioneloghi--logo{
+.footer-sezioneloghi--logo {
   align-self: center;
   justify-self: center;
 }
 
-.footer-features{
-padding: $lg-3 0 $lg-3 0;
-gap: $md-1;
-display: flex;
-flex-direction: column;
-@media screen and (min-width: $breakpoint-2) {
-  padding: 0 $lg-3 0 $lg-3;
-  
-}
+.footer-features {
+  padding: $lg-3 0 $lg-3 0;
+  gap: $md-1;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: $breakpoint-2) {
+    padding: 0 $lg-3 0 $lg-3;
+
+  }
 }
 
-.footer-features--contacts{
+.footer-features--contacts {
   display: flex;
   align-items: center;
   gap: $lg-3;
+
   @media screen and (min-width: $breakpoint-2) {
     flex-direction: column;
     align-items: start;
@@ -301,8 +328,8 @@ flex-direction: column;
   text-transform: uppercase;
 }
 
-.desktop-hero--container{
-  display: grid; 
-  grid-template-columns: 1fr 2fr; 
+.desktop-hero--container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   margin-top: 100px;
 }
