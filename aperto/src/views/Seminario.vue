@@ -14,7 +14,7 @@
     <section id="intro">
       <p v-html="truncatedDescription"></p>
       <button @click="toggleMoreDescription" class="bottone-toggle">
-        <img :src="showMoreDescription ? '../../public/menus.svg' : '../../public/plus.svg'" alt="Toggle Description" />
+        <img :src="showMoreDescription ? '../../menus.svg' : '../../public/plus.svg'" alt="Toggle Description" />
       </button>
 
     </section>

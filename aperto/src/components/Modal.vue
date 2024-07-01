@@ -3,7 +3,7 @@
 
     <div class="modal-content" @click.stop>
       <img class="logo-modale" v-if="imagePath" :src="imagePath" alt="Modal Image" />
-      <p class="testo-modale">{{ text }}</p>
+      <p v-html="text" class="testo-modale"></p>
       <button class="bottone-close" @click="closeModal"><img src="../../public/close.svg" alt="Close" ></button> 
     </div>
   </div>
