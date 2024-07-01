@@ -3,7 +3,7 @@
         <router-link to="/" >
           <img src="../../public/header_aperto.svg" alt="Sticky Image" :class="{ 'scale-100': isScale100, 'scale-80':!isScale100 }">
         </router-link> 
-        <router-link to="/about">About</router-link>  
+        <router-link to="/about" class="nav-links--about" exact-active-class="active-link">About</router-link>  
       </nav>
   </template>
   

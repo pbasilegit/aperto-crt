@@ -1,9 +1,6 @@
 hr {
-  border: 1px solid $color-primary;
-
-  @media screen and (min-width: $breakpoint-1) {
-    border: 2px solid $color-primary;
-  }
+  border: none; //resetta i bordi default per permettere di applicare il border bottom in modo ottimale
+  @include border-bottom;
 }
 
 nav {
@@ -17,6 +14,14 @@ nav {
   position: fixed;
   background-color: white;
   @include border-bottom;
+}
+
+.nav-links--about{
+  margin: auto 0;
+}
+
+.active-link {
+  text-decoration: underline; /* Sottolinea il testo del link */
 }
 
 .bottone-toggle{
@@ -113,7 +118,7 @@ nav {
   left: 0px;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -135,6 +140,9 @@ nav {
   width: 90vw;
   overflow-y: scroll;
   @media screen and (min-width: $breakpoint-2) {
+    height: auto;
+    padding-top: 10vw;
+    padding-bottom: 10vw;
     gap: 2 rem;
     justify-content:first baseline;
     align-items: start;
@@ -145,18 +153,33 @@ nav {
 }
 .logo-modale{
   grid-area: logo;
+  align-self: self-end;
+  @media screen and (min-width: $breakpoint-2) {
+    align-self: flex-start;
+  }
 }
 .testo-modale{
   grid-area: testo;
+
 }
 .bottone-close{
   justify-self: self-end;
+  align-self: flex-start;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
   grid-area: close;
   img{
     width: 40px;
     height: 40px;
   }
+}
+
+
+#intro{
+  display: flex;
+  flex-direction: column;
+}
+
+.bottone-toggle{
+  align-self: end;
+  grid-column: 2;
 }

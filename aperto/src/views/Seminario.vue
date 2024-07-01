@@ -12,9 +12,7 @@
     </section>
     <hr>
     <section id="intro">
-      <p v-html="truncatedDescription">
-
-      </p>
+      <p v-html="truncatedDescription"></p>
       <button @click="toggleMoreDescription" class="bottone-toggle">
         <img :src="showMoreDescription ? '../../public/menus.svg' : '../../public/plus.svg'" alt="Toggle Description" />
       </button>
@@ -43,9 +41,9 @@
             <span v-if="shouldShowMore(faculty)" class="more-toggle "></span>
 
           </p>
-        <button  @click="toggleMore(index)" class="bottone-toggle">
-          <img
-            :src="showMoreIndices.includes(index) ? '../../public/menus.svg' : '../../public/plus.svg'" alt="Toggle" />
+          <button @click="toggleMore(index)" class="bottone-toggle">
+            <img :src="showMoreIndices.includes(index) ? '../../public/menus.svg' : '../../public/plus.svg'"
+              alt="Toggle" />
           </button>
         </div>
       </div>
