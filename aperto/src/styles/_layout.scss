@@ -3,7 +3,8 @@
 section,
 header,
 .accordion-item,
-nav{
+nav,
+footer {
     padding: 0 2vw 0 2vw;
 }
 
@@ -112,7 +113,8 @@ nav{
     section,
     header,
     .accordion-item,
-    nav {
+    nav,
+    footer {
         padding: $md-1 3vw $md-1 3vw;
     }
 }
