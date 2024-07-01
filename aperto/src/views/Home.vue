@@ -23,7 +23,7 @@
 
     <!--Inizio Hero desktop -->
     <header class="desktop-hero">
-      <div style="display: grid; grid-template-columns: 1fr 2fr; margin-top: 100px;">
+      <div class="desktop-hero--container">
         <!-- prima immagine header mobile -->
         <div :class="['sticky-image', { sticky: isSticky }]" style="align-self: flex-start;  padding: 10px">
           <img src="../../public/dkstp_logo_01.svg" alt="aperto logo" style="width: 100%;">

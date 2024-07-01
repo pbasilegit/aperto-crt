@@ -196,6 +196,7 @@ footer {
   @media screen and (min-width: $breakpoint-2) {
     grid-template-columns: repeat(3, 1fr) ;
     padding-top: $lg-3;
+    padding-bottom: $lg-3;
   }
 }
 
@@ -228,10 +229,10 @@ footer {
     padding-bottom: $lg-3;
     font-size: clamp(0.8rem, 2.5vw, 1em);
     line-height: clamp(1.1rem, 2.8vw, 1.3rem);
-    margin-top: auto;
+    margin-top: 0;
     font-weight: 400;
     letter-spacing: 0.06rem;
-    padding: 10px;
+    padding: 0;
     text-align: left;
     color: #FFF;
   }
@@ -249,6 +250,7 @@ display: flex;
 flex-direction: column;
 @media screen and (min-width: $breakpoint-2) {
   padding: 0 $lg-3 0 $lg-3;
+  
 }
 }
 
@@ -256,6 +258,10 @@ flex-direction: column;
   display: flex;
   align-items: center;
   gap: $lg-3;
+  @media screen and (min-width: $breakpoint-2) {
+    flex-direction: column;
+    align-items: start;
+  }
 }
 
 .footer-partner {
@@ -293,4 +299,10 @@ flex-direction: column;
   line-height: normal;
   text-decoration-line: underline;
   text-transform: uppercase;
+}
+
+.desktop-hero--container{
+  display: grid; 
+  grid-template-columns: 1fr 2fr; 
+  margin-top: 100px;
 }
