@@ -21,7 +21,7 @@
 
 
           <div v-if="partner.aggiungi_a_pagina_about_partner === '1'" class="maggiori-informazioni" role="button">
-            <img src="../../public/plus.svg" alt="Maggiori informazioni">
+            <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/plus.svg" alt="Maggiori informazioni">
           </div>
         </div>
       </div>
@@ -44,7 +44,7 @@
 
           <div v-if="partner.aggiungi_a_pagina_about_come_organizzatore === '1'" class="maggiori-informazioni"
             role="button">
-            <img src="../../public/plus.svg" alt="Maggiori informazioni">
+            <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/plus.svg" alt="Maggiori informazioni">
           </div>
         </div>
       </div>
@@ -123,8 +123,8 @@ export default {
       fetchPartnerDetails,
       testoAbout,
       activeIndex,
-      downArrow: '../../public/arrow_down.svg',
-      upArrow: '../../public/arrow_up.svg',
+      downArrow: 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/arrow_down.svg',
+      upArrow: 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/arrow_up.svg',
       visibleIndex,
       toggle,
       filteredPartners,

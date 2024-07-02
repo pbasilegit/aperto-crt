@@ -1,7 +1,7 @@
 <template>
       <nav>
         <router-link to="/" >
-          <img src="../../public/header_aperto.svg" alt="Sticky Image" :class="{ 'scale-100': isScale100, 'scale-80':!isScale100 }">
+          <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/header_aperto.svg" alt="Sticky Image" :class="{ 'scale-100': isScale100, 'scale-80':!isScale100 }">
         </router-link> 
         <router-link to="/about" class="nav-links--about" exact-active-class="active-link">About</router-link>  
       </nav>

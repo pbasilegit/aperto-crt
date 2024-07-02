@@ -4,7 +4,7 @@
     <div class="modal-content" @click.stop>
       <img class="logo-modale" v-if="imagePath" :src="imagePath" alt="Modal Image" />
       <p v-html="text" class="testo-modale"></p>
-      <button class="bottone-close" @click="closeModal"><img src="../../public/close.svg" alt="Close" ></button> 
+      <button class="bottone-close" @click="closeModal"><img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/Close.svg" alt="Close" ></button> 
     </div>
   </div>
 </template>

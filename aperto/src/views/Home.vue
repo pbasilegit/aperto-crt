@@ -6,7 +6,7 @@
       <div>
         <!-- prima immagine header mobile -->
         <div :class="['sticky-image', { sticky: isSticky }]">
-          <img src="../../public/logo_01.svg" alt="aperto logo" style="width: 100%;">
+          <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/logo_01.svg" alt="aperto logo" style="width: 100%;">
         </div>
 
         <!-- Testo introduttivo -->
@@ -17,7 +17,7 @@
           <p id="intro" v-if="testoHome" v-html="testoHome.content.rendered"></p>
         </div>
       </div>
-      <img src="../../public/logo_02.svg" alt="aperto logo" style="width: 100%;">
+      <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/logo_02.svg" alt="aperto logo" style="width: 100%;">
     </header>
     <!--Fine Hero mobile -->
 
@@ -26,7 +26,7 @@
       <div class="desktop-hero--container">
         <!-- prima immagine header mobile -->
         <div :class="['sticky-image', { sticky: isSticky }]" style="align-self: flex-start;  padding: 10px">
-          <img src="../../public/dkstp_logo_01.svg" alt="aperto logo" style="width: 100%;">
+          <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/dkstp_logo_01.svg" alt="aperto logo" style="width: 100%;">
         </div>
 
         <!-- Testo introduttivo -->
@@ -37,11 +37,11 @@
           <p id="intro" v-if="testoHome" v-html="testoHome.content.rendered"></p>
           <div style="display: flex;">
             <div style="flex-basis: 50%; padding: 10px">
-              <img src="../../public/dkstp_logo_02.svg" alt="aperto logo" style="width: 100%;">
+              <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/dkstp_logo_02.svg" alt="aperto logo" style="width: 100%;">
             </div>
 
             <div style="flex-basis: 50%; padding: 10px;">
-              <img src="../../public/dkstp_logo_03.svg" alt="aperto logo" style="width: 100%;">
+              <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/dkstp_logo_03.svg" alt="aperto logo" style="width: 100%;">
             </div>
           </div>
         </div>
@@ -55,7 +55,7 @@
     <!--questo titolo non è visibile ha una posizione absolute fuori dal viewport-->
     <h2>Seminari 2024</h2>
 
-    <img class="tipografia-2024" src="../../public/2024.svg" alt="aperto logo">
+    <img class="tipografia-2024" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/2024.svg" alt="aperto logo">
 
     <section class="homeSeminari-lista--elemento" v-for="seminario in sortedSeminari" :key="seminario.id">
 
@@ -67,7 +67,7 @@
 
         <p  class="homeSeminari-lista--stato">{{ seminario.stato[0].name == 'Archiviato' ? 'Closed' : 'Open Call' }}</p>
 
-        <button v-if="seminario.stato[0].name == 'Corrente' "> <img src="../../public/arrow_left.svg" alt="scopri di più"></button>
+        <button v-if="seminario.stato[0].name == 'Corrente' "> <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/arrow_left.svg" alt="scopri di più"></button>
 
         <h2>{{ seminario.title.rendered }}</h2>
         <h3>{{ seminario.seminario_data_inizio }}</h3>

@@ -14,7 +14,7 @@
     <section id="intro">
       <p v-html="truncatedDescription"></p>
       <button @click="toggleMoreDescription" class="bottone-toggle">
-        <img :src="showMoreDescription ? '../../menus.svg' : '../../public/plus.svg'" alt="Toggle Description" />
+        <img :src="showMoreDescription ? 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/menus.svg' : 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/plus.svg'" alt="Toggle Description" />
       </button>
 
     </section>
@@ -42,7 +42,7 @@
 
           </p>
           <button @click="toggleMore(index)" class="bottone-toggle">
-            <img :src="showMoreIndices.includes(index) ? '../../public/menus.svg' : '../../public/plus.svg'"
+            <img :src="showMoreIndices.includes(index) ? 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/menus.svg' : 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/plus.svg'"
               alt="Toggle" />
           </button>
         </div>
@@ -68,7 +68,7 @@
 
 
           <div class="maggiori-informazioni" role="button">
-            <img src="../../public/plus.svg" alt="Maggiori informazioni">
+            <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/plus.svg" alt="Maggiori informazioni">
           </div>
         </div>
       </div>
@@ -88,7 +88,7 @@
           <Modal :text="promotore.partnership_info" :imagePath="promotore.logo_partner" :index="index"
             :visibleIndex="visibleIndex" @update:visibleIndex="updateVisibleIndex" />
           <div class="maggiori-informazioni" role="button">
-            <img src="../../public/plus.svg" alt="Maggiori informazioni">
+            <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/plus.svg" alt="Maggiori informazioni">
           </div>
         </div>
       </div>
@@ -251,8 +251,8 @@ export default {
       shouldShowMoreDescription,
       toggleMoreDescription,
       toggle,
-      downArrow: '../../public/arrow_down.svg', // Path to your down arrow image
-      upArrow: '../../public/arrow_up.svg',
+      downArrow: 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/arrow_down.svg', // Path to your down arrow image
+      upArrow: 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/arrow_up.svg',
       openModal,
       modalText,
       visibleIndex,

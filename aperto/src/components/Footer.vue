@@ -3,7 +3,7 @@
 
     <div class="footer-header">
       <div class="footer-item">
-        <img class="fondazione_crt_Logo" src="./../../public/fondazione_arte_crt_white.svg"
+        <img class="fondazione_crt_Logo" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/f_fondazione_arte_crt_white.svg"
           style="margin-top:-20px !important;">
       </div>
 
@@ -20,27 +20,27 @@
       <h4>Partner di Aperto 2024</h4>
 
       <div class="footer-sezioneloghi--logo">
-        <img class="footer-partner" src="./../../public/sandretto.png" />
+        <img class="footer-partner" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/f_sandretto.png" />
       </div>
 
       <div class="footer-sezioneloghi--logo">
-        <img class="footer-partner" src="./../../public/castello_di_rivoli.svg" />
+        <img class="footer-partner" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/f_castello_di_rivoli.svg" />
       </div>
 
       <div class="footer-sezioneloghi--logo">
-        <img class="footer-partner" src="./../../public/almanac_id.png" />
+        <img class="footer-partner" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/f_almanac_id.png" />
       </div>
 
       <div class="footer-sezioneloghi--logo">
-        <img class="footer-partner" src="./../../public/cripta_747.svg" />
+        <img class="footer-partner" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/f_cripta_747.svg" />
       </div>
 
       <div class="footer-sezioneloghi--logo">
-        <img class="footer-partner" src="./../../public/feat.svg" />
+        <img class="footer-partner" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/f_feat.svg" />
       </div>
 
       <div class="footer-sezioneloghi--logo">
-        <img class="footer-partner" src="./../../public/mucho_mas_bianco.png" />
+        <img class="footer-partner" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/f_mucho_mas_bianco.png" />
       </div>
     </div>
 
@@ -59,7 +59,7 @@
         <p>Per info: <a style="color: white;" href="mailto:applications@aperto-crt.it">applications@aperto-crt.it</a></p>
         
           <a href="https://www.instagram.com/fondartecrt/" target="_blank">
-            <img class="instagram_Logo" src="./../../public/Instagram_Glyph_White.svg">
+            <img class="instagram_Logo" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/f_Instagram_Glyph_White.svg">
           </a>
 
       </div>
