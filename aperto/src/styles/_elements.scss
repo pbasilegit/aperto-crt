@@ -102,7 +102,7 @@ nav {
 .accordion-header {
   cursor: pointer;
   @include flex-space-between;
-
+  align-items: center;
   img {
     width: 35px;
     height: auto;
@@ -332,4 +332,17 @@ footer {
   display: grid;
   grid-template-columns: 1fr 2fr;
   margin-top: 100px;
+}
+
+.download-bando{
+  background-color: $color-primary;
+  padding-top: $md-1;
+  padding-bottom: $md-1;
+
+  h3 {
+    color: $color-white;
+  }
+  a {
+    text-decoration: none;
+  }
 }

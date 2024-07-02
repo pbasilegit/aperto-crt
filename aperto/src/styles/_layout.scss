@@ -2,10 +2,13 @@
 
 section,
 header,
-.accordion-item,
 nav,
 footer {
     padding: 0 2vw 0 2vw;
+}
+
+.accordion-item{
+    padding:  $md-1 2vw $md-1 2vw; 
 }
 
 .head-space-top{
