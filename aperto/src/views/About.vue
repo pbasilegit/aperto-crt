@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, onMounted, onBeforeUnmount, inject, computed, nextTick } from 'vue';
+import { defineComponent, ref, onMounted, onBeforeMount, inject, computed, nextTick } from 'vue';
 import Modal from './../components/Modal.vue';
 
 
@@ -118,6 +118,12 @@ export default {
       fetchAboutText();
       fetchPartnerDetails()
     });
+
+    onBeforeMount(() =>{ 
+    // Fa scorrere la pagina all'inizio prima di montare il componente
+      window.scrollTo(0, 0);
+    });
+
     return {
       partnerDetails,
       fetchPartnerDetails,

@@ -70,7 +70,7 @@
         <button v-if="seminario.stato[0].name == 'Corrente' "> <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/arrow_left.svg" alt="scopri di più"></button>
 
         <h2>{{ seminario.title.rendered }}</h2>
-        <h3>{{ seminario.seminario_data_inizio }}</h3>
+        <h3>{{ formatSeminarioDate(seminario.seminario_data_inizio, seminario.seminario_data_fine) }}</h3>
 
       </router-link>
 
@@ -82,7 +82,7 @@
         <p  class="homeSeminari-lista--stato">Coming soon</p>
 
         <h2>{{ seminario.title.rendered }}</h2>
-        <h3>{{ seminario.seminario_data_inizio }}</h3>
+        <h3>{{ formatSeminarioDate(seminario.seminario_data_inizio, seminario.seminario_data_fine) }}</h3>
 
       </a>
 
@@ -141,6 +141,22 @@ export default {
       });
     });
 
+    const formatSeminarioDate = (dataInizio, dataFine) => {
+      const inizio = new Date(dataInizio);
+      const fine = new Date(dataFine);
+
+      const giornoInizio = inizio.getDate();
+      const meseInizio = inizio.toLocaleString('it-IT', { month: 'long' });
+      const giornoFine = fine.getDate();
+      const meseFine = fine.toLocaleString('it-IT', { month: 'long' });
+
+      if (meseInizio === meseFine) {
+        return `${giornoInizio} al ${giornoFine} ${meseInizio}`;
+      } else {
+        return `${giornoInizio} ${meseInizio} al ${giornoFine} ${meseFine}`;
+      }
+    }
+
 
     const loadTestoHome = async () => {
       const response = await axios.get('/wp/v2/pages/2')
@@ -164,6 +180,7 @@ export default {
 
     return {
       seminari,
+      formatSeminarioDate,
       isSticky,
       handleScroll,
       sortedSeminari,

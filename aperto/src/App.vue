@@ -32,7 +32,11 @@ export default {
     Header,
     Footer
   },
-  computed: { showHeader() { return this.$route.name !== 'Home'; } }
+  computed: { showHeader() { return this.$route.name !== 'Home'; } },
+  beforeMount() {
+    // Fa scorrere la pagina all'inizio prima di montare il componente
+    window.scrollTo(0, 0);
+  }
 };
 </script>
 

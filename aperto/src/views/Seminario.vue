@@ -107,7 +107,7 @@
 </template>
 
 <script>
-import { ref, onMounted, inject, computed } from 'vue';
+import { ref, onMounted, inject, computed, onBeforeMount } from 'vue';
 import { useRoute } from 'vue-router';
 import Modal from './../components/Modal.vue';
 
@@ -242,6 +242,11 @@ export default {
 
     onMounted(() => {
       fetchSeminarDetails();
+    });
+
+    onBeforeMount(() =>{ 
+    // Fa scorrere la pagina all'inizio prima di montare il componente
+      window.scrollTo(0, 0);
     });
 
     return {
