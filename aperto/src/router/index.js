@@ -5,7 +5,7 @@ import Seminario from '../views/Seminario.vue';
 
 const routes = [
   {
-    path: '/',
+    path: '/demo',
     name: 'Home',
     component: Home
   },

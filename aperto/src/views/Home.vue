@@ -96,7 +96,7 @@
 
 
 <script>
-import { defineComponent, ref, computed, onMounted, onBeforeUnmount, inject } from 'vue';
+import { defineComponent, ref, computed, onMounted, onBeforeMount, inject } from 'vue';
 
 export default {
   name: 'Home',
@@ -176,6 +176,11 @@ export default {
       fetchSeminari();
       loadTestoHome();
       const contentEl = content.value;
+    });
+
+    onBeforeMount(() =>{ 
+    // Fa scorrere la pagina all'inizio prima di montare il componente
+      window.scrollTo(0, 0);
     });
 
     return {
