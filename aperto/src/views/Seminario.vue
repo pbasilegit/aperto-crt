@@ -94,6 +94,12 @@
       </div>
     </div>
 
+    <div class="accordion-item" v-if="seminarDetails.stato[0].name === 'Corrente' " >
+      <a class="accordion-header" :href="seminarDetails.seminario_allegati[0].guid" target="_blank">
+        <h3>{{ seminarDetails.stato[0].name  }}</h3>
+        <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/arrow_download.svg" />
+      </a>
+    </div>
 
   </main>
   <p v-else>Caricamento...</p>
