@@ -75,17 +75,6 @@ footer {
     }
 }
 
-// Aggiunge i filetti per creare la croce nella ghiera dei partner
-
-
-.elemento-partner:nth-child(even) {
-    @include border-left;
-}
-
-.elemento-partner:not(:nth-child(1), :nth-child(2)) {
-    @include border-top;
-}
-
 .maggiori-informazioni {
     @include flex-end;
     padding-top: $sm-3;
@@ -97,6 +86,18 @@ footer {
 }
 
 
+// Aggiunge i filetti per creare la croce nella ghiera dei partner
+
+
+.elemento-partner:nth-child(odd) {
+    @include border-right;
+}
+
+.elemento-partner:not(:last-of-type, :nth-of-type(odd):nth-last-of-type(2)) {
+    @include border-bottom;
+}
+
+
 @media screen and (min-width: $breakpoint-2) {
     .partner {
         display: grid;
@@ -104,12 +105,16 @@ footer {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 
-    .elemento-partner:not(:first-child) {
+    .elemento-partner:not(:last-of-type, :nth-of-type(odd):nth-last-of-type(2)) {
+        border-bottom: none;
+    }
+
+    .elemento-partner:not(:first-child, :nth-of-type(5), :nth-of-type(9)) {
         @include border-left;
     }
 
-    .elemento-partner:not(:nth-child(1), :nth-child(2)) {
-        border-top: none;
+    .elemento-partner:nth-child(odd) {
+        border-right: none;
     }
 }
 
