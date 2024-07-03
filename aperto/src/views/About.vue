@@ -62,7 +62,7 @@ export default {
   components: {
     Modal
   },
-  setup() {
+  setup(_, { emit }) {
     const testoAbout = ref(null);
     const partnerDetails = ref(null);
     const activeIndex = ref(null);
@@ -117,9 +117,14 @@ export default {
     onMounted(() => {
       fetchAboutText();
       fetchPartnerDetails()
+      setTimeout(() => {
+        emit('componentReady', true);
+      }, 
+      1000)
     });
 
     onBeforeMount(() =>{ 
+      emit('componentReady', false);
     // Fa scorrere la pagina all'inizio prima di montare il componente
       window.scrollTo(0, 0);
     });

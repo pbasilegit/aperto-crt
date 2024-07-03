@@ -107,7 +107,7 @@
 </template>
 
 <script>
-import { ref, onMounted, inject, computed, onBeforeMount } from 'vue';
+import { ref, onMounted, inject, computed, onBeforeMount, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 import Modal from './../components/Modal.vue';
 
@@ -117,7 +117,7 @@ export default {
   components: {
     Modal
   },
-  setup() {
+  setup(_, { emit }) {
     const route = useRoute();
     const seminarDetails = ref(null);
     const axios = inject('axios');
@@ -242,9 +242,14 @@ export default {
 
     onMounted(() => {
       fetchSeminarDetails();
+      setTimeout(() => {
+        emit('componentReady', true);
+      }, 
+      1000)
     });
 
     onBeforeMount(() =>{ 
+      emit('componentReady', false);
     // Fa scorrere la pagina all'inizio prima di montare il componente
       window.scrollTo(0, 0);
     });

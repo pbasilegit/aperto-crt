@@ -96,16 +96,17 @@
 
 
 <script>
-import { defineComponent, ref, computed, onMounted, onBeforeMount, inject } from 'vue';
+import { defineComponent, ref, computed, onMounted, onBeforeMount, inject, defineEmits } from 'vue';
 
 export default {
   name: 'Home',
-  setup() {
+  setup(_, { emit }) {
     const seminari = ref([]);
     const axios = inject('axios');
     const isSticky = ref(true);
     const content = ref(null);
     const testoHome = ref(null);
+
 
     const handleScroll = () => {
       const contentEl = content.value;
@@ -176,9 +177,16 @@ export default {
       fetchSeminari();
       loadTestoHome();
       const contentEl = content.value;
+      setTimeout(() => {
+        emit('componentReady', true);
+      }, 
+      1000)
+     
+   
     });
 
     onBeforeMount(() =>{ 
+      emit('componentReady', false);
     // Fa scorrere la pagina all'inizio prima di montare il componente
       window.scrollTo(0, 0);
     });
@@ -190,8 +198,7 @@ export default {
       handleScroll,
       sortedSeminari,
       content,
-      testoHome,
-      paragraphs: Array(30).fill('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ut lectus euismod, vehicula quam eu, egestas ante.')
+      testoHome
     };
   }
 };

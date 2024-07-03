@@ -1,14 +1,17 @@
 <template>
-  <div id="app">
-  
-    <Header/>
-      <!--<router-link to="/">NAVIGAZIONE</router-link> -->
-      <!-- <router-link to="/about">About</router-link> -->
-    
-    <router-view>
-    </router-view>
 
-    <Footer/>
+
+
+
+
+  <div id="app">
+    
+    <Header/>
+
+    
+    <router-view @componentReady="onComponentReady"></router-view>
+
+    <Footer  v-if="isComponentReady"/>
 
   </div>
 </template>
@@ -24,6 +27,8 @@
 import Home from './views/Home.vue';
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
+import {onMounted , ref} from 'vue';
+
 
 export default {
   name: 'App',
@@ -32,12 +37,34 @@ export default {
     Header,
     Footer
   },
-  computed: { showHeader() { return this.$route.name !== 'Home'; } },
-  beforeMount() {
+  setup() {
+    const isComponentReady = ref(false);
+
+    const onComponentReady = (event) =>{
+      isComponentReady.value = event;
+      console.log('caricamento...')
+  
+      console.log('prima...', isComponentReady.value)
+     
+      
+      console.log('poi...', isComponentReady.value)
+    }
+
+    onMounted(() => {
+    isComponentReady.value = false;
     // Fa scorrere la pagina all'inizio prima di montare il componente
     window.scrollTo(0, 0);
+  })
+  return{
+    isComponentReady,
+    onComponentReady
   }
-};
+}
+  
+  
+ 
+}
+
 </script>
 
 
