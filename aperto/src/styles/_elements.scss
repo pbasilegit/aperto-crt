@@ -144,7 +144,6 @@ nav {
   overflow-y: scroll;
 
   @media screen and (min-width: $breakpoint-2) {
-    height: auto;
     padding-top: 10vw;
     padding-bottom: 10vw;
     gap: 2 rem;
