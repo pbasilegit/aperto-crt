@@ -8,7 +8,7 @@
     <hr>
     <section class="data-luogo">
       <h2>{{ formattedDate }}</h2>
-      <h2>{{ seminarDetails.seminario_location }}</h2>
+      <h2 v-html="seminarDetails.seminario_location"></h2>
     </section>
     <hr>
     <section id="intro">
@@ -48,9 +48,9 @@
         </div>
       </div>
     </div>
-    <hr>
+    <hr v-if="seminarDetails.seminario_partner_nome.length > 0">
     <!-- PARTNER -->
-    <div class="accordion-item">
+    <div class="accordion-item" v-if="seminarDetails.seminario_partner_nome.length > 0">
       <div class="accordion-header" @click="toggle(1)">
         <h3>PARTNER</h3>
         <img :src="activeIndex === 1 ? upArrow : downArrow" alt="Toggle arrow">
@@ -171,9 +171,9 @@ export default {
       const endMonth = monthToString(end.getMonth()); // Converti il numero del mese in stringa completa
 
       if (startMonth === endMonth) {
-        return `${startDay} al ${endDay} ${endMonth}`;
+        return `dal ${startDay} al ${endDay} ${endMonth}`;
       } else {
-        return `${startDay} ${startMonth} al ${endDay} ${endMonth}`;
+        return `dal ${startDay} ${startMonth} al ${endDay} ${endMonth}`;
       }
     }
 

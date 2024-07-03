@@ -152,9 +152,9 @@ export default {
       const meseFine = fine.toLocaleString('it-IT', { month: 'long' });
 
       if (meseInizio === meseFine) {
-        return `${giornoInizio} al ${giornoFine} ${meseInizio}`;
+        return `dal ${giornoInizio} al ${giornoFine} ${meseInizio}`;
       } else {
-        return `${giornoInizio} ${meseInizio} al ${giornoFine} ${meseFine}`;
+        return `dal ${giornoInizio} ${meseInizio} al ${giornoFine} ${meseFine}`;
       }
     }
 
