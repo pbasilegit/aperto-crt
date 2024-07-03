@@ -20,11 +20,11 @@
       <h4>Partner di Aperto 2024</h4>
 
       <div class="footer-sezioneloghi--logo">
-        <img class="footer-partner" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/f_sandretto.png" />
+        <img class="footer-partner" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/f_castello_di_rivoli.svg" />
       </div>
 
       <div class="footer-sezioneloghi--logo">
-        <img class="footer-partner" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/f_castello_di_rivoli.svg" />
+        <img class="footer-partner" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/f_sandretto.png" />
       </div>
 
       <div class="footer-sezioneloghi--logo">
@@ -36,11 +36,11 @@
       </div>
 
       <div class="footer-sezioneloghi--logo">
-        <img class="footer-partner" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/f_feat.svg" />
+        <img class="footer-partner" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/f_mucho_mas_bianco.png" />
       </div>
 
       <div class="footer-sezioneloghi--logo">
-        <img class="footer-partner" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/f_mucho_mas_bianco.png" />
+        <img class="footer-partner" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/f_feat.svg" />
       </div>
     </div>
 
@@ -58,7 +58,7 @@
       <div class="footer-features--contacts footer-item">
         <p>Per info: <a style="color: white;" href="mailto:applications@aperto-crt.it">applications@aperto-crt.it</a></p>
         
-          <a href="https://www.instagram.com/fondartecrt/" target="_blank">
+          <a href="https://www.instagram.com/aperto_crt/" target="_blank">
             <img class="instagram_Logo" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/f_Instagram_Glyph_White.svg">
           </a>
 
