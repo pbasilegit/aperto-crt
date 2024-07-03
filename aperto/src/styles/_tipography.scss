@@ -35,7 +35,9 @@ h4 {
     line-height: $line-height-md;
 }
 
-
+.footer-sezioneLoghi > h4{
+    text-transform: none;
+}
 
 #intro p {
     font-size: $font-size-md;
