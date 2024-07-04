@@ -13,7 +13,7 @@ h2,
 h3,
 h4 {
     color: $color-primary;
-    text-transform: uppercase;
+
 }
 
 h1 {
@@ -47,9 +47,13 @@ h4 {
 }
 
 .accordion-content p {
-    font-size: $font-size-xs;
+    font-size: $font-size-md;
     line-height: $line-height-md;
     font-weight: $type-regular;
+    color: $color-primary;
+    @media screen and (min-width: $breakpoint-1) {
+        font-size: 2rem;
+      }
 }
 
 nav{
@@ -89,17 +93,13 @@ nav{
         text-transform: uppercase;
     }
 
-    p {
+    h3, p {
         font-size: $font-size-sm;
         font-weight: $type-regular;
     }
 
-    h2,
-    h3 {
-        font-size: $font-size-lg;
-    }
-
     h2 {
+        font-size: 2rem;
         font-weight: $type-medium;
 
         @media screen and (min-width: $breakpoint-1) {
@@ -122,4 +122,8 @@ a.homeSeminari--elementoCorrente {
         color: $color-secondary;
     }
 
+}
+
+.footer-features--contacts p {
+    font-size: 18px;
 }

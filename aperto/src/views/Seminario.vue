@@ -29,13 +29,10 @@
       <div v-show="activeIndex === 0" class="accordion-content row-grap-big">
         <div class="accordion-elementi" v-for="(faculty, index) in seminarDetails.seminario_faculty_member"
           :key="faculty.id">
-          <div class="colonne">
-            <figure>
+          <!--<div class="colonne">-->
               <img :src="faculty.faculty_member_foto" :alt="faculty.post_title">
-              <figcaption></figcaption>
-            </figure>
             <h4>{{ faculty.post_title }}</h4>
-          </div>
+          <!--</div>-->
           <p>
             {{ truncatedBio(faculty, index) }}
             <span v-if="shouldShowMore(faculty)" class="more-toggle "></span>
