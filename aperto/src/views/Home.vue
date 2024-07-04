@@ -145,6 +145,8 @@ export default {
     const formatSeminarioDate = (dataInizio, dataFine) => {
       const inizio = new Date(dataInizio);
       const fine = new Date(dataFine);
+      const annoInizio = inizio.getFullYear();
+
 
       const giornoInizio = inizio.getDate();
       const meseInizio = inizio.toLocaleString('it-IT', { month: 'long' });
@@ -152,9 +154,9 @@ export default {
       const meseFine = fine.toLocaleString('it-IT', { month: 'long' });
 
       if (meseInizio === meseFine) {
-        return `dal ${giornoInizio} al ${giornoFine} ${meseInizio}`;
+        return `dal ${giornoInizio} al ${giornoFine} ${meseInizio} ${annoInizio}`;
       } else {
-        return `dal ${giornoInizio} ${meseInizio} al ${giornoFine} ${meseFine}`;
+        return `dal ${giornoInizio} ${meseInizio} al ${giornoFine} ${meseFine} ${annoInizio}`;
       }
     }
 
