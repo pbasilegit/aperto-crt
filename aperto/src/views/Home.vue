@@ -5,12 +5,12 @@
     <header class="mobile-hero">
       <div>
         <!-- prima immagine header mobile -->
-        <div :class="['sticky-image', { sticky: isSticky }]">
+        <div :class="['sticky-image', { sticky: isSticky }]" id="logo_01_mobile">
           <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/logo_01.svg" alt="aperto logo" style="width: 100%;">
         </div>
 
         <!-- Testo introduttivo -->
-        <div class="hero-content" @scroll="handleScroll" ref="hero-content">
+        <div class="hero-content" @scroll="handleScroll" ref="hero-content" id="hero-content--mobile">
 
           <!--questo titolo non è visibile ha una posizione absolute fuori dal viewport-->
           <h1>Aperto</h1>
@@ -24,23 +24,23 @@
     <!--Inizio Hero desktop -->
     <header class="desktop-hero">
       <div class="desktop-hero--container">
-        <!-- prima immagine header mobile -->
-        <div :class="['sticky-image', { sticky: isSticky }]" style="align-self: flex-start;  padding: 10px">
-          <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/dkstp_logo_01.svg" alt="aperto logo" style="width: 100%;">
+        <!-- prima immagine header desktop -->
+        <div :class="['sticky-image', { sticky: isSticky }]" style="align-self: flex-start;" id="logo_01">
+          <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/dkstp_logo_01.svg" alt="aperto logo" class="desktop-hero--img" >
         </div>
 
         <!-- Testo introduttivo -->
-        <div class="hero-content" @scroll="handleScroll" ref="hero-content">
+        <div id="hero-content--desktop" class="hero-content" @scroll="handleScroll" ref="hero-content">
 
           <!--questo titolo non è visibile ha una posizione absolute fuori dal viewport-->
           <h1>Aperto</h1>
           <p id="intro" v-if="testoHome" v-html="testoHome.content.rendered"></p>
           <div style="display: flex;">
-            <div style="flex-basis: 50%; padding: 10px">
+            <div style="flex-basis: 50%;" class="desktop-hero--img">
               <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/dkstp_logo_02.svg" alt="aperto logo" style="width: 100%;">
             </div>
 
-            <div style="flex-basis: 50%; padding: 10px;">
+            <div style="flex-basis: 50%;" class="desktop-hero--img">
               <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/dkstp_logo_03.svg" alt="aperto logo" style="width: 100%;">
             </div>
           </div>
@@ -174,6 +174,27 @@ export default {
         console.error('Errore nel recuperare i seminari:', error);
       }
     };
+    function updateMarginTop() {
+      const navElement = document.getElementById('myNav');
+      const navHeight = navElement.getBoundingClientRect().height;
+      const herocontentDesktop = document.getElementById('hero-content--desktop')
+      if(herocontentDesktop){
+        /**DESKTOP */
+        console.log('Altezza della nav:', navHeight, 'px');
+        const stickyimage = document.getElementById('logo_01');
+        
+        herocontentDesktop.style.marginTop = `${navHeight + 20}px`;
+        stickyimage.style.top = `${navHeight +3}px`;
+        console.log('Altezza top:', stickyimage, 'px');
+
+        /**MOBILE */
+        const stickyimageMobile = document.getElementById('logo_01_mobile');
+        const herocontentMobile = document.getElementById('hero-content--mobile')
+        stickyimageMobile.style.top = `${navHeight -2 }px`;
+        herocontentMobile.style.marginTop = `${navHeight + 20}px`;
+      }
+    
+    }
 
     onMounted(() => {
       fetchSeminari();
@@ -183,14 +204,33 @@ export default {
         emit('componentReady', true);
       }, 
       1000)
+      if(window.innerWidth > 1280){
+        const stickyimage = document.getElementById('logo_01');
+
+        const herocontentDesktop = document.getElementById('hero-content--desktop')
+        herocontentDesktop.style.marginTop = `120px`;
+        stickyimage.style.top = `100px`;
+        console.log('Altezza top:', stickyimage, 'px');
+          
+      }
+      else{
+        updateMarginTop()
+      }
+
      
-   
     });
+
 
     onBeforeMount(() =>{ 
       emit('componentReady', false);
     // Fa scorrere la pagina all'inizio prima di montare il componente
       window.scrollTo(0, 0);
+      window.addEventListener("load", () => {
+        console.log("page is fully loaded");
+        updateMarginTop
+      });
+      window.addEventListener('resize', updateMarginTop);
+
     });
 
     return {

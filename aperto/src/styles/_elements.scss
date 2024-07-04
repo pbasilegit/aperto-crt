@@ -33,7 +33,7 @@ nav {
 }
 
 .scale-100 {
-  width: 30vw;
+  width: 25vw;
   transition: width 0.3s ease-in-out;
 }
 
@@ -70,15 +70,8 @@ nav {
 }
 
 .sticky-image.sticky {
-  padding-top: 3.5vh;
   position: sticky;
-  top: 3.5vh;
-
-  @media screen and (min-width: $breakpoint-1) {
-    padding-top: 0;
-    top: 15vh;
-
-  }
+ 
 }
 
 .tipografia-2024 {
@@ -186,8 +179,7 @@ nav {
 
 
 #intro {
-
-   img {
+  img {
     padding-top: $md-3;
     width: 35px;
     height: auto;
@@ -333,7 +325,6 @@ footer {
 .desktop-hero--container {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  margin-top: 100px;
 }
 
 .download-bando{
@@ -347,4 +338,15 @@ footer {
   a {
     text-decoration: none;
   }
+}
+
+.desktop-hero--img{
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 40px;
+}
+
+#logo_01_mobile{
+  padding: 10px 0 10px 0;
 }
