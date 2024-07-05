@@ -220,13 +220,15 @@ export default {
       const herocontentDesktop = document.getElementById('hero-content--desktop')
       const stickyimageMobile = document.getElementById('logo_01_mobile');
       const herocontentMobile = document.getElementById('hero-content--mobile')
-      herocontentMobile.style.marginTop = `80px`;
-      stickyimageMobile.style.top = `65px`;
+      let navHeight = 0;
+
 
       if(window.innerWidth  <= 768 || window.innerHeight <= 768){
         console.log('mobile MOUNTED')
-        herocontentMobile.style.marginTop = `80px`;
-        stickyimageMobile.style.top = `65px`;
+        navHeight = '5'
+        stickyimageMobile.style.top = `${navHeight}vh`;
+        stickyimageMobile.style.top = stickyimageMobile.style.top + 10;
+        herocontentMobile.style.marginTop = `${navHeight}vh`;
       }
       if(window.innerWidth > 768 & window.innerWidth <= 1440){
         console.log('desktop MOUNTED')
