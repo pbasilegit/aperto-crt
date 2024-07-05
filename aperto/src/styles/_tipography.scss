@@ -51,9 +51,9 @@ h4 {
     line-height: $line-height-md;
     font-weight: $type-regular;
     color: $color-primary;
-    @media screen and (min-width: $breakpoint-1) {
-        font-size: 2rem;
-      }
+    @media screen and (min-width: $breakpoint-2) {
+        font-size: clamp(2rem, 2.2vw, 2.4rem);  
+    }
 }
 
 nav{
@@ -97,6 +97,7 @@ nav{
 
         @media screen and (min-width: $breakpoint-1) {
             font-size: $font-size-xl;
+            line-height: $line-height-sm;
         }
     }
 

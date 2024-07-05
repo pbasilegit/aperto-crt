@@ -161,12 +161,38 @@ footer {
 
     .accordion-elementi {
         display: grid;
+        grid-template-rows: auto auto;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1rem;
+        grid-template-areas: 
+        "foto foto foto foto nome nome nome nome nome nome nome nome "
+        "foto foto foto foto info info info info  info info info freccia";
+    }
+}
+
+
+@media screen and (min-width: $breakpoint-3) {
+
+    .accordion-elementi {
+        display: grid;
         grid-template-rows: auto;
         grid-template-columns: repeat(12, 1fr);
-        gap: 2em;
+        gap: 1rem;
         grid-template-areas: "foto foto foto foto nome nome nome info info info info freccia";
     }
 }
+
+@media screen and (min-width: $breakpoint-4) {
+
+    .accordion-elementi {
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 2em;
+        grid-template-areas: "foto foto foto nome nome nome info info info info info freccia";
+    }
+}
+
 
 /* HOME */
 .homeSeminari-lista--elemento {
@@ -178,11 +204,11 @@ footer {
         }
 
         display: grid;
-        grid-template-columns: repeat(3 1fr);
+        grid-template-columns: repeat(4 1fr);
         grid-auto-rows: repeat(3 1fr);
-        grid-template-areas: "numero numero stato"
-        "nome nome nome"
-        "data data freccia";
+        grid-template-areas: "numero numero stato stato"
+        "nome nome nome nome"
+        "data data data freccia";
         row-gap: $sm-3;
         padding: $sm-3 0 $sm-3 0;
 
