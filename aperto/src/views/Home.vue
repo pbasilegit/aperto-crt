@@ -96,7 +96,7 @@
 
 
 <script>
-import { defineComponent, ref, computed, onMounted, onBeforeMount, inject, defineEmits } from 'vue';
+import { defineComponent, ref, computed, onMounted, onBeforeMount, inject, defineEmits,onUnmounted } from 'vue';
 
 export default {
   name: 'Home',
@@ -176,47 +176,69 @@ export default {
     };
     function updateMarginTop() {
       const navElement = document.getElementById('myNav');
-      const navHeight = navElement.getBoundingClientRect().height;
+      let navHeight = 0;
       const herocontentDesktop = document.getElementById('hero-content--desktop')
-      if(herocontentDesktop){
-        /**DESKTOP */
-        console.log('Altezza della nav:', navHeight, 'px');
-        const stickyimage = document.getElementById('logo_01');
-        
-        herocontentDesktop.style.marginTop = `${navHeight + 20}px`;
-        stickyimage.style.top = `${navHeight +3}px`;
-        console.log('Altezza top:', stickyimage, 'px');
-
+      const stickyimage = document.getElementById('logo_01');
+      let stickyimageMobile = document.getElementById('logo_01_mobile');
+      const herocontentMobile = document.getElementById('hero-content--mobile')
+     
+      if(window.innerWidth  < 768){
         /**MOBILE */
-        const stickyimageMobile = document.getElementById('logo_01_mobile');
-        const herocontentMobile = document.getElementById('hero-content--mobile')
-        stickyimageMobile.style.top = `${navHeight -2 }px`;
-        herocontentMobile.style.marginTop = `${navHeight + 20}px`;
+        
+
+        navHeight = '5'
+
+        stickyimageMobile.style.top = `${navHeight}vh`;
+        stickyimageMobile.style.top = stickyimageMobile.style.top + 10;
+        console.log('Sono in MoBILE RESIZE', stickyimageMobile.style.top);
+        herocontentMobile.style.marginTop = `${navHeight}vh`;
+       
+      }else{
+        /**DESKTOP */
+        navHeight = navElement.getBoundingClientRect().height;
+        console.log('Sono in DESKTOP RESIZE', navHeight, 'px');
+        herocontentDesktop.style.marginTop = `${navHeight + 20}px`;
+        stickyimage.style.top = `${navHeight}px`;
+        navHeight = 0;
       }
     
     }
 
+    function init(){}
+
     onMounted(() => {
       fetchSeminari();
       loadTestoHome();
+      window.addEventListener('scroll', updateMarginTop);
+
       const contentEl = content.value;
       setTimeout(() => {
         emit('componentReady', true);
       }, 
       1000)
-      if(window.innerWidth > 1280){
-        const stickyimage = document.getElementById('logo_01');
+      const stickyimage = document.getElementById('logo_01');
+      const herocontentDesktop = document.getElementById('hero-content--desktop')
+      const stickyimageMobile = document.getElementById('logo_01_mobile');
+      const herocontentMobile = document.getElementById('hero-content--mobile')
+      herocontentMobile.style.marginTop = `80px`;
+      stickyimageMobile.style.top = `65px`;
 
-        const herocontentDesktop = document.getElementById('hero-content--desktop')
+      if(window.innerWidth  <= 768 || window.innerHeight <= 768){
+        console.log('mobile MOUNTED')
+        herocontentMobile.style.marginTop = `80px`;
+        stickyimageMobile.style.top = `65px`;
+      }
+      if(window.innerWidth > 768 & window.innerWidth <= 1440){
+        console.log('desktop MOUNTED')
         herocontentDesktop.style.marginTop = `120px`;
         stickyimage.style.top = `100px`;
-        console.log('Altezza top:', stickyimage, 'px');
-          
       }
-      else{
-        updateMarginTop()
+      if(window.innerWidth > 1440){
+        console.log('desktop 2 MOUNTED')
+        herocontentDesktop.style.marginTop = `140px`;
+        stickyimage.style.top = `120px`;
+        console.log('Altezza top:', stickyimage, 'px'); 
       }
-
      
     });
 
@@ -231,6 +253,11 @@ export default {
       });
       window.addEventListener('resize', updateMarginTop);
 
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener('scroll',updateMarginTop);
+      window.removeEventListener('resize',updateMarginTop);
     });
 
     return {

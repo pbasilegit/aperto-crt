@@ -42,12 +42,6 @@ export default {
 
     const onComponentReady = (event) =>{
       isComponentReady.value = event;
-      console.log('caricamento...')
-  
-      console.log('prima...', isComponentReady.value)
-     
-      
-      console.log('poi...', isComponentReady.value)
     }
 
     onMounted(() => {

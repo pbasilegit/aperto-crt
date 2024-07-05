@@ -5,15 +5,19 @@ hr {
 
 nav {
   @include flex-space-between;
-  padding-top: $md-1;
-  padding-bottom: $md-1;
   z-index: 10000;
   width: 100vw;
+  align-items: center;
+  min-height: 5vh;
   top: 0;
   left: 0;
   position: fixed;
   background-color: white;
   @include border-bottom;
+  @media screen and (min-width: $breakpoint-1) {
+    padding-top: $md-1;
+    padding-bottom: $md-1;
+  }
 }
 
 .nav-links--about {
@@ -38,7 +42,7 @@ nav {
 }
 
 .scale-80 {
-  width: 30vw;
+  width: 25vw;
   transition: width 0.3s ease-in-out;
   @media screen and (min-width: $breakpoint-1) {
     width: 20vw;
