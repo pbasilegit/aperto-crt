@@ -1,0 +1,97 @@
+/* Blocchi di codice dove possiamo passare dei parametri e avere un risultato*/
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-center-end {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+@mixin flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+@mixin flex-start {
+  display: flex;
+  justify-content: start;
+}
+
+@mixin flex-end {
+  display: flex;
+  justify-content: end;
+}
+
+@mixin grid-50-50 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@mixin grid-33-66 {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+/* esempio */
+@mixin background-cover($img_url) {
+  background: url($img_url) no-repeat center center;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* esempio */
+@mixin responsive-height($x, $y) {
+  height: 0px;
+  padding-bottom: ($y/$x *100%);
+}
+
+@mixin border-dev {
+  border: 1px solid red;
+}
+
+@mixin border-bottom {
+  border-bottom: 2px solid $color-primary;
+
+  @media screen and (min-width: $breakpoint-1) {
+    border-bottom: 3px solid $color-primary;
+  }
+}
+
+@mixin border-top {
+  border-top: 2px solid $color-primary;
+
+  @media screen and (min-width: $breakpoint-1) {
+    border-top: 3px solid $color-primary;
+  }
+}
+
+@mixin border-right {
+  border-right: 2px solid $color-primary;
+
+  @media screen and (min-width: $breakpoint-1) {
+    border-right: 3px solid $color-primary;
+  }
+}
+
+@mixin border-left {
+  border-left: 2px solid $color-primary;
+
+  @media screen and (min-width: $breakpoint-1) {
+    border-left: 3px solid $color-primary;
+  }
+}
+
+@mixin border-left-bottom {
+  border-left: 2wx solid $color-primary;
+  border-bottom: 2px solid $color-primary;
+
+  @media screen and (min-width: $breakpoint-1) {
+    border-left: 3wx solid $color-primary;
+    border-bottom: 3px solid $color-primary;
+  }
+}

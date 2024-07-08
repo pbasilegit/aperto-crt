@@ -1,0 +1,33 @@
+/* ----- TIPOGRAFIA ----- */
+/* ------ CROMIE ------*/
+/* ----- DIMENSIONI LAYOUT ----- */
+/* Blocchi di codice dove possiamo passare dei parametri e avere un risultato*/
+/* esempio */
+/* esempio */
+@import url("https://use.typekit.net/ren0myy.css");
+.cover {
+  background: url("../../header.svg") no-repeat center center;
+  width: 100vw;
+  height: 100vh;
+}
+
+h2 {
+  color: blue;
+}
+
+/* Definiamo il punto base dei rem*/
+body {
+  font-family: "neue-haas-grotesk-display", sans-serif;
+}
+
+/* Definisci le variabili che desideri utilizzare in tutto il progetto. 
+Queste potrebbero includere colori, dimensioni di font, spaziatura, ecc.*/
+h1 {
+  color: yellowgreen;
+}
+
+h2 {
+  color: blue;
+}
+
+/*# sourceMappingURL=style.css.map */

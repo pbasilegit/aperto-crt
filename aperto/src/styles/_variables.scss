@@ -1,0 +1,51 @@
+/* ----- TIPOGRAFIA ----- */
+
+$type-ultra-thin : 100;
+$type-thin : 200;
+$type-extra-light : 300;
+$type-light : 400;
+$type-regular : 500;
+$type-medium : 600;
+$type-bold : 700;
+$type-black : 900;
+
+
+//  Dimensioni del corpo tipografico */
+$font-size-xs: clamp(1.125rem, 3.8vw, 1.575rem);
+$font-size-sm: clamp(1.125rem, 4.2vw, 2.938rem);
+$font-size-md: clamp(1.563rem, 4.8vw, 3.1rem);
+$font-size-lg: clamp(1.563rem, 6vw, 4.375rem);
+$font-size-xl: clamp(2.813rem, 8vw, 8.125rem);
+
+
+//  Dimensesioni interlinea 
+
+$line-height-sm: 0.9;
+$line-height-md: 1.15;
+$line-height-lg: 1.8;
+$line-height-xl: 2.0;
+
+/* ----- DIMENSIONI LAYOUT ----- */
+
+// Varianti responsive per margini e padding
+$sm-1: 4px;
+$sm-2: 8px;
+$sm-3: 12px;
+
+$md-1: 16px;
+$md-3: 24px;
+
+$lg-1: 32px;
+$lg-2: 40px;
+$lg-3: 48px;
+
+
+$breakpoint-1: 768px;
+$breakpoint-2: 1024px;
+$breakpoint-3: 1440px;
+$breakpoint-4: 1920px;
+
+// Animations 
+
+$animate-height: 0;
+$animate-width: 0;

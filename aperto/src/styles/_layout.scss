@@ -1,0 +1,265 @@
+/*Include spaziature e caratteristiche dei moduli*/
+
+section,
+header,
+nav,
+footer {
+    padding: 0 2vw 0 2vw;
+}
+
+.accordion-item {
+    padding: $md-1 2vw $md-1 2vw;
+}
+
+.head-space-top {
+    margin-top: 10vh;
+
+    @media screen and (min-width: $breakpoint-1) {
+        margin-top: 14vh;
+    }
+}
+
+.data-luogo {
+    gap: 2rem;
+    @include flex-space-between;
+}
+
+.accordion-elementi {
+    padding-bottom: $md-1;
+    padding-top: $md-1;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+    "foto nome"
+    "info info"
+    "freccia freccia";
+    row-gap: 2em;
+    column-gap: 1em;
+
+    @include border-bottom;
+
+   img {
+        grid-area: foto;
+        width: 100%;
+    }
+
+    h4{
+        grid-area: nome;
+    }
+
+    p {
+        grid-area: info;
+    }
+
+    .bottone-toggle {
+        grid-area: freccia;
+        align-self: end;
+        img{
+            width: 30px;
+            height: auto;
+        }
+        @media screen and (min-width: $breakpoint-3) {
+            
+        }
+    }
+}
+
+
+.accordion-elementi:nth-last-child(1) {
+    border-bottom: none;
+}
+
+
+
+/*Accordion Partner*/
+.partner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: $lg-3 0 $lg-3 0;
+}
+
+
+.elemento-partner {
+    padding: $md-1;
+    text-align: center;
+    cursor: pointer;
+
+    img {
+        max-height: 140px;
+
+        @media screen and (min-width: $breakpoint-1) {
+            max-height: 160px;
+        }
+
+        @media screen and (min-width: $breakpoint-2) {
+            max-height: 180px;
+        }
+    }
+
+    @media screen and (min-width: $breakpoint-2) {
+        padding-left: 2vw;
+    }
+
+}
+
+.maggiori-informazioni {
+    @include flex-end;
+    padding-top: $sm-3;
+
+    img {
+        width: 24px;
+        height: auto;
+    }
+}
+
+
+// Aggiunge i filetti per creare la croce nella ghiera dei partner
+
+
+.elemento-partner:nth-child(odd) {
+    @include border-right;
+}
+
+.elemento-partner:not(:last-of-type, :nth-of-type(odd):nth-last-of-type(2)) {
+    @include border-bottom;
+}
+
+
+@media screen and (min-width: $breakpoint-2) {
+    .partner {
+        display: grid;
+        gap: 2vw;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .elemento-partner:not(:last-of-type, :nth-of-type(odd):nth-last-of-type(2)) {
+        border-bottom: none;
+    }
+
+    .elemento-partner:not(:first-child, :nth-of-type(5), :nth-of-type(9)) {
+        @include border-left;
+    }
+
+    .elemento-partner:nth-child(odd) {
+        border-right: none;
+    }
+}
+
+/*Varianti responsive del layout*/
+@media screen and (min-width: $breakpoint-1) {
+    section,
+    header,
+    .accordion-item,
+    nav,
+    footer {
+        padding: $md-1 3vw $md-1 3vw;
+    }
+}
+
+@media screen and (min-width: $breakpoint-2) {
+
+    .accordion-elementi {
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1rem;
+        grid-template-areas: 
+        "foto foto foto foto nome nome nome nome nome nome nome nome "
+        "foto foto foto foto info info info info  info info info freccia";
+    }
+}
+
+
+@media screen and (min-width: $breakpoint-3) {
+
+    .accordion-elementi {
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1rem;
+        grid-template-areas: "foto foto foto foto nome nome nome info info info info freccia";
+    }
+}
+
+@media screen and (min-width: $breakpoint-4) {
+
+    .accordion-elementi {
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 2em;
+        grid-template-areas: "foto foto foto nome nome nome info info info info info freccia";
+    }
+}
+
+
+/* HOME */
+.homeSeminari-lista--elemento {
+    @include border-bottom;
+
+    a {
+        * {
+            align-content: center;
+        }
+
+        display: grid;
+        grid-template-columns: repeat(4 1fr);
+        grid-auto-rows: repeat(3 1fr);
+        grid-template-areas: "numero numero stato stato"
+        "nome nome nome nome"
+        "data data data freccia";
+        row-gap: $sm-3;
+        padding: $sm-3 0 $sm-3 0;
+
+        .homeSeminari-lista--numero {
+            grid-area: numero;
+        }
+
+        .homeSeminari-lista--stato {
+            grid-area: stato;
+            justify-self: end;
+        }
+
+        h2 {
+            grid-area: nome;
+        }
+
+        h3 {
+            grid-area: data;
+            justify-self: start;
+        }
+
+        button {
+            grid-area: freccia;
+            max-width: 100%;
+            justify-self: end;
+            align-self: self-end;
+            img {
+
+                width: 35px;
+                height: auto;
+
+                @media screen and (min-width: $breakpoint-1) {
+                    width: 90px;
+                    height: auto;
+                }
+            }
+        }
+
+        @media screen and (min-width: $breakpoint-1) {
+
+            grid-template-columns: repeat(8 1fr);
+            grid-auto-rows: repeat(2 1fr);
+            grid-template-areas:
+                "numero numero data data stato stato stato stato"
+                "nome nome nome nome nome nome freccia freccia";
+            row-gap: $md-1;
+            padding: $sm-2 0 $md-1 0;
+        }
+    }
+}
+
+.homeSeminari-lista--elemento:last-of-type {
+    border-bottom: none;
+}

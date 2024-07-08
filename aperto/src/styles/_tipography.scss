@@ -1,0 +1,123 @@
+/* Definiamo il punto base dei rem*/
+
+@import url("https://use.typekit.net/ren0myy.css");
+
+html {
+    font-family: "neue-haas-grotesk-display", sans-serif;
+    font-size: 16px;
+}
+
+/*defininiamo i tratti comuni dei titoli*/
+h1,
+h2,
+h3,
+h4 {
+    color: $color-primary;
+
+}
+
+h1 {
+    font-size: $font-size-xl;
+    line-height: $line-height-sm;
+    font-weight: $type-medium;
+}
+
+h2,
+h3 {
+    font-size: $font-size-lg;
+    font-weight: $type-regular;
+    line-height: $line-height-md;
+}
+
+h4 {
+    font-size: $font-size-md;
+    font-weight: $type-regular;
+    line-height: $line-height-md;
+}
+
+.footer-sezioneLoghi > h4{
+    text-transform: none;
+}
+
+#intro p {
+    font-size: $font-size-md;
+    line-height: $line-height-md;
+    font-weight: $type-regular;
+    color: $color-primary;
+}
+
+.accordion-content p {
+    font-size: $font-size-md;
+    line-height: $line-height-md;
+    font-weight: $type-regular;
+    color: $color-primary;
+    @media screen and (min-width: $breakpoint-2) {
+        font-size: clamp(2rem, 2.2vw, 2.4rem);  
+    }
+}
+
+nav{
+    a{
+        text-decoration: none;
+        font-size: $font-size-xs;
+        line-height: $line-height-md;
+        font-weight: $type-regular;
+        color: $color-primary;
+    }
+}
+
+/* ELEMENTI HOME */
+#home>h2 {
+    position: absolute;
+    left: -8000px;
+}
+
+.hero-content h1 {
+    position: absolute;
+    left: -8000px;
+}
+
+
+.homeSeminari-lista--elemento a {
+    text-decoration: none;
+    color: $color-primary;
+
+    * {
+        text-transform: uppercase;
+    }
+
+    h3, p {
+        font-size: $font-size-sm;
+        font-weight: $type-regular;
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-weight: $type-medium;
+
+        @media screen and (min-width: $breakpoint-1) {
+            font-size: $font-size-xl;
+            line-height: $line-height-sm;
+        }
+    }
+
+    p,
+    h3 {
+        @media screen and (min-width: $breakpoint-1) {
+            font-size: $font-size-xs;
+            font-weight: $type-medium;
+        }
+    }
+
+}
+
+a.homeSeminari--elementoCorrente {
+    * {
+        color: $color-secondary;
+    }
+
+}
+
+.footer-features--contacts p {
+    font-size: 18px;
+}
