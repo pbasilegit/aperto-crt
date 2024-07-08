@@ -5,6 +5,10 @@ console.log('__dirname:', __dirname);
 export default defineConfig({
   
   plugins: [vue()],
+  base:'/',
+  server: {
+    historyApiFallback: true,
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
