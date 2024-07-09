@@ -5,7 +5,7 @@ import Seminario from '../views/Seminario.vue';
 
 const routes = [
   {
-    path: '/demo',
+    path: '/',
     name: 'Home',
     component: Home
   },
@@ -22,7 +22,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+   history: createWebHistory('/'),
   routes
 });
 
