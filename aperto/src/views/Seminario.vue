@@ -10,6 +10,7 @@
       <h2>{{ formattedDate }}</h2>
       <h2 v-html="seminarDetails.seminario_location"></h2>
     </section>
+    <img :src="seminarDetails.immagine_header.guid"/>
     <hr>
     <section id="intro">
       <p v-html="truncatedDescription"></p>
