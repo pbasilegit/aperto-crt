@@ -15,6 +15,8 @@ const isScale100 = ref(true); // Scala 100% quando lo scroll è verso l'alto
 
 
 onMounted(() => {
+  window.addEventListener('scroll', handleScroll);
+
 })
 
 
