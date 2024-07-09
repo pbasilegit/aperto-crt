@@ -71,6 +71,7 @@
       </div>
     </div>
     <hr>
+    <!-- ORGANIZZATORE -->
     <div class="accordion-item">
       <div class="accordion-header" @click="toggle(2)">
         <h3>ORGANIZZATORE</h3>
@@ -90,13 +91,38 @@
         </div>
       </div>
     </div>
-
+    <!-- SCARICA IL BANDO -->
     <div class="accordion-item download-bando" v-if="seminarDetails.stato[0].name === 'Corrente' " >
       <a class="accordion-header" :href="seminarDetails.seminario_allegati[0].guid" target="_blank">
         <h3>SCARICA IL BANDO</h3>
         <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/arrow_download.svg" />
       </a>
     </div>
+
+    <!-- IF 'ARCHIVIATO' PARTECIPANTI -->
+    <hr v-if="seminarDetails.stato[0].name === 'Archiviato'">
+    <div v-if="seminarDetails.stato[0].name === 'Archiviato'" class="accordion-item">
+      <div class="accordion-header" @click="toggle(3)">
+        <h3>PARTECIPANTI</h3>
+        <img :src="activeIndex === 3 ? upArrow : downArrow" alt="Toggle arrow">
+      </div>
+      <div v-show="activeIndex === 3" class="accordion-content partner">
+        <div v-for="partecipante in seminarDetails.partecipanti_al_seminario" :key="partecipante.id" >
+          <div>{{partecipante.post_title}}</div>
+        </div>
+      </div>
+    </div>
+      <!-- GALLERY -->
+      <hr v-if="seminarDetails.stato[0].name === 'Archiviato'">
+      <div v-if="seminarDetails.stato[0].name === 'Archiviato'" class="accordion-item">
+        <div class="accordion-header" @click="toggle(4)">
+        <h3>GALLERY</h3>
+        <img :src="activeIndex === 4 ? upArrow : downArrow" alt="Toggle arrow">
+      </div>
+      <div v-show="activeIndex === 4" class="accordion-content ">
+      
+      </div>
+      </div>
 
   </main>
   <p v-else>Caricamento...</p>
