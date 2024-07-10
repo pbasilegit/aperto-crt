@@ -51,39 +51,3 @@ function handleScroll() {
   lastScrollTop.value = scrollTop; // Aggiorna la posizione dello scroll precedente
 }
   </script>
-
-
-
-<style scoped>
-.menu-button {
-  cursor: pointer;
-  /* Stili personalizzati per il pulsante del menu */
-}
-
-.dropdown-content {
-  position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    height: fit-content;
-    background-color: #f9f9f9;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    text-align: right; 
-}
-
-.dropdown-content ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.dropdown-content li {
-  padding: 12px 16px;
-  cursor: pointer;
-}
-
-.dropdown-content li:hover {
-  background-color: #f1f1f1;
-}
-</style>
