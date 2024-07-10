@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 import About from '../views/About.vue';
 import Seminario from '../views/Seminario.vue';
-
+import faq from '../views/faq.vue';
 const routes = [
   {
     path: '/',
@@ -18,6 +18,11 @@ const routes = [
     path: '/seminario/:id',
     name: 'Seminario',
     component: Seminario
+  },
+  {
+    path: '/faq',
+    name: 'FAQ',
+    component: faq
   }
 ];
 
