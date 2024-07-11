@@ -4,6 +4,7 @@ import About from '../views/About.vue';
 import Seminario from '../views/Seminario.vue';
 import Faq from '../views/faq.vue';
 import Faculty from '../views/Faculty.vue';
+import Partecipanti from '../views/Partecipanti.vue';
 const routes = [
   {
     path: '/',
@@ -29,6 +30,11 @@ const routes = [
     path: '/faculty',
     name: 'Faculty',
     component: Faculty
+  },
+  {
+    path: '/partecipanti',
+    name: 'Partecipanti',
+    component: Partecipanti
   }
 ];
 
