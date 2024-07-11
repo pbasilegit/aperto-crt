@@ -489,17 +489,21 @@ footer {
 
 .tab-riga-bottoni {
   display: flex;
-  padding-left: 2rem;
 
+  @media screen and (min-width: $breakpoint-1) {
+    padding-left: 2rem;
+
+  }
+  
 
   button {
     cursor: pointer;
 
     position: relative;
     /* Necessario per posizionare i pseudo-elementi */
-    padding: 10px 65px;
+    padding: 10px 50px;
     transition: background-color 0.3s, border-color 0.3s;
-    margin-right: -20px;
+    margin-right: -25px;
     /* Sovrapposizione dei bottoni */
 
     /* Assicurarsi che i bottoni attivi siano sopra */
@@ -520,7 +524,8 @@ footer {
 
     @media screen and (min-width: $breakpoint-1) {
       background-image: url('https://www.aperto-crt.it/core/wp-content/uploads/2024/07/tab_element.svg');
-
+      padding: 10px 65px;
+      margin-right: -20px;
     }
 
   }
@@ -546,6 +551,7 @@ footer {
   @media screen and (min-width: $breakpoint-1) {
     margin-top: -3px;
   }
+
   ul {
     list-style-type: none;
     padding: 0;
