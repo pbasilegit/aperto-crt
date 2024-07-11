@@ -11,8 +11,7 @@
       <h2 v-html="seminarDetails.seminario_location"></h2>
     </section>
 
-    <div class="seminario-header-image">
-      <img :src="seminarDetails.immagine_header.guid" />
+    <div class="seminario-header-image" :style="{ 'background-image': 'url(' + seminarDetails.immagine_header.guid + ')' }">
     </div>
     
     
