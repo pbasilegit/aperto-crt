@@ -10,7 +10,7 @@
         </div>
         <div class="dropdown-content" v-show="showMenu">
           <ul>
-            <li><router-link to="/about">About</router-link></li>
+            <li><router-link @click="toggleMenu" to="/about">About</router-link></li>
             <li><router-link to="/seminari">Seminari</router-link></li>
             <li><router-link to="/partecipanti">Partecipanti</router-link></li>
             <li><router-link to="/faculty">Faculty</router-link></li>
