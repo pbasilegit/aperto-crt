@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 import About from '../views/About.vue';
 import Seminario from '../views/Seminario.vue';
-import faq from '../views/faq.vue';
+import Faq from '../views/faq.vue';
+import Faculty from '../views/Faculty.vue';
 const routes = [
   {
     path: '/',
@@ -22,7 +23,12 @@ const routes = [
   {
     path: '/faq',
     name: 'FAQ',
-    component: faq
+    component: Faq
+  },
+  {
+    path: '/faculty',
+    name: 'Faculty',
+    component: Faculty
   }
 ];
 
