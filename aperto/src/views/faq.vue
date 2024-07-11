@@ -1,5 +1,6 @@
 <template>
-  <div style="margin-top:10vh">
+  <main class="head-space-top">
+
     <div v-if="loading">Caricamento...</div>
     <div v-if="error">Errore: {{ error }}</div>
     <ul v-if="faqs && faqs.length > 0">
@@ -11,17 +12,12 @@
             <img :src="activeIndex === index ? upArrow : downArrow" alt="Toggle arrow">
           </div>
  
-          <div v-show="activeIndex === index" class="accordion-content">
-
-            <div class="">
-              <div v-html="faq.content.rendered"></div>
-          </div>
-          </div>
+          <div class="accordion-content accordion-content-faq" v-show="activeIndex === index" v-html="faq.content.rendered" ></div>
         </div>
         <hr>
       </li>
     </ul>
-  </div>
+  </main>
 </template>
 
 <script>

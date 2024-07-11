@@ -30,7 +30,7 @@ nav {
 }
 
 
-//menu
+//menu mobile
 
 .menu-button {
   cursor: pointer;
@@ -57,13 +57,13 @@ nav {
 .dropdown-content ul {
   list-style-type: none;
   margin: 0;
-  padding-right: 2vw;
   width: 100svw;
 }
 
 .dropdown-content li {
   padding: $md-3 0px;
   cursor: pointer;
+  padding-right: 4vw;
   border-bottom: 3px solid $color-primary;
 }
 
@@ -72,7 +72,26 @@ nav {
   text-decoration-color: $color-primary
 }
 
+// menu desktop
 
+.desktop-menu{
+  display: none;
+  @media screen and (min-width: $breakpoint-1) {
+    display: block;
+    color: #000;
+    ul {
+      li {
+        display: inline;
+        padding-left: $md-1 ;
+        a {
+          &:hover{
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  } 
+}
 
 
 .bottone-toggle {
@@ -147,16 +166,18 @@ nav {
 
 .accordion-header {
   cursor: pointer;
-  @include flex-space-between;
+  @include grid-80-20;
   align-items: center;
   img {
     width: 35px;
     height: auto;
+    justify-self: end;
   }
 
   @media screen and (min-width: $breakpoint-1) {
     img {
       width: 60px;
+      justify-self: end;
     }
   }
 }
@@ -402,3 +423,32 @@ footer {
 }
 
 
+.seminario-header-image{
+  height: 50Vh;
+
+  overflow: hidden;
+}
+
+.accordion-content--persona{
+  padding: $md-3 0 $md-3 0;
+  display: block;
+  width: auto;
+
+  @include border-bottom;
+  &:first-of-type {
+    padding-top: $lg-3;
+  }
+  &:last-of-type {
+    border-bottom: none;
+    padding-bottom: $lg-3;
+  }
+  @media screen and (min-width: $breakpoint-2) {
+    @include grid-50-50;
+  }
+
+}
+
+.accordion-content-faq{
+  @include grid-80-20;
+  padding: $lg-3 0 $lg-3 0;
+}

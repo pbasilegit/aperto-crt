@@ -57,7 +57,7 @@ h4 {
 }
 
 nav{
-    a{
+    a, .menu-button, {
         text-decoration: none;
         font-size: $font-size-xs;
         line-height: $line-height-md;

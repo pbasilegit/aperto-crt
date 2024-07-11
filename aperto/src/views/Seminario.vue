@@ -10,16 +10,25 @@
       <h2>{{ formattedDate }}</h2>
       <h2 v-html="seminarDetails.seminario_location"></h2>
     </section>
-    <img :src="seminarDetails.immagine_header.guid"/>
-    <hr>
+
+    <div class="seminario-header-image">
+      <img :src="seminarDetails.immagine_header.guid" />
+    </div>
+    
+    
+    <hr v-if="seminarDetails.stato[0].name === 'Corrente'">
+
     <section id="intro">
       <p v-html="truncatedDescription"></p>
       <button @click="toggleMoreDescription" class="bottone-toggle">
-        <img :src="showMoreDescription ? 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/menus.svg' : 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/plus.svg'" alt="Toggle Description" />
+        <img
+          :src="showMoreDescription ? 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/menus.svg' : 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/plus.svg'"
+          alt="Toggle Description" />
       </button>
 
     </section>
     <hr>
+
     <!-- FACULTY -->
     <div class="accordion-item">
       <div class="accordion-header" @click="toggle(0)">
@@ -30,23 +39,25 @@
       <div v-show="activeIndex === 0" class="accordion-content row-grap-big">
         <div class="accordion-elementi" v-for="(faculty, index) in seminarDetails.seminario_faculty_member"
           :key="faculty.id">
-          <!--<div class="colonne">-->
-              <img :src="faculty.faculty_member_foto" :alt="faculty.post_title">
-            <h4>{{ faculty.post_title }}</h4>
-          <!--</div>-->
+
+          <img :src="faculty.faculty_member_foto" :alt="faculty.post_title">
+          <h4>{{ faculty.post_title }}</h4>
+
           <p>
             {{ truncatedBio(faculty, index) }}
             <span v-if="shouldShowMore(faculty)" class="more-toggle "></span>
-
           </p>
+
           <button @click="toggleMore(index)" class="bottone-toggle">
-            <img :src="showMoreIndices.includes(index) ? 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/menus.svg' : 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/plus.svg'"
+            <img
+              :src="showMoreIndices.includes(index) ? 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/menus.svg' : 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/plus.svg'"
               alt="Toggle" />
           </button>
         </div>
       </div>
     </div>
     <hr v-if="seminarDetails.seminario_partner_nome.length > 0">
+
     <!-- PARTNER -->
     <div class="accordion-item" v-if="seminarDetails.seminario_partner_nome.length > 0">
       <div class="accordion-header" @click="toggle(1)">
@@ -57,10 +68,8 @@
         <div class="elemento-partner" v-for="(partner, index) in seminarDetails.seminario_partner_nome"
           :key="partner.id" @click="openModal(index)">
           <img :src="partner.logo_partner" :alt="partner.nome_partner">
-          <!-- <h4>{{ partner.nome_partner }}</h4>
-                <p>{{ partner.partnership_info }}
-                </p>
-              -->
+
+
           <Modal :text="partner.partnership_info" :imagePath="partner.logo_partner" :index="index"
             :visibleIndex="visibleIndex" @update:visibleIndex="updateVisibleIndex" />
 
@@ -72,6 +81,7 @@
       </div>
     </div>
     <hr>
+
     <!-- ORGANIZZATORE -->
     <div class="accordion-item">
       <div class="accordion-header" @click="toggle(2)">
@@ -92,8 +102,9 @@
         </div>
       </div>
     </div>
+
     <!-- SCARICA IL BANDO -->
-    <div class="accordion-item download-bando" v-if="seminarDetails.stato[0].name === 'Corrente' " >
+    <div class="accordion-item download-bando" v-if="seminarDetails.stato[0].name === 'Corrente'">
       <a class="accordion-header" :href="seminarDetails.seminario_allegati[0].guid" target="_blank">
         <h3>SCARICA IL BANDO</h3>
         <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/arrow_download.svg" />
@@ -107,23 +118,25 @@
         <h3>PARTECIPANTI</h3>
         <img :src="activeIndex === 3 ? upArrow : downArrow" alt="Toggle arrow">
       </div>
-      <div v-show="activeIndex === 3" class="accordion-content partner">
-        <div v-for="partecipante in seminarDetails.partecipanti_al_seminario" :key="partecipante.id" >
-          <div>{{partecipante.post_title}}</div>
+      <div v-show="activeIndex === 3" class="accordion-content">
+        <div class="accordion-content--persona" v-for="partecipante in seminarDetails.partecipanti_al_seminario" :key="partecipante.id">
+          <p class="nome">{{ partecipante.post_title }}</p>
+          <p class="job-title">{{ partecipante.job_title }}</p>
         </div>
       </div>
     </div>
-      <!-- GALLERY -->
-      <hr v-if="seminarDetails.stato[0].name === 'Archiviato'">
-      <div v-if="seminarDetails.stato[0].name === 'Archiviato'" class="accordion-item">
-        <div class="accordion-header" @click="toggle(4)">
+
+    <!-- IF 'ARCHIVIATO' P GALLERY -->
+    <hr v-if="seminarDetails.stato[0].name === 'Archiviato'">
+    <div v-if="seminarDetails.stato[0].name === 'Archiviato'" class="accordion-item">
+      <div class="accordion-header" @click="toggle(4)">
         <h3>GALLERY</h3>
         <img :src="activeIndex === 4 ? upArrow : downArrow" alt="Toggle arrow">
       </div>
       <div v-show="activeIndex === 4" class="accordion-content ">
-      
+
       </div>
-      </div>
+    </div>
 
   </main>
   <p v-else>Caricamento...</p>
@@ -268,13 +281,13 @@ export default {
       fetchSeminarDetails();
       setTimeout(() => {
         emit('componentReady', true);
-      }, 
-      1000)
+      },
+        1000)
     });
 
-    onBeforeMount(() =>{ 
+    onBeforeMount(() => {
       emit('componentReady', false);
-    // Fa scorrere la pagina all'inizio prima di montare il componente
+      // Fa scorrere la pagina all'inizio prima di montare il componente
       window.scrollTo(0, 0);
     });
 

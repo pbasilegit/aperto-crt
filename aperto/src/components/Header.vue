@@ -3,6 +3,8 @@
         <router-link to="/" >
           <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/header_aperto.svg" alt="Sticky Image" :class="{ 'scale-100': isScale100, 'scale-80':!isScale100 }">
         </router-link> 
+
+        <!-- menu mobile -->
         <div @click="toggleMenu" class="menu-button">
           Menu
         </div>
@@ -14,7 +16,20 @@
             <li><router-link to="/faculty">Faculty</router-link></li>
             <li><router-link to="/faq">FAQ</router-link></li>
           </ul>
-        </div>      
+        </div>
+        
+         <!-- menu desktop -->
+         <div class="desktop-menu">
+          <ul>
+            <li><router-link to="/about" active-class="active-link">About</router-link></li>
+            <li><router-link to="/seminari" active-class="active-link">Seminari</router-link></li>
+            <li><router-link to="/partecipanti" active-class="active-link">Partecipanti</router-link></li>
+            <li><router-link to="/faculty" active-class="active-link">Faculty</router-link></li>
+            <li><router-link to="/faq" active-class="active-link">FAQ</router-link></li>
+
+          </ul>
+        </div>
+
       </nav>
 </template>
   

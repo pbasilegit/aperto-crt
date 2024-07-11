@@ -37,6 +37,11 @@
   grid-template-columns: 1fr 2fr;
 }
 
+@mixin grid-80-20 {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+}
+
 /* esempio */
 @mixin background-cover($img_url) {
   background: url($img_url) no-repeat center center;

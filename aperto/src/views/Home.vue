@@ -85,9 +85,6 @@
         <h3>{{ formatSeminarioDate(seminario.seminario_data_inizio, seminario.seminario_data_fine) }}</h3>
 
       </a>
-
-
-
     </section>
   </main>
 </template>
