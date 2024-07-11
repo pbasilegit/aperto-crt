@@ -57,20 +57,25 @@ nav {
 .dropdown-content ul {
   list-style-type: none;
   margin: 0;
-  width: 100svw;
+  width: 100vw;
+  li {
+    padding: $md-3 0px;
+    cursor: pointer;
+    padding-right: 4vw;
+    border-bottom: 3px solid $color-primary;
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: $color-primary
+    }
+    a{
+      display: block;
+    }
+  }
 }
 
-.dropdown-content li {
-  padding: $md-3 0px;
-  cursor: pointer;
-  padding-right: 4vw;
-  border-bottom: 3px solid $color-primary;
-}
 
-.dropdown-content li:hover {
-  text-decoration: underline;
-  text-decoration-color: $color-primary
-}
+
+
 
 // menu desktop
 
@@ -424,9 +429,16 @@ footer {
 
 
 .seminario-header-image{
-  height: 50Vh;
-
-  overflow: hidden;
+  margin: $lg-1 0 $lg-3 0;
+  height: 40Vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @media screen and (min-width: $breakpoint-1) {
+    height: 50Vh;
+  }
+  @media screen and (min-width: $breakpoint-3) {
+    height: 70Vh;
+  }
 }
 
 .accordion-content--persona{
