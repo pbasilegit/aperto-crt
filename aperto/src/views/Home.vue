@@ -50,7 +50,11 @@
     </header>
     <!--Fine Hero desktop -->
 
+    <!-- IMMAGINE ULTIMO SEMINARIO ARCHIVIATO-->
+    <img :src="linkImmagineHeaderRecente"/>
+    <p>{{ numeroSeminario }}</p>
     <!--Inizio lista seminari 2024-->
+
 
     <!--questo titolo non è visibile ha una posizione absolute fuori dal viewport-->
     <h2>Seminari 2024</h2>
@@ -103,6 +107,8 @@ export default {
     const isSticky = ref(true);
     const content = ref(null);
     const testoHome = ref(null);
+    const linkImmagineHeaderRecente = ref(null);
+    const numeroSeminario = ref(null);
 
 
     const handleScroll = () => {
@@ -139,6 +145,21 @@ export default {
       });
     });
 
+    // Aggiornare la variabile ref con il seminario archiviato più recente
+    // Aggiornare la variabile ref con il link dell'immagine header del seminario archiviato più recente
+    const updateLinkImmagineHeaderRecente = () => {
+     
+      const archiviati = sortedSeminari.value.filter(seminario => seminario.stato[0].name === 'Archiviato');
+      
+      if (archiviati.length > 0) {
+        linkImmagineHeaderRecente.value = archiviati[archiviati.length - 1].immagine_header.guid;
+        numeroSeminario.value = archiviati[archiviati.length - 1].seminari_numero;
+        console.log('update', archiviati[1])
+      } else {
+        linkImmagineHeaderRecente.value = null; // O qualsiasi valore che desideri restituire se non ci sono seminari archiviati
+      }
+    };
+
     const formatSeminarioDate = (dataInizio, dataFine) => {
       const inizio = new Date(dataInizio);
       const fine = new Date(dataFine);
@@ -170,6 +191,8 @@ export default {
       } catch (error) {
         console.error('Errore nel recuperare i seminari:', error);
       }
+      updateLinkImmagineHeaderRecente();
+
     };
     function updateMarginTop() {
       const navElement = document.getElementById('myNav');
@@ -266,7 +289,10 @@ export default {
       handleScroll,
       sortedSeminari,
       content,
-      testoHome
+      testoHome,
+      linkImmagineHeaderRecente,
+      numeroSeminario,
+      updateLinkImmagineHeaderRecente
     };
   }
 };

@@ -35,7 +35,7 @@
 </template>
 
 <script setup>
-import { ref, inject } from 'vue'
+import { ref, inject, onMounted } from 'vue'
 
 const visibleList = ref('list1')
 const axios = inject('axios');
@@ -51,7 +51,7 @@ let staffFaculties = [];
 // Funzione per ottenere i dati dei docenti tramite Axios
 const fetchFaculties = async () => {
   try {
-    const response = await axios.get('https://www.aperto-crt.it/core/wp-json/wp/v2/faculty');
+    const response = await axios.get('/wp/v2/faculty');
 
     // Dividiamo i dati in guest e staff
     response.data.forEach(faculty => {
@@ -67,5 +67,9 @@ const fetchFaculties = async () => {
 };
 
 // Chiamata a fetchFaculties quando il componente viene montato
-fetchFaculties();
+
+onMounted(() => {
+  fetchFaculties();
+})
+
 </script>
