@@ -458,10 +458,42 @@ footer {
 
 .accordion-content--persona {
   padding: $md-3 0 $md-3 0;
-  display: block;
-  width: auto;
-
   @include border-bottom;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr) ;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "nome nome nome nome nome freccia"
+    "titolo titolo titolo titolo titolo freccia"
+  ;
+
+  .nome {
+    grid-area: nome;
+  }
+
+  .job-title {
+    grid-area: titolo;
+  }
+
+  .freccia-destra {
+    grid-area: freccia;
+    justify-self: end;
+    align-self: center;
+    width: 25px;
+  }
+
+  @media screen and (min-width: $breakpoint-2) {
+    @include grid-33-33-33;
+
+    grid-template-areas:
+      "nome titolo freccia"
+    ;
+
+    .job-title {
+      justify-self: center;
+    }
+
+  }
 
   &:first-of-type {
     padding-top: $lg-3;
@@ -470,10 +502,6 @@ footer {
   &:last-of-type {
     border-bottom: none;
     padding-bottom: $lg-3;
-  }
-
-  @media screen and (min-width: $breakpoint-2) {
-    @include grid-50-50;
   }
 
 }
@@ -494,7 +522,7 @@ footer {
     padding-left: 2rem;
 
   }
-  
+
 
   button {
     cursor: pointer;
@@ -513,7 +541,7 @@ footer {
 
     /* Utilizzo dell'immagine SVG come sfondo */
     background-image: url('https://www.aperto-crt.it/core/wp-content/uploads/2024/07/tab_element_mobile.svg');
-        /* Adatta l'immagine alla dimensione del pulsante */
+    /* Adatta l'immagine alla dimensione del pulsante */
     background-size: cover;
 
     /* Evita la ripetizione dell'immagine */
@@ -545,9 +573,9 @@ footer {
 .tab-content {
   @include border-top;
   margin-top: -2px;
-  padding: 20px;
   background-color: white;
   z-index: 10;
+
   @media screen and (min-width: $breakpoint-1) {
     margin-top: -3px;
   }

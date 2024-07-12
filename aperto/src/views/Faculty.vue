@@ -11,23 +11,26 @@
       </button>
     </div>
 
-    <div v-if="visibleList === 'list1'" class="tab-content">
-      <h3>Lista Staff</h3>
-      <ul>
-        <li v-for="faculty in guestFaculties" :key="faculty.id">
-          {{ faculty.title.rendered }}
-        </li>
-      </ul>
-    </div>
+    <section v-if="visibleList === 'list1'" class="tab-content">
 
-    <div v-if="visibleList === 'list2'" class="tab-content">
-      <h3>Lista Guest</h3>
-      <ul>
-        <li v-for="faculty in staffFaculties" :key="faculty.id">
-          {{ faculty.title.rendered }}
+      <ul class="accordion-content">
+        <li class="accordion-content--persona" v-for="faculty in guestFaculties" :key="faculty.id">
+          <p class="nome">{{ faculty.title.rendered }}</p>
+          <p class="job-title">{{ faculty.job_title }}</p>
         </li>
       </ul>
-    </div>
+    </section>
+
+    <section v-if="visibleList === 'list2'" class="tab-content">
+
+      <ul class="accordion-content">
+        <li class="accordion-content--persona" v-for="faculty in staffFaculties" :key="faculty.id">
+          <p class="nome"> {{ faculty.title.rendered }}</p>
+          <p class="job-title">{{ faculty.job_title }}</p>
+          <img class="freccia-destra" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/arrow_right.svg" alt="Maggiori informazioni">
+        </li>
+      </ul>
+    </section>
   </main>
 </template>
 

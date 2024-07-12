@@ -1,10 +1,14 @@
 <template>
-    <div style="margin-top: 10vh;">
-      <div v-for="partecipante in partecipanti" :key="partecipante.id" class="partecipante">
-        <h3>{{ partecipante.title.rendered }}</h3>
-        <span class="job-title">{{ partecipante.job_title }}</span>
-      </div>
-    </div>
+      <main class="head-space-top">
+      <section>  
+      <ul class="accordion-content">
+        <li class="accordion-content--persona" v-for="partecipante in partecipanti" :key="partecipante.id">
+          <p class="nome">{{ partecipante.title.rendered }}</p>
+          <p class="job-title">{{ partecipante.job_title }}</p>
+        </li>
+      </ul>
+    </section>
+    </main>
   </template>
   
   <script setup>
@@ -28,18 +32,4 @@
   // Chiamata a fetchPartecipanti quando il componente viene montato
   onMounted(fetchPartecipanti);
   </script>
-  
-  <style scoped>
-  .partecipante {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
-  
-  .job-title {
-    font-weight: bold;
-    color: #666;
-  }
-  </style>
   
