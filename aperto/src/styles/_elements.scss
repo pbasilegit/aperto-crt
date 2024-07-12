@@ -199,6 +199,49 @@ nav {
   }
 }
 
+.home-seminario-gallery {
+  position: relative;
+
+  img {
+    width: 100%;
+  }
+
+  .home-gallery-arrow {
+    position: absolute;
+    display: none;
+    top: 10%;
+    right: 3%;
+    width: 10vw;
+  }
+
+  figcaption {
+    position: absolute;
+    bottom: 4%;
+    left: 2%;
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+    font-weight: $type-regular;
+    color: $color-white;
+  }
+
+  &:hover{
+    cursor: pointer;
+    .home-gallery-arrow{
+      display: inline-block;
+      transform: rotate(-45deg);
+      transform-origin: 0% 0%;
+    }
+
+    figcaption {
+      text-decoration: underline;
+      text-decoration-thickness:2px ;
+    }
+    
+  }
+
+}
+
+
 .modal-overlay {
   position: fixed;
   top: 0px;
@@ -460,7 +503,7 @@ footer {
   padding: $md-3 0 $md-3 0;
   @include border-bottom;
   display: grid;
-  grid-template-columns: repeat(6, 1fr) ;
+  grid-template-columns: repeat(6, 1fr);
   grid-template-rows: auto auto;
   grid-template-areas:
     "nome nome nome nome nome freccia"

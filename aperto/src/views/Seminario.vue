@@ -11,7 +11,7 @@
       <h2 v-html="seminarDetails.seminario_location"></h2>
     </section>
 
-    <div class="seminario-header-image" :style="{ 'background-image': 'url(' + seminarDetails.immagine_header.guid + ')' }">
+    <div v-if="seminarDetails.stato[0].name === 'Archiviato'" class="seminario-header-image" :style="{ 'background-image': 'url(' + seminarDetails.immagine_header.guid + ')' }">
     </div>
     
     
