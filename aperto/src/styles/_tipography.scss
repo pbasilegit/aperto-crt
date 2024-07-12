@@ -56,8 +56,30 @@ h4 {
     }
 }
 
+h1.pagina-docente--nome-docente{
+    font-size: $font-size-lg;
+    font-weight: $type-regular;
+    line-height: $line-height-md;
+}
+h2.pagina-docente--informazioni, .pagina-docente--job-title{
+    font-size: $font-size-md;
+    line-height: $line-height-md;
+    font-weight: $type-regular;
+    color: $color-primary;
+}
+p.pagina-docente--bio{
+    font-size: $font-size-md;
+    line-height: $line-height-md;
+    font-weight: $type-regular;
+    color: $color-primary;
+    @media screen and (min-width: $breakpoint-2) {
+        font-size: clamp(2rem, 2.2vw, 2.4rem);  
+    }
+}
+
+
 nav{
-    a, .menu-button, {
+    a, .menu-button {
         text-decoration: none;
         font-size: $font-size-xs;
         line-height: $line-height-md;
