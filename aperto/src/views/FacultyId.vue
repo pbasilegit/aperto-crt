@@ -2,7 +2,7 @@
   <main v-if="faculty" class="head-space-top">
 
     <header class="pagina-docente--testata">
-      <button class="pagina-docente--back"><img
+      <button class="pagina-docente--back" @click="goback"><img
           src='https://www.aperto-crt.it/core/wp-content/uploads/2024/07/arrow_left-1.svg' /></button>
 
       <h1 class="pagina-docente--nome-docente">{{ faculty.title.rendered }}</h1>
@@ -30,15 +30,22 @@
 <script setup>
 import { ref, onMounted, inject } from 'vue';
 import { useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 
 const axios = inject('axios');
-
 
 // Creiamo una variabile reattiva per memorizzare i dati del docente
 const faculty = ref(null);
 
 // Recuperiamo l'ID del docente dai parametri della rotta (ad esempio, se usi vue-router)
 const route = useRoute();
+
+const router = useRouter();
+
+const goback = () =>{
+  router.go(-1);
+}
+
 const facultyId = route.params.id;
 
 // Funzione per recuperare i dati del docente dall'API
