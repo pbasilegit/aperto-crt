@@ -131,9 +131,12 @@
       <div class="accordion-header" @click="toggle(4)">
         <h3>GALLERY</h3>
         <img :src="activeIndex === 4 ? upArrow : downArrow" alt="Toggle arrow">
+        
       </div>
       <div v-show="activeIndex === 4" class="accordion-content ">
-
+        <div v-for="media in seminarDetails.seminario_media" :key="media.ID">
+          <img :src="media.guid" />
+        </div>
       </div>
     </div>
 
