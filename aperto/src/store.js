@@ -68,6 +68,9 @@ export default createStore({
     }
   },
   getters: {
+    allSeminari(state) {
+      return state.seminari;
+    },
     seminariCorrenti(state) {
       const currentDate = new Date();
       return state.seminari

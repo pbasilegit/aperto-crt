@@ -120,7 +120,7 @@
 
 <script>
 import { defineComponent, ref, computed, onMounted, onBeforeMount, inject, defineEmits, onUnmounted } from 'vue';
-
+import { useStore } from 'vuex';
 export default {
   name: 'Home',
   setup(_, { emit }) {
@@ -132,6 +132,11 @@ export default {
     const linkImmagineHeaderRecente = ref(null);
     const numeroSeminario = ref(null);
     const idUltimoArchiviato = ref();
+
+
+    const store = useStore();
+    const allSeminari = computed(() => store.getters.allSeminari);
+
 
     const handleScroll = () => {
       const contentEl = content.value;
@@ -147,7 +152,7 @@ export default {
     };
 
     const sortedSeminari = computed(() => {
-      return seminari.value.slice().sort((a, b) => {
+      return allSeminari.value.slice().sort((a, b) => {
         const stateOrder = {
           'Futuro': 3,
           'Corrente': 2,
@@ -170,7 +175,7 @@ export default {
     // Aggiornare la variabile ref con il seminario archiviato più recente
     // Aggiornare la variabile ref con il link dell'immagine header del seminario archiviato più recente
     const updateLinkImmagineHeaderRecente = () => {
-
+      console.log('sorted', sortedSeminari.value)
       const archiviati = sortedSeminari.value.filter(seminario => seminario.stato[0].name === 'Archiviato');
 
       if (archiviati.length > 0) {
@@ -208,13 +213,8 @@ export default {
     }
 
     const fetchSeminari = async () => {
-      try {
-        const response = await axios.get('/wp/v2/seminario');
-        seminari.value = response.data;
-      } catch (error) {
-        console.error('Errore nel recuperare i seminari:', error);
-      }
-      updateLinkImmagineHeaderRecente();
+      await store.dispatch('fetchSeminari');
+      updateLinkImmagineHeaderRecente()
 
     };
     function updateMarginTop() {
@@ -253,7 +253,6 @@ export default {
       fetchSeminari();
       loadTestoHome();
       window.addEventListener('scroll', updateMarginTop);
-
       const contentEl = content.value;
       setTimeout(() => {
         emit('componentReady', true);
@@ -307,6 +306,7 @@ export default {
 
     return {
       seminari,
+      allSeminari,
       formatSeminarioDate,
       isSticky,
       handleScroll,
