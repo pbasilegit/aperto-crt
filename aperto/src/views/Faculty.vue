@@ -35,41 +35,50 @@
 </template>
 
 <script setup>
-import { ref, inject, onMounted } from 'vue'
+import { ref, inject, onMounted, computed } from 'vue'
+import { useStore } from 'vuex';
+
+const store = useStore();
 
 const visibleList = ref('list1')
-const axios = inject('axios');
-
+const emit = defineEmits(['componentReady'])
 const showList = (list) => {
   visibleList.value = list
 }
 
-// Dichiariamo due array per ospitare le facoltà guest e staff
-let guestFaculties = [];
-let staffFaculties = [];
+const guestFaculties = computed(() => store.getters.guestFaculties);
+const staffFaculties = computed(() => store.getters.staffFaculties);
 
-// Funzione per ottenere i dati dei docenti tramite Axios
-const fetchFaculties = async () => {
-  try {
-    const response = await axios.get('/wp/v2/faculty');
+// // Dichiariamo due array per ospitare le facoltà guest e staff
+// let guestFaculties = [];
+// let staffFaculties = [];
 
-    // Dividiamo i dati in guest e staff
-    response.data.forEach(faculty => {
-      if (faculty['faculty_member-type'].name === 'guest') {
-        guestFaculties.push(faculty);
-      } else {
-        staffFaculties.push(faculty);
-      }
-    });
-  } catch (error) {
-    console.error('Errore durante il recupero dei dati dei docenti', error);
-  }
-};
+// // Funzione per ottenere i dati dei docenti tramite Axios
+// const fetchFaculties = async () => {
+//   try {
+//     const response = await axios.get('/wp/v2/faculty?per_page=50');
+
+//     // Dividiamo i dati in guest e staff
+//     response.data.forEach(faculty => {
+//       if (faculty['faculty_member_type'].name === 'Guest') {
+//         guestFaculties.push(faculty);
+//       } else {
+//         staffFaculties.push(faculty);
+//       }
+//     });
+//   } catch (error) {
+//     console.error('Errore durante il recupero dei dati dei docenti', error);
+//   }
+// };
 
 // Chiamata a fetchFaculties quando il componente viene montato
 
 onMounted(() => {
-  fetchFaculties();
+  setTimeout(() => {
+      emit('componentReady', true)
+  }, 1000)
+  store.dispatch('fetchFaculties');
+  // fetchFaculties();
 })
 
 </script>

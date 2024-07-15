@@ -3,7 +3,7 @@ import '@/global.scss';
 import App from './App.vue';
 import router from './router';
 import axios from 'axios';
-
+import store from './store';
 // Crea un'istanza Axios con la configurazione di base
 const axiosInstance = axios.create({
   baseURL: 'https://www.aperto-crt.it/core/index.php/wp-json/',
@@ -17,6 +17,8 @@ const app = createApp(App);
 app.provide('axios', axiosInstance);
 
 app.use(router);
+
+app.use(store)
 
 app.mount('#app');
 

@@ -12,24 +12,18 @@
   </template>
   
   <script setup>
-  import { ref, onMounted, inject } from 'vue';
+  import { ref, onMounted, inject , computed, defineEmits} from 'vue';
+  import { useStore } from 'vuex';
+  const store = useStore();
+  const emit = defineEmits(['componentReady'])
 
-  const axios = inject('axios');
-  
-  // Dichiariamo una variabile reattiva per memorizzare i dati dei partecipanti
-  const partecipanti = ref([]);
-  
-  // Funzione per ottenere i dati dei partecipanti tramite Axios
-  const fetchPartecipanti = async () => {
-    try {
-      const response = await axios.get('/wp/v2/alumni');
-      partecipanti.value = response.data;
-    } catch (error) {
-      console.error('Errore durante il recupero dei dati dei partecipanti', error);
-    }
-  };
-  
-  // Chiamata a fetchPartecipanti quando il componente viene montato
-  onMounted(fetchPartecipanti);
+  onMounted(() => {
+    store.dispatch('fetchPartecipanti');  
+    setTimeout(() => {
+      emit('componentReady', true)
+    }, 1000)
+  });
+ const partecipanti = computed(() => store.getters.partecipanti);
+ 
   </script>
   

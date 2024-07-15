@@ -5,7 +5,7 @@ import Seminario from '../views/Seminario.vue';
 import Faq from '../views/faq.vue';
 import Faculty from '../views/Faculty.vue';
 import Partecipanti from '../views/Partecipanti.vue';
-// import ListingSeminari from '../views/ListingSeminari.vue';
+import ListingSeminari from '../views/ListingSeminari.vue';
 import FacultyId from '../views/FacultyId.vue';
 const routes = [
   {
@@ -43,12 +43,12 @@ const routes = [
     name: 'Partecipanti',
     component: Partecipanti
   }
-  // ,
-  // // {
-  // //   path: '/seminari',
-  // //   name: 'ListingSeminari',
-  // //   component: ListingSeminari
-  // // }
+  ,
+  {
+    path: '/seminari',
+    name: 'Listingseminari',
+    component: ListingSeminari
+  }
 ];
 
 const router = createRouter({
