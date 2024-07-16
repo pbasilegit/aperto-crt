@@ -3,10 +3,10 @@
 
     <div class="tab-riga-bottoni">
       <button :class="{ active: visibleList === 'list1' }" @click="showList('list1')">
-        <h4>2024-2025</h4>
+        <h4>2024-25</h4>
       </button>
       <button :class="{ active: visibleList === 'list2' }" @click="showList('list2')">
-        <h4>archivio</h4>
+        <h4>Archivio</h4>
       </button>
     </div>
     <section v-if="visibleList === 'list1'" class="tab-content">

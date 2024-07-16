@@ -9,16 +9,17 @@
 
       <h2 class="pagina-docente--job-title">{{ faculty.job_title }}</h2>
 
-      <h2 class="pagina-docente--informazioni"> {{ faculty.faculty_member_type[0].name }}</h2>
+      <h2 class="pagina-docente--tipologia"> {{ faculty.faculty_member_type[0].name }}</h2>
     </header>
-
-    <figure class="ritratto-docente">
-      <img :src="faculty.faculty_member_foto.guid" :alt="faculty.title.rendered" />
-    </figure>
-
+    <section>
+      <figure class="ritratto-docente">
+        <img :src="faculty.faculty_member_foto.guid" :alt="faculty.title.rendered" />
+      </figure>
+    </section>
     <section>
       <p class="pagina-docente--bio">{{ faculty.faculty_member_bio }}</p>
     </section>
+
 
 
   </main>

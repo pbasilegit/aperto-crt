@@ -655,28 +655,34 @@ footer {
 .pagina-docente--testata{
   @include grid-6-col;
   gap: 1rem;
-
+  padding-bottom: $lg-1;
   }
   .pagina-docente--back{
-    grid-column: 1 ;
+    grid-column: 1;
     justify-self: left;
 
   }
   .pagina-docente--nome-docente{
     grid-column: 2 / 7;
+    align-self: center;
     justify-self: left;
     @media screen and (min-width: $breakpoint-1) {
-      grid-column: 2 / 4;
+      grid-column: 2 / 3;
     }
   }
   .pagina-docente--job-title{
     grid-column: 2 ;
+    align-self: end;
     @media screen and (min-width: $breakpoint-1) {
       grid-column: 4;
     }
   }
-  .pagina-docente--informazioni{
-    grid-column: 5 / 7;
+  .pagina-docente--tipologia{
+    align-self: end;
+    grid-column: 4 / 7;
+    @media screen and (min-width: $breakpoint-1) {
+      grid-column: 6 / 7;
+    }
   }
 
 
