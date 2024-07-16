@@ -134,11 +134,24 @@
         
       </div>
       <div v-show="activeIndex === 4" class="accordion-content ">
-        <div v-for="media in seminarDetails.seminario_media" :key="media.ID">
-          <img :src="media.guid" />
+        <div v-for="(media, index) in seminarDetails.seminario_media" :key="media.ID">
+          <img :src="media.guid" @click="openModalCarousel(index)"/>
+        </div>
+      </div>
+       <!-- Modal -->
+      <div v-if="showModalCarousel" class="modal-overlay" @click.self="closeModalCarousel">
+        <div class="modal-content">
+          <span class="close-button" @click="closeModalCarousel">&times;</span>
+          <div class="carousel">
+            <button class="prev-button" @click="prevImage">&#10094;</button>
+            <button class="next-button" @click="nextImage">&#10095;</button>
+
+            <img :src="seminarDetails.seminario_media[currentIndex].guid" class="carousel-image" />
+          </div>
         </div>
       </div>
     </div>
+   
 
   </main>
   <p v-else>Caricamento...</p>
@@ -163,11 +176,37 @@ export default {
 
     const activeIndex = ref(null);
 
+    const showModalCarousel = ref(false);
+    const currentIndex = ref(0);
 
     const modalText = ref('Hello from the modal! This is a simple modal component.');
 
     const visibleIndex = ref(-1); // -1 significa che nessuna modale è visibile
 
+    const openModalCarousel = (index) => {
+      currentIndex.value = index;
+      showModalCarousel.value = true;
+    };
+
+    const closeModalCarousel = () => {
+      showModalCarousel.value = false;
+    };
+
+    const prevImage = () => {
+      if (currentIndex.value > 0) {
+        currentIndex.value--;
+      } else {
+        currentIndex.value = seminarDetails.value.seminario_media.length - 1;
+      }
+    };
+
+    const nextImage = () => {
+      if (currentIndex.value < seminarDetails.value.seminario_media.length - 1) {
+        currentIndex.value++;
+      } else {
+        currentIndex.value = 0;
+      }
+    };
     const openModal = (index) => {
       visibleIndex.value = index;
     };
@@ -311,8 +350,38 @@ export default {
       openModal,
       modalText,
       visibleIndex,
-      updateVisibleIndex
+      updateVisibleIndex,
+      openModalCarousel,
+      closeModalCarousel,
+      prevImage,
+      nextImage,
+      currentIndex,
+      showModalCarousel
     };
   }
 };
 </script>
+
+<style scoped>
+
+
+
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+
+
+.prev-button, .next-button {
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: black;
+}
+</style>
