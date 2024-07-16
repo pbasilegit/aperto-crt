@@ -224,9 +224,10 @@ nav {
     color: $color-white;
   }
 
-  &:hover{
+  &:hover {
     cursor: pointer;
-    .home-gallery-arrow{
+
+    .home-gallery-arrow {
       display: inline-block;
       transform: rotate(-45deg);
       transform-origin: 0% 0%;
@@ -234,9 +235,9 @@ nav {
 
     figcaption {
       text-decoration: underline;
-      text-decoration-thickness:2px ;
+      text-decoration-thickness: 2px;
     }
-    
+
   }
 
 }
@@ -499,44 +500,51 @@ footer {
   }
 }
 
-.accordion-content--persona {
-  padding: $md-3 0 $md-3 0;
-  @include border-bottom;
+
+.accordion-content--partecipante {
+  text-decoration: none;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: auto auto;
   grid-template-areas:
     "nome nome nome nome nome freccia"
-    "titolo titolo titolo titolo titolo freccia"
-  ;
-
-  .nome {
-    grid-area: nome;
-  }
-
-  .job-title {
-    grid-area: titolo;
-  }
-
-  .freccia-destra {
-    grid-area: freccia;
-    justify-self: end;
-    align-self: center;
-    width: 25px;
-  }
-
+    "titolo titolo titolo titolo titolo freccia";
+    
   @media screen and (min-width: $breakpoint-2) {
     @include grid-33-33-33;
 
     grid-template-areas:
       "nome titolo freccia"
     ;
-
-    .job-title {
-      justify-self: center;
-    }
-
   }
+
+  @include border-bottom;
+  padding: $md-1 0 $md-1 0;
+
+  &:first-of-type {
+    padding-top: $lg-3;
+  }
+
+  &:last-of-type {
+    border-bottom: none;
+    padding-bottom: $lg-3;
+  }
+ }
+
+
+ .accordion-content--partecipante--nome {
+  grid-area: nome;
+}
+
+.accordion-content--partecipante--job-title {
+  grid-area: titolo;
+  justify-self: start;
+}
+
+
+.accordion-content--docente {
+  @include border-bottom;
+  padding: $md-1 0 $md-1 0;
 
   &:first-of-type {
     padding-top: $lg-3;
@@ -547,6 +555,39 @@ footer {
     padding-bottom: $lg-3;
   }
 
+  a {
+    text-decoration: none;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "nome nome nome nome nome freccia"
+      "titolo titolo titolo titolo titolo freccia";
+      @media screen and (min-width: $breakpoint-2) {
+        @include grid-33-33-33;
+  
+        grid-template-areas:
+          "nome titolo freccia"
+        ;
+      }
+  }
+}
+
+
+.accordion-content--docente--nome {
+  grid-area: nome;
+}
+
+.accordion-content--docente--job-title {
+  grid-area: titolo;
+  justify-self: start;
+}
+
+.accordion-content--docente--freccia-destra {
+  grid-area: freccia;
+  justify-self: end;
+  align-self: center;
+  width: 25px;
 }
 
 .accordion-content-faq {
@@ -633,62 +674,3 @@ footer {
   }
 
 }
-
-//pagina docente
-
-.pagina-docente--back{
-  img{
-    width: 35px;
-  }
-}
-
-.ritratto-docente{
-  img{
-    width: 100%;
-  }
-}
-
-.pagina-docente--bio{
-  padding-top: $md-3;
-}
-
-.pagina-docente--testata{
-  @include grid-6-col;
-  gap: 1rem;
-  padding-bottom: $lg-1;
-  }
-  .pagina-docente--back{
-    grid-column: 1;
-    justify-self: left;
-
-  }
-  .pagina-docente--nome-docente{
-    grid-column: 2 / 7;
-    align-self: center;
-    justify-self: left;
-    @media screen and (min-width: $breakpoint-1) {
-      grid-column: 2 / 3;
-    }
-  }
-  .pagina-docente--job-title{
-    grid-column: 2 ;
-    align-self: end;
-    @media screen and (min-width: $breakpoint-1) {
-      grid-column: 4;
-    }
-  }
-  .pagina-docente--tipologia{
-    align-self: end;
-    grid-column: 4 / 7;
-    @media screen and (min-width: $breakpoint-1) {
-      grid-column: 6 / 7;
-    }
-  }
-
-
-
-
-
-
-
-

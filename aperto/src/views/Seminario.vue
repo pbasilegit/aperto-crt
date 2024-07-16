@@ -133,20 +133,26 @@
         <img :src="activeIndex === 4 ? upArrow : downArrow" alt="Toggle arrow">
         
       </div>
-      <div v-show="activeIndex === 4" class="accordion-content ">
+      <div v-show="activeIndex === 4" class="accordion-content seminario-gallery-structure" >
         <div v-for="(media, index) in seminarDetails.seminario_media" :key="media.ID">
-          <img :src="media.guid" @click="openModalCarousel(index)"/>
+
+            <div @click="openModalCarousel(index)" v-if="seminarDetails.stato[0].name === 'Archiviato'" class="seminario-gallery--image" :style="{ 'background-image': 'url(' + media.guid + ')' }">
+              <div class="seminario-gallery-image--showmore"></div>
+            </div>
+
         </div>
       </div>
+
        <!-- Modal -->
       <div v-if="showModalCarousel" class="modal-overlay" @click.self="closeModalCarousel">
         <div class="modal-content">
           <span class="close-button" @click="closeModalCarousel">&times;</span>
           <div class="carousel">
-            <button class="prev-button" @click="prevImage">&#10094;</button>
-            <button class="next-button" @click="nextImage">&#10095;</button>
+  
 
             <img :src="seminarDetails.seminario_media[currentIndex].guid" class="carousel-image" />
+            <button class="prev-button" @click="prevImage">&#10094;</button>
+            <button class="next-button" @click="nextImage">&#10095;</button>
           </div>
         </div>
       </div>

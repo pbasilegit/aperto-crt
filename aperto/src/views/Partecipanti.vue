@@ -2,9 +2,9 @@
       <main class="head-space-top">
       <section>  
       <ul class="accordion-content">
-        <li class="accordion-content--persona" v-for="partecipante in partecipanti" :key="partecipante.id">
-          <p class="nome">{{ partecipante.title.rendered }}</p>
-          <p class="job-title">{{ partecipante.job_title }}</p>
+        <li class="accordion-content--partecipante" v-for="partecipante in partecipanti" :key="partecipante.id">
+          <p class="accordion-content--partecipante--nome">{{ partecipante.title.rendered }}</p>
+          <p class="accordion-content--partecipante--job-title">{{ partecipante.job_title }}</p>
         </li>
       </ul>
     </section>

@@ -14,10 +14,10 @@
     <section v-if="visibleList === 'list1'" class="tab-content">
 
       <ul class="accordion-content">
-        <li class="accordion-content--persona" v-for="faculty in guestFaculties" :key="faculty.id">
+        <li class="accordion-content--docente" v-for="faculty in guestFaculties" :key="faculty.id">
           <router-link :to="'/faculty/' + faculty.id">
-          <p class="nome">{{ faculty.title.rendered }}</p>
-          <p class="job-title">{{ faculty.job_title }}</p>
+          <p class="accordion-content--docente--nome">{{ faculty.title.rendered }}</p>
+          <p class="accordion-content--docente--job-title">{{ faculty.job_title }}</p>
         </router-link>
         </li>
       </ul>
@@ -27,11 +27,11 @@
 
       <ul class="accordion-content">
         
-        <li  v-for="faculty in staffFaculties" :key="faculty.id">
+        <li class="accordion-content--docente" v-for="faculty in staffFaculties" :key="faculty.id">
           <router-link :to="'/faculty/' + faculty.id">
-            <p class="nome"> {{ faculty.title.rendered }}</p>
-            <p class="job-title">{{ faculty.job_title }}</p>
-            <img class="freccia-destra" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/arrow_right.svg" alt="Maggiori informazioni">
+            <p class="accordion-content--docente--nome"> {{ faculty.title.rendered }}</p>
+            <p class="accordion-content--docente--job-title">{{ faculty.job_title }}</p>
+            <img class="accordion-content--docente--freccia-destra" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/arrow_right.svg" alt="Maggiori informazioni">
           </router-link>
         </li>
 

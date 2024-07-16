@@ -56,12 +56,14 @@ h4 {
     }
 }
 
+// ELEMENTI PAGINA DOCENTE:
+
 h1.pagina-docente--nome-docente{
     font-size: $font-size-lg;
     font-weight: $type-regular;
     line-height: $line-height-md;
 }
-h2.pagina-docente--informazioni, .pagina-docente--job-title{
+h2.pagina-docente--tipologia, h2.pagina-docente--job-title{
     font-size: $font-size-md;
     line-height: $line-height-md;
     font-weight: $type-regular;

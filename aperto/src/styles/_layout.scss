@@ -263,3 +263,96 @@ footer {
 .homeSeminari-lista--elemento:last-of-type {
     border-bottom: none;
 }
+
+
+
+//PAGINA DOCENTE SINGOLA
+
+.pagina-docente--back {
+    grid-column: 1;
+    justify-self: left;
+    img {
+      width: 35px;
+    }
+  }
+  
+  .pagina-docente--testata {
+    @include grid-6-col;
+    gap: 1rem;
+    padding-bottom: $lg-1;
+  }
+  
+  .pagina-docente--bio {
+    padding: $md-3 0 $lg-3 0;
+  }
+  
+  .pagina-docente--nome-docente {
+    grid-column: 2 / 7;
+    align-self: center;
+    justify-self: left;
+  
+    @media screen and (min-width: $breakpoint-1) {
+      grid-column: 2 / 3;
+    }
+  }
+  
+  .pagina-docente--job-title {
+    grid-column: 2;
+    align-self: end;
+  
+    @media screen and (min-width: $breakpoint-1) {
+      grid-column: 4;
+    }
+  }
+  
+  .pagina-docente--tipologia {
+    align-self: end;
+    grid-column: 4 / 7;
+  
+    @media screen and (min-width: $breakpoint-1) {
+      grid-column: 6 / 7;
+    }
+  }
+  
+  .ritratto-docente {
+    img {
+      width: 100%;
+    }
+  }
+
+  // GALLERY SEMINARIO
+  // griglia dentro accordion
+  .seminario-gallery-structure{
+    @include grid-50-50;
+    gap: 1vw;
+    padding-top: $lg-3;
+  }
+
+  .seminario-gallery--image{
+    display: grid;
+    height: 25vw;
+    justify-content: end;
+    align-items: end;
+    background-size: cover;
+    cursor: pointer;
+  }
+
+  .seminario-gallery-image--showmore{
+    width: 35px;
+    height: 35px;
+    padding: 0.3em;
+    background-color: $color-primary;
+    content: url(https://www.aperto-crt.it/core/wp-content/uploads/2024/07/Plus_bianco.svg);
+}
+
+//galleria modale
+.carousel{
+   height:  80vh;
+}
+
+.carousel-image {
+    height:  100vh;
+    img{
+        height: 100%;
+    }
+}
