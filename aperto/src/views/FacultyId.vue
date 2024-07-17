@@ -43,6 +43,8 @@ const route = useRoute();
 
 const router = useRouter();
 
+const emit = defineEmits(['componentReady'])
+
 const goback = () =>{
   router.go(-1);
 }
@@ -61,6 +63,9 @@ const fetchFaculty = async (id) => {
 
 // Usiamo onMounted per chiamare fetchFaculty quando il componente viene montato
 onMounted(() => {
+  setTimeout(() => {
+      emit('componentReady', true)
+  }, 2000)
   fetchFaculty(facultyId);
 });
 </script>

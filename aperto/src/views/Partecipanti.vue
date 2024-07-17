@@ -21,7 +21,7 @@
     store.dispatch('fetchPartecipanti');  
     setTimeout(() => {
       emit('componentReady', true)
-    }, 1000)
+    }, 2000)
   });
  const partecipanti = computed(() => store.getters.partecipanti);
  

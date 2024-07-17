@@ -82,7 +82,7 @@ const staffFaculties = computed(() => store.getters.staffFaculties);
 onMounted(() => {
   setTimeout(() => {
       emit('componentReady', true)
-  }, 1000)
+  }, 2000)
   store.dispatch('fetchFaculties');
   // fetchFaculties();
 })
