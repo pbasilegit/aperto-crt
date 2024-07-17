@@ -11,10 +11,11 @@
       <h2 v-html="seminarDetails.seminario_location"></h2>
     </section>
 
-    <div v-if="seminarDetails.stato[0].name === 'Archiviato'" class="seminario-header-image" :style="{ 'background-image': 'url(' + seminarDetails.immagine_header.guid + ')' }">
+    <div v-if="seminarDetails.stato[0].name === 'Archiviato'" class="seminario-header-image"
+      :style="{ 'background-image': 'url(' + seminarDetails.immagine_header.guid + ')' }">
     </div>
-    
-    
+
+
     <hr v-if="seminarDetails.stato[0].name === 'Corrente'">
 
     <section id="intro">
@@ -118,7 +119,8 @@
         <img :src="activeIndex === 3 ? upArrow : downArrow" alt="Toggle arrow">
       </div>
       <div v-show="activeIndex === 3" class="accordion-content">
-        <div class="accordion-content--persona" v-for="partecipante in seminarDetails.partecipanti_al_seminario" :key="partecipante.id">
+        <div class="accordion-content--persona" v-for="partecipante in seminarDetails.partecipanti_al_seminario"
+          :key="partecipante.id">
           <p class="nome">{{ partecipante.post_title }}</p>
           <p class="job-title">{{ partecipante.job_title }}</p>
         </div>
@@ -131,33 +133,41 @@
       <div class="accordion-header" @click="toggle(4)">
         <h3>GALLERY</h3>
         <img :src="activeIndex === 4 ? upArrow : downArrow" alt="Toggle arrow">
-        
+
       </div>
-      <div v-show="activeIndex === 4" class="accordion-content seminario-gallery-structure" >
+      <div v-show="activeIndex === 4" class="accordion-content seminario-gallery-structure">
         <div v-for="(media, index) in seminarDetails.seminario_media" :key="media.ID">
 
-            <div @click="openModalCarousel(index)" v-if="seminarDetails.stato[0].name === 'Archiviato'" class="seminario-gallery--image" :style="{ 'background-image': 'url(' + media.guid + ')' }">
-              <div class="seminario-gallery-image--showmore"></div>
-            </div>
+          <div @click="openModalCarousel(index)" v-if="seminarDetails.stato[0].name === 'Archiviato'"
+            class="seminario-gallery--image" :style="{ 'background-image': 'url(' + media.guid + ')' }">
+            <div class="seminario-gallery-image--showmore"></div>
+          </div>
 
         </div>
       </div>
 
-       <!-- Modal -->
+      <!-- Modal -->
       <div v-if="showModalCarousel" class="modal-overlay" @click.self="closeModalCarousel">
-        <div class="modal-content">
-          <span class="close-button" @click="closeModalCarousel">&times;</span>
-          <div class="carousel">
-  
-
-            <img :src="seminarDetails.seminario_media[currentIndex].guid" class="carousel-image" />
-            <button class="prev-button" @click="prevImage">&#10094;</button>
-            <button class="next-button" @click="nextImage">&#10095;</button>
+        <div class="modal-carousel-container">
+          <div class="close-button" @click="closeModalCarousel">
+            <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/Plus_bianco.svg" />
           </div>
+          <div class="carousel">
+            <img :src="seminarDetails.seminario_media[currentIndex].guid" class="carousel-image" />
+          </div>
+            <div class="carousel-ui">
+              <p class="carousel-didascalia">
+                <!--{{seminarDetails}}-->
+              </p>
+              <div class="carousel-commands">
+                <button class="prev-button" @click="prevImage">&#10094;</button>
+                <button class="next-button" @click="nextImage">&#10095;</button>
+              </div>
+            </div>
         </div>
       </div>
     </div>
-   
+
 
   </main>
   <p v-else>Caricamento...</p>
@@ -367,27 +377,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-
-
-
-
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: 30px;
-  cursor: pointer;
-}
-
-
-
-.prev-button, .next-button {
-  background: none;
-  border: none;
-  font-size: 30px;
-  cursor: pointer;
-  color: black;
-}
-</style>
