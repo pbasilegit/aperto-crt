@@ -14,7 +14,7 @@
     <section v-if="visibleList === 'list1'" class="tab-content">
 
       <ul class="accordion-content">
-        <li class="accordion-content--docente" v-for="faculty in guestFaculties" :key="faculty.id">
+        <li class="accordion-content--docente" v-for="faculty in staffFaculties" :key="faculty.id">
           <router-link :to="'/faculty/' + faculty.id">
           <p class="accordion-content--docente--nome">{{ faculty.title.rendered }}</p>
           <p class="accordion-content--docente--job-title">{{ faculty.job_title }}</p>
@@ -27,7 +27,7 @@
 
       <ul class="accordion-content">
         
-        <li class="accordion-content--docente" v-for="faculty in staffFaculties" :key="faculty.id">
+        <li class="accordion-content--docente" v-for="faculty in guestFaculties" :key="faculty.id">
           <router-link :to="'/faculty/' + faculty.id">
             <p class="accordion-content--docente--nome"> {{ faculty.title.rendered }}</p>
             <p class="accordion-content--docente--job-title">{{ faculty.job_title }}</p>

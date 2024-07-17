@@ -44,21 +44,24 @@ export default createStore({
         }
       }
     },
+
     async fetchFaculties({ commit, state }) {
       if (state.guestFaculties.length === 0 && state.staffFaculties.length === 0) {
         try {
           const response = await axios.get('https://www.aperto-crt.it/core/wp-json/wp/v2/faculty?per_page=50');
           const guestFaculties = [];
           const staffFaculties = [];
-          
+
           response.data.forEach(faculty => {
-            if (faculty['faculty_member_type'].name === 'Guest') {
+            const types = faculty['faculty_member_type'].map(type => type.name);
+            console.log('Faculty types:', types);
+            if (types.includes('Guest')) {
               guestFaculties.push(faculty);
-            } else {
+            }
+            if (types.includes('Staff')) {
               staffFaculties.push(faculty);
             }
           });
-          
           commit('setGuestFaculties', guestFaculties);
           commit('setStaffFaculties', staffFaculties);
         } catch (error) {
@@ -66,6 +69,7 @@ export default createStore({
         }
       }
     }
+
   },
   getters: {
     allSeminari(state) {
