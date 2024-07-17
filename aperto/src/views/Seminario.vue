@@ -157,7 +157,7 @@
           </div>
             <div class="carousel-ui">
               <p class="carousel-didascalia">
-                <!--{{seminarDetails}}-->
+                {{seminarDetails.seminario_media[currentIndex].post_content}}
               </p>
               <div class="carousel-commands">
                 <button class="prev-button" @click="prevImage">&#10094;</button>

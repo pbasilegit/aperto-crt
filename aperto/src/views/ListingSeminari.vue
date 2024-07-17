@@ -12,17 +12,21 @@
 
     <!-- CORRENTI E FUTURI-->
     <section v-if="visibleList === 'list1'" class="tab-content">
+      <div class="homeSeminari-lista--elemento" v-for="seminario in seminariCorrenti" :key="seminario.id" @click="goToSeminario(seminario.id, seminario.stato[0].name)">
+        <a> 
+          <p class="homeSeminari-lista--numero">Seminario {{ seminario.seminari_numero }}</p>
 
-        <router-link v-for="seminario in seminariCorrenti" :key="seminario.id" class="seminario" @click="goToSeminario(seminario.id, seminario.stato[0].name)">
-          <p>Seminario {{ seminario.seminari_numero }}</p>
-
-          <h3>{{ seminario.title.rendered }}</h3>
-          <p>{{ formatSeminarioDate(seminario.seminario_data_inizio, seminario.seminario_data_fine) }}</p>
-          <img v-if="seminario.stato[0].name == 'Corrente'"  src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/arrow_left.svg" alt="scopri di più" />
-
+          <h2>{{ seminario.title.rendered }}</h2>
+          <h3>{{ formatSeminarioDate(seminario.seminario_data_inizio, seminario.seminario_data_fine) }}</h3>
+          <button v-if="seminario.stato[0].name == 'Corrente'"> <img
+            src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/arrow_left.svg" alt="scopri di più">
+          </button>          
+          <p class="homeSeminari-lista--stato" v-if="seminario.stato[0].name == 'Corrente'">OPEN CALL</p>
           <p class="homeSeminari-lista--stato" v-else >coming soon </p>
+        </a>
 
-        </router-link>
+      </div>
+      
 
     </section>
 
