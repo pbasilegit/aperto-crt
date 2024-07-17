@@ -6,7 +6,8 @@ export default createStore({
     seminari: [],
     partecipanti: [],
     guestFaculties: [],
-    staffFaculties: []
+    staffFaculties: [],
+    allFaculties: []
   },
   mutations: {
     setSeminari(state, seminari) {
@@ -20,6 +21,9 @@ export default createStore({
     },
     setStaffFaculties(state, faculties) {
       state.staffFaculties = faculties;
+    },
+    setAllFaculties(state, allFaculties) {
+      state.allFaculties = allFaculties;
     }
   },
 
@@ -51,6 +55,7 @@ export default createStore({
           const response = await axios.get('https://www.aperto-crt.it/core/wp-json/wp/v2/faculty?per_page=50');
           const guestFaculties = [];
           const staffFaculties = [];
+          const allFaculties = [];
 
           response.data.forEach(faculty => {
             const types = faculty['faculty_member_type'].map(type => type.name);
@@ -61,9 +66,11 @@ export default createStore({
             if (types.includes('Staff')) {
               staffFaculties.push(faculty);
             }
+            allFaculties.push(faculty);
           });
           commit('setGuestFaculties', guestFaculties);
           commit('setStaffFaculties', staffFaculties);
+          commit('setAllFaculties', allFaculties);
         } catch (error) {
           console.error('Errore durante il recupero dei dati dei docenti', error);
         }
@@ -73,7 +80,9 @@ export default createStore({
   },
   getters: {
     allSeminari(state) {
+      console.log(state.seminari)
       return state.seminari;
+      
     },
     seminariCorrenti(state) {
       const currentDate = new Date();

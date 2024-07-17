@@ -29,44 +29,44 @@
 </template>
 
 <script setup>
-import { ref, onMounted, inject } from 'vue';
+import { ref, onMounted, computed } from 'vue';
+import { useStore } from 'vuex';
 import { useRoute } from 'vue-router';
 import { useRouter } from 'vue-router';
 
-const axios = inject('axios');
 
-// Creiamo una variabile reattiva per memorizzare i dati del docente
-const faculty = ref(null);
 
 // Recuperiamo l'ID del docente dai parametri della rotta (ad esempio, se usi vue-router)
 const route = useRoute();
+
+const store = useStore();
 
 const router = useRouter();
 
 const emit = defineEmits(['componentReady'])
 
-const goback = () =>{
+const goback = () => {
   router.go(-1);
 }
 
 const facultyId = route.params.id;
 
-// Funzione per recuperare i dati del docente dall'API
-const fetchFaculty = async (id) => {
-  try {
-    const response = await axios.get(`/wp/v2/faculty/${id}`);
-    faculty.value = response.data;
-  } catch (error) {
-    console.error('Errore durante il recupero dei dati del docente:', error);
+const faculty = computed(() => {
+  return store.state.allFaculties.find(faculty => faculty.id === parseInt(facultyId));
+});
+
+const fetchData = async () => {
+  if (store.state.allFaculties.length === 0) {
+    await store.dispatch('fetchFaculties');
   }
 };
 
 // Usiamo onMounted per chiamare fetchFaculty quando il componente viene montato
-onMounted(() => {
+onMounted(async() => {
+  await fetchData();
   setTimeout(() => {
-      emit('componentReady', true)
+    emit('componentReady', true)
   }, 2000)
-  fetchFaculty(facultyId);
 });
 </script>
 

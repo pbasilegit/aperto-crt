@@ -178,7 +178,7 @@
 import { ref, onMounted, inject, computed, onBeforeMount, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 import Modal from './../components/Modal.vue';
-
+import { useStore } from 'vuex';
 
 export default {
   name: 'Seminario',
@@ -186,8 +186,8 @@ export default {
     Modal
   },
   setup(_, { emit }) {
+    const store = useStore();
     const route = useRoute();
-    const seminarDetails = ref(null);
     const axios = inject('axios');
 
     const activeIndex = ref(null);
@@ -235,12 +235,13 @@ export default {
       activeIndex.value = activeIndex.value === index ? null : index;
     };
 
-    const fetchSeminarDetails = async () => {
-      try {
-        const response = await axios.get(`/wp/v2/seminario/${route.params.id}`);
-        seminarDetails.value = response.data;
-      } catch (error) {
-        console.error('Errore nel recuperare i dettagli del seminario:', error);
+    const seminarDetails = computed(() => {
+      return store.getters.allSeminari.find(seminario => seminario.id === parseInt(route.params.id));
+    });
+
+    const fetchData = async () => {
+      if (!seminarDetails.value) {
+        await store.dispatch('fetchSeminari');
       }
     };
 
@@ -335,11 +336,11 @@ export default {
     });
 
     onMounted(() => {
-      fetchSeminarDetails();
+      fetchData()
       setTimeout(() => {
         emit('componentReady', true);
       },
-        1000)
+        2000)
     });
 
     onBeforeMount(() => {
