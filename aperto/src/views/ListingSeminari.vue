@@ -12,18 +12,18 @@
 
     <!-- CORRENTI E FUTURI-->
     <section v-if="visibleList === 'list1'" class="tab-content">
-      <ul>
-        <li v-for="seminario in seminariCorrenti" :key="seminario.id" class="seminario" @click="goToSeminario(seminario.id, seminario.stato[0].name)">
+
+        <router-link v-for="seminario in seminariCorrenti" :key="seminario.id" class="seminario" @click="goToSeminario(seminario.id, seminario.stato[0].name)">
           <p>Seminario {{ seminario.seminari_numero }}</p>
-          <p>{{ seminario.seminario_location }}</p>
+
           <h3>{{ seminario.title.rendered }}</h3>
           <p>{{ formatSeminarioDate(seminario.seminario_data_inizio, seminario.seminario_data_fine) }}</p>
           <img v-if="seminario.stato[0].name == 'Corrente'"  src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/arrow_left.svg" alt="scopri di più" />
 
           <p class="homeSeminari-lista--stato" v-else >coming soon </p>
 
-        </li>
-      </ul>
+        </router-link>
+
     </section>
 
     <!-- ARCHIVIATI-->
