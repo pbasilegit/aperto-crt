@@ -135,12 +135,15 @@ nav{
 
 }
 
-a.homeSeminari--elementoCorrente {
+a.homeSeminari--elementoCorrente, .homeSeminari--elementoCorrente{
     * {
         color: $color-secondary;
+        cursor: pointer;
     }
 
 }
+
+
 
 .footer-features--contacts p {
     font-size: 18px;

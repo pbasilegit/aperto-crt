@@ -415,3 +415,36 @@ footer {
     cursor: pointer;
     color: rgb(255, 255, 255);
 }
+
+// 
+
+.elemento-lista-seminari-archiviato{
+    @include grid-6-col;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.seminario-archiviato-immagine{
+
+    height: 30vw;
+    background-size: cover;
+    grid-column: 1 / 3;
+}
+
+.seminario-archiviato-info{
+    grid-column: 3 / 7;
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    gap: 1rem;
+    p {
+        font-size: $font-size-sm;
+        font-weight: $type-regular;
+        color: $color-primary;
+        line-height: normal;
+    }
+
+}
+
+img.arrow{
+    width: 35px;
+}
