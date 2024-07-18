@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { ref, onMounted, inject } from 'vue';
+import { ref, onMounted, inject, defineEmits } from 'vue';
 
 export default {
   name: 'faq',

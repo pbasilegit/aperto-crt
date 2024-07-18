@@ -18,10 +18,11 @@
   const emit = defineEmits(['componentReady'])
 
   onMounted(() => {
+    emit('componentReady', false);
     store.dispatch('fetchPartecipanti');  
     setTimeout(() => {
       emit('componentReady', true)
-    }, 2000)
+    }, 1000)
   });
  const partecipanti = computed(() => store.getters.partecipanti);
  

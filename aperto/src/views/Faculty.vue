@@ -41,7 +41,7 @@
 </template>
 
 <script setup>
-import { ref, inject, onMounted, computed } from 'vue'
+import { ref, inject, onMounted, computed, defineEmits } from 'vue'
 import { useStore } from 'vuex';
 
 const store = useStore();
@@ -80,9 +80,10 @@ const staffFaculties = computed(() => store.getters.staffFaculties);
 // Chiamata a fetchFaculties quando il componente viene montato
 
 onMounted(() => {
+  emit('componentReady', false);
   setTimeout(() => {
       emit('componentReady', true)
-  }, 2000)
+  }, 1000)
   store.dispatch('fetchFaculties');
   // fetchFaculties();
 })

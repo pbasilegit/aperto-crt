@@ -188,7 +188,7 @@ export default {
   setup(_, { emit }) {
     const store = useStore();
     const route = useRoute();
-    const axios = inject('axios');
+
 
     const activeIndex = ref(null);
 
@@ -336,6 +336,7 @@ export default {
     });
 
     onMounted(() => {
+      emit('componentReady', false);
       fetchData()
       setTimeout(() => {
         emit('componentReady', true);
