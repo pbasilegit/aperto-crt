@@ -219,6 +219,8 @@ export default {
 
     const fetchSeminari = async () => {
       await store.dispatch('fetchSeminari');
+      store.dispatch('fetchFaculties');
+      store.dispatch('fetchPartecipanti');
       updateLinkImmagineHeaderRecente()
 
     };

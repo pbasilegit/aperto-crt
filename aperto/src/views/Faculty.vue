@@ -84,7 +84,7 @@ onMounted(() => {
   emit('componentReady', false);
   setTimeout(() => {
       emit('componentReady', true)
-  }, 1000)
+  }, 30)
   store.dispatch('fetchFaculties');
   // fetchFaculties();
 })
