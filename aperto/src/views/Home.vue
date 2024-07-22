@@ -221,6 +221,7 @@ export default {
       await store.dispatch('fetchSeminari');
       store.dispatch('fetchFaculties');
       store.dispatch('fetchPartecipanti');
+      store.dispatch('fetchFAQs');
       updateLinkImmagineHeaderRecente()
 
     };

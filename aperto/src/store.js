@@ -7,7 +7,8 @@ export default createStore({
     partecipanti: [],
     guestFaculties: [],
     staffFaculties: [],
-    allFaculties: []
+    allFaculties: [],
+    faqs: []
   },
   mutations: {
     setSeminari(state, seminari) {
@@ -24,6 +25,9 @@ export default createStore({
     },
     setAllFaculties(state, allFaculties) {
       state.allFaculties = allFaculties;
+    },
+    setFAQs(state, faqs) {
+      state.faqs = faqs;  // Mutazione per le FAQ
     }
   },
 
@@ -75,6 +79,16 @@ export default createStore({
           console.error('Errore durante il recupero dei dati dei docenti', error);
         }
       }
+    },
+    async fetchFAQs({ commit, state }) {
+      if (state.faqs.length === 0) {
+        try {
+          const response = await axios.get('https://www.aperto-crt.it/core/wp-json/wp/v2/faq');
+          commit('setFAQs', response.data);  // Imposta le FAQ nello stato
+        } catch (err) {
+          console.error('Errore durante il caricamento delle FAQ', err);
+        }
+      }
     }
 
   },
@@ -101,6 +115,9 @@ export default createStore({
     },
     staffFaculties(state) {
       return state.staffFaculties;
+    },
+    faqs(state) {
+      return state.faqs;
     }
   }
 });

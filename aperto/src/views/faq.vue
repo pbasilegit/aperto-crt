@@ -1,8 +1,5 @@
 <template>
   <main class="head-space-top">
-
-    <div v-if="loading">Caricamento...</div>
-    <div v-if="error">Errore: {{ error }}</div>
     <ul v-if="faqs && faqs.length > 0">
       <li v-for="(faq, index) in faqs" :key="faq.id">
      
@@ -21,16 +18,18 @@
 </template>
 
 <script>
-import { ref, onMounted, inject, defineEmits } from 'vue';
+import { ref, onMounted, computed, defineEmits } from 'vue';
+import { useStore } from 'vuex';
 
 export default {
   name: 'faq',
-  setup() {
+  setup(_, { emit }) {
     // Inietta Axios
-    const axios = inject('axios');
+    const store = useStore();
 
+    const faqs = computed(() => store.getters.faqs)
     // Definizione delle variabili reattive
-    const faqs = ref([]);
+  
     const loading = ref(true);
     const error = ref(null);
 
@@ -39,30 +38,26 @@ export default {
     const toggle = (index) => {
       
       activeIndex.value = activeIndex.value === index ? null : index;
-      console.log('sun dentar', activeIndex.value)
     };
 
-    // Funzione per recuperare le FAQ dall'API
-    const fetchFAQs = async () => {
-      try {
-        const response = await axios.get('/wp/v2/faq');
-        faqs.value = response.data;
-      } catch (err) {
-        error.value = 'Errore durante il caricamento delle FAQ';
-      } finally {
-        loading.value = false;
+    const fetchData = async () => {
+      if (store.state.faqs.length === 0) {
+        await store.dispatch('fetchFAQs');
       }
     };
 
     // Effettua la chiamata API quando il componente viene montato
     onMounted(() => {
-      fetchFAQs();
+      fetchData();
+      setTimeout(() => {
+        emit('componentReady', true);
+      }, 
+      100)
     });
 
     // Restituisce le variabili reattive per l'uso nel template
     return {
       faqs,
-      loading,
       error,
       toggle,
       activeIndex,
