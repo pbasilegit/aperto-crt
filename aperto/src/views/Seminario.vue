@@ -112,8 +112,8 @@
     </div>
 
     <!-- IF 'ARCHIVIATO' PARTECIPANTI -->
-    <hr v-if="seminarDetails.stato[0].name === 'Archiviato'">
-    <div v-if="seminarDetails.stato[0].name === 'Archiviato'" class="accordion-item">
+    <hr v-if="seminarDetails.stato[0].name === 'Archiviato' && seminarDetails.partecipanti_al_seminario.length > 0">
+    <div v-if="seminarDetails.stato[0].name === 'Archiviato' && seminarDetails.partecipanti_al_seminario.length > 0" class="accordion-item">
       <div class="accordion-header" @click="toggle(3)">
         <h3>PARTECIPANTI</h3>
         <img :src="activeIndex === 3 ? upArrow : downArrow" alt="Toggle arrow">
@@ -128,8 +128,8 @@
     </div>
 
     <!-- IF 'ARCHIVIATO' P GALLERY -->
-    <hr v-if="seminarDetails.stato[0].name === 'Archiviato'">
-    <div v-if="seminarDetails.stato[0].name === 'Archiviato'" class="accordion-item">
+    <hr v-if="seminarDetails.stato[0].name === 'Archiviato' && seminarDetails.seminario_media.length > 0"  >
+    <div v-if="seminarDetails.stato[0].name === 'Archiviato' && seminarDetails.seminario_media.length > 0" class="accordion-item">
       <div class="accordion-header" @click="toggle(4)">
         <h3>GALLERY</h3>
         <img :src="activeIndex === 4 ? upArrow : downArrow" alt="Toggle arrow">

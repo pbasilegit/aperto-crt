@@ -57,7 +57,7 @@
 
     <!-- IMMAGINE ULTIMO SEMINARIO ARCHIVIATO-->
 
-    <a :href="'/seminario/' + idUltimoArchiviato">
+    <router-link :to="'/seminario/' + idUltimoArchiviato">
       <section v-if="linkImmagineHeaderRecente">
         <figure class="home-seminario-gallery">
           <img :src="linkImmagineHeaderRecente" alt="Gallery ultimo seminario">
@@ -69,7 +69,7 @@
           </figcaption>
         </figure>
       </section>
-    </a>
+    </router-link>
 
 
     <!--Inizio lista seminari 2024-->
