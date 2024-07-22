@@ -18,6 +18,7 @@
           <router-link :to="'/faculty/' + faculty.id">
           <p class="accordion-content--docente--nome">{{ faculty.title.rendered }}</p>
           <p class="accordion-content--docente--job-title">{{ faculty.job_title }}</p>
+          <img class="accordion-content--docente--freccia-destra" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/arrow_right.svg" alt="Maggiori informazioni">
         </router-link>
         </li>
       </ul>

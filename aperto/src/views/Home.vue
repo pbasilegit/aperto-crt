@@ -86,7 +86,12 @@
       <!--Archiviato e Corrente-->
       <router-link v-if="seminario.stato[0].name === 'Archiviato' || seminario.stato[0].name == 'Corrente'"
         :to="{ name: 'Seminario', params: { id: seminario.id } }"
-        :class="[{ 'homeSeminari--elementoCorrente': seminario.stato[0].name == 'Corrente' }]">
+        :class="[
+          { 
+            'homeSeminari--elementoCorrente': seminario.stato[0].name == 'Corrente',
+            'homeSeminari--elementoArchiviato' : seminario.stato[0].name == 'Archiviato'
+            }
+            ]">
 
         <p class="homeSeminari-lista--numero">Seminario {{ seminario.seminari_numero }}</p>
 

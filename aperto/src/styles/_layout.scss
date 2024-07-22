@@ -198,7 +198,7 @@ footer {
 /* HOME */
 .homeSeminari-lista--elemento {
     @include border-bottom;
-
+    padding: 2rem 0 2rem 0;
     a{
         * {
             align-content: center;
@@ -420,8 +420,9 @@ footer {
 
 .elemento-lista-seminari-archiviato{
     @include grid-6-col;
+    @include border-bottom;
     gap: 1rem;
-    cursor: pointer;
+    padding: 2rem 0 2rem 0;
 }
 
 .seminario-archiviato-immagine{
@@ -439,19 +440,19 @@ footer {
     display: grid;
     grid-template-rows: auto auto auto auto;
     gap: 1rem;
-
     @media screen and (min-width: $breakpoint-1) {
         grid-column: 3 / 7;
     }
-
-    p {
-        font-size: $font-size-sm;
-        font-weight: $type-regular;
-        color: $color-primary;
-        line-height: normal;
+    .arrow{
+        align-self: end;
     }
-
 }
+
+.seminario-archiviato-data,
+.seminario-archiviato-location{
+    align-self: center;
+}
+
 
 img.arrow{
     width: 35px;

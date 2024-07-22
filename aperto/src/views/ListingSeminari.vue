@@ -42,7 +42,7 @@
           <div class="seminario-archiviato-immagine" :style="{ 'background-image': 'url(' + seminario.immagine_header.guid + ')' }"></div>
 
           <div class="seminario-archiviato-info">
-            <h3>{{ seminario.title.rendered }}</h3>
+            <h3 class="seminario-archiviato-titolo">{{ seminario.title.rendered }}</h3>
             <p class="seminario-archiviato-data">{{ formatSeminarioDate(seminario.seminario_data_inizio, seminario.seminario_data_fine) }}</p>
             <p class="seminario-archiviato-location">{{ seminario.seminario_location }}</p>
             <img class="arrow" v-if="seminario.stato[0].name == 'Archiviato'"

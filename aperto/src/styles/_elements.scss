@@ -311,6 +311,7 @@ nav {
 
 
 #intro {
+  padding-left: $md-1;
   img {
     padding-top: $md-3;
     width: 35px;
@@ -570,6 +571,10 @@ footer {
           "nome titolo freccia"
         ;
       }
+    &:hover{
+      text-decoration: underline;
+      text-decoration-color: $color-primary ;
+    }
   }
 }
 
