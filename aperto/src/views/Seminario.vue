@@ -341,7 +341,7 @@ export default {
       setTimeout(() => {
         emit('componentReady', true);
       },
-        2000)
+        500)
     });
 
     onBeforeMount(() => {
