@@ -119,7 +119,7 @@
         <img :src="activeIndex === 3 ? upArrow : downArrow" alt="Toggle arrow">
       </div>
       <div v-show="activeIndex === 3" class="accordion-content">
-        <div class="accordion-content--persona" v-for="partecipante in seminarDetails.partecipanti_al_seminario"
+        <div class="accordion-content--partecipante" v-for="partecipante in seminarDetails.partecipanti_al_seminario"
           :key="partecipante.id">
           <p class="nome">{{ partecipante.post_title }}</p>
           <p class="job-title">{{ partecipante.job_title }}</p>
@@ -160,8 +160,12 @@
                 {{seminarDetails.seminario_media[currentIndex].post_content}}
               </p>
               <div class="carousel-commands">
-                <button class="prev-button" @click="prevImage">&#10094;</button>
-                <button class="next-button" @click="nextImage">&#10095;</button>
+                <button class="prev-button" @click="prevImage">
+                  <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/freccina-sx.svg" alt="prossima immagine" style="width: 12px;">
+                </button>
+                <button class="next-button" @click="nextImage">
+                  <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/freccina-dx.svg" alt="prossima immagine" style="width: 12px;">
+                </button>
               </div>
             </div>
         </div>
