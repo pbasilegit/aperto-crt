@@ -73,7 +73,6 @@ export default {
     const axios = inject('axios');
 
     const openModal = (index) => {
-      console.log(index)
       visibleIndex.value = index;
     };
 

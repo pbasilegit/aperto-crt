@@ -63,7 +63,6 @@ export default createStore({
 
           response.data.forEach(faculty => {
             const types = faculty['faculty_member_type'].map(type => type.name);
-            console.log('Faculty types:', types);
             if (types.includes('Guest')) {
               guestFaculties.push(faculty);
             }
@@ -94,7 +93,6 @@ export default createStore({
   },
   getters: {
     allSeminari(state) {
-      console.log(state.seminari)
       return state.seminari;
       
     },

@@ -145,10 +145,6 @@ export default {
 
     const handleScroll = () => {
       const contentEl = content.value;
-      console.log('scroll top', contentEl.scrollTop)
-      console.log('clientHeight', contentEl.clientHeight)
-      console.log('scrollHeight', contentEl.scrollHeight)
-      console.log('somma', contentEl.scrollTop + contentEl.clientHeight)
       if (contentEl.scrollTop + contentEl.clientHeight >= contentEl.scrollHeight) {
         isSticky.value = false;
       } else {
@@ -180,14 +176,12 @@ export default {
     // Aggiornare la variabile ref con il seminario archiviato più recente
     // Aggiornare la variabile ref con il link dell'immagine header del seminario archiviato più recente
     const updateLinkImmagineHeaderRecente = () => {
-      console.log('sorted', sortedSeminari.value)
       const archiviati = sortedSeminari.value.filter(seminario => seminario.stato[0].name === 'Archiviato');
 
       if (archiviati.length > 0) {
         linkImmagineHeaderRecente.value = archiviati[archiviati.length - 1].immagine_header.guid;
         idUltimoArchiviato.value = archiviati[archiviati.length - 1].id
         numeroSeminario.value = archiviati[archiviati.length - 1].seminari_numero;
-        console.log('update', archiviati[1])
       } else {
         linkImmagineHeaderRecente.value = null; // O qualsiasi valore che desideri restituire se non ci sono seminari archiviati
       }
@@ -241,13 +235,11 @@ export default {
 
         stickyimageMobile.style.top = `${navHeight}vh`;
         stickyimageMobile.style.top = stickyimageMobile.style.top + 10;
-        console.log('Sono in MoBILE RESIZE', stickyimageMobile.style.top);
         herocontentMobile.style.marginTop = `${navHeight}vh`;
 
       } else {
         /**DESKTOP */
         navHeight = navElement.getBoundingClientRect().height;
-        console.log('Sono in DESKTOP RESIZE', navHeight, 'px');
         herocontentDesktop.style.marginTop = `${navHeight + 20}px`;
         stickyimage.style.top = `${navHeight}px`;
         navHeight = 0;
@@ -274,22 +266,18 @@ export default {
 
 
       if (window.innerWidth <= 768 || window.innerHeight <= 768) {
-        console.log('mobile MOUNTED')
         navHeight = '5'
         stickyimageMobile.style.top = `${navHeight}vh`;
         stickyimageMobile.style.top = stickyimageMobile.style.top + 10;
         herocontentMobile.style.marginTop = `${navHeight}vh`;
       }
       if (window.innerWidth > 768 & window.innerWidth <= 1440) {
-        console.log('desktop MOUNTED')
         herocontentDesktop.style.marginTop = `120px`;
         stickyimage.style.top = `100px`;
       }
       if (window.innerWidth > 1440) {
-        console.log('desktop 2 MOUNTED')
         herocontentDesktop.style.marginTop = `140px`;
         stickyimage.style.top = `120px`;
-        console.log('Altezza top:', stickyimage, 'px');
       }
 
     });
@@ -300,7 +288,6 @@ export default {
       // Fa scorrere la pagina all'inizio prima di montare il componente
       window.scrollTo(0, 0);
       window.addEventListener("load", () => {
-        console.log("page is fully loaded");
         updateMarginTop
       });
       window.addEventListener('resize', updateMarginTop);
