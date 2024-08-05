@@ -11,8 +11,8 @@
     </div>
 
     <!-- CORRENTI E FUTURI-->
-    <section v-if="visibleList === 'list1'" class="tab-content">
-      <div
+    <div v-if="visibleList === 'list1'" class="tab-content">
+      <section
       :class="['homeSeminari-lista--elemento', { 'homeSeminari--elementoCorrente': seminario.stato[0].name == 'Corrente' }]"
       v-for="seminario in seminariCorrenti" :key="seminario.id"
         @click="goToSeminario(seminario.id, seminario.stato[0].name)">
@@ -28,13 +28,13 @@
           <p class="homeSeminari-lista--stato" v-else>coming soon </p>
         </a>
 
-      </div>
-    </section>
+      </section>
+    </div>
 
 
 
     <!-- ARCHIVIATI-->
-    <section v-if="visibleList === 'list2'" class="tab-content">
+    <div v-if="visibleList === 'list2'" class="tab-content">
       <ul class="lista-seminari-archiviato">
         <li v-for="seminario in seminariArchiviati" :key="seminario.id" class="elemento-lista-seminari-archiviato"
           @click="goToSeminario(seminario.id)">
@@ -50,7 +50,7 @@
           </div>
         </li>
       </ul>
-    </section>
+    </div>
   </main>
 </template>
 

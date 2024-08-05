@@ -39,7 +39,7 @@ h4 {
     text-transform: none;
 }
 
-#intro p {
+#intro * {
     font-size: $font-size-md;
     line-height: $line-height-md;
     font-weight: $type-regular;
@@ -151,7 +151,8 @@ a.homeSeminari--elementoCorrente,
     }
     h2:hover{
             text-decoration: underline;  
-            text-decoration-thickness: $underline-thickness; 
+            text-decoration-thickness: $underline-thickness;
+            text-underline-offset: $underline-offset;
     }
 }
 
@@ -159,7 +160,8 @@ a.homeSeminari--elementoCorrente,
 
     h2:hover{
             text-decoration: underline;  
-            text-decoration-thickness: $underline-thickness; 
+            text-decoration-thickness: $underline-thickness;
+            text-underline-offset: $underline-offset;
     }
 }
 
@@ -180,6 +182,7 @@ a.homeSeminari--elementoCorrente,
         h3{
             text-decoration: underline;
             text-decoration-thickness: $underline-thickness;
+            text-underline-offset: $underline-offset;
         }
     }
 }
