@@ -492,6 +492,7 @@ footer {
   height: 40Vh;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 
   @media screen and (min-width: $breakpoint-1) {
     height: 50Vh;
