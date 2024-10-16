@@ -1,7 +1,7 @@
 <template>
 
-  <main>
-    <section id="intro" class="head-space-top">
+  <main class="head-space-top">
+    <section id="intro">
       <p v-if="testoAbout" v-html="testoAbout.content.rendered"></p>
     </section>
     <hr>
@@ -73,7 +73,6 @@ export default {
     const axios = inject('axios');
 
     const openModal = (index) => {
-      console.log(index)
       visibleIndex.value = index;
     };
 

@@ -37,6 +37,23 @@
   grid-template-columns: 1fr 2fr;
 }
 
+@mixin grid-33-33-33 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+
+@mixin grid-80-20 {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+}
+
+@mixin grid-6-col {
+  display: grid;
+  grid-template-columns: repeat(6,1fr);
+}
+
+
 /* esempio */
 @mixin background-cover($img_url) {
   background: url($img_url) no-repeat center center;

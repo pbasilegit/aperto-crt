@@ -10,15 +10,25 @@
       <h2>{{ formattedDate }}</h2>
       <h2 v-html="seminarDetails.seminario_location"></h2>
     </section>
-    <hr>
+
+    <div v-if="seminarDetails.stato[0].name === 'Archiviato'" class="seminario-header-image"
+      :style="{ 'background-image': 'url(' + seminarDetails.immagine_header.guid + ')' }">
+    </div>
+
+
+    <hr v-if="seminarDetails.stato[0].name === 'Corrente'">
+
     <section id="intro">
       <p v-html="truncatedDescription"></p>
       <button @click="toggleMoreDescription" class="bottone-toggle">
-        <img :src="showMoreDescription ? 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/menus.svg' : 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/plus.svg'" alt="Toggle Description" />
+        <img
+          :src="showMoreDescription ? 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/menus.svg' : 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/plus.svg'"
+          alt="Toggle Description" />
       </button>
 
     </section>
     <hr>
+
     <!-- FACULTY -->
     <div class="accordion-item">
       <div class="accordion-header" @click="toggle(0)">
@@ -29,23 +39,25 @@
       <div v-show="activeIndex === 0" class="accordion-content row-grap-big">
         <div class="accordion-elementi" v-for="(faculty, index) in seminarDetails.seminario_faculty_member"
           :key="faculty.id">
-          <!--<div class="colonne">-->
-              <img :src="faculty.faculty_member_foto" :alt="faculty.post_title">
-            <h4>{{ faculty.post_title }}</h4>
-          <!--</div>-->
+
+          <img :src="faculty.faculty_member_foto" :alt="faculty.post_title">
+          <h4>{{ faculty.post_title }}</h4>
+
           <p>
             {{ truncatedBio(faculty, index) }}
             <span v-if="shouldShowMore(faculty)" class="more-toggle "></span>
-
           </p>
+
           <button @click="toggleMore(index)" class="bottone-toggle">
-            <img :src="showMoreIndices.includes(index) ? 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/menus.svg' : 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/plus.svg'"
+            <img
+              :src="showMoreIndices.includes(index) ? 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/menus.svg' : 'https://www.aperto-crt.it/core/wp-content/uploads/2024/07/plus.svg'"
               alt="Toggle" />
           </button>
         </div>
       </div>
     </div>
     <hr v-if="seminarDetails.seminario_partner_nome.length > 0">
+
     <!-- PARTNER -->
     <div class="accordion-item" v-if="seminarDetails.seminario_partner_nome.length > 0">
       <div class="accordion-header" @click="toggle(1)">
@@ -56,10 +68,8 @@
         <div class="elemento-partner" v-for="(partner, index) in seminarDetails.seminario_partner_nome"
           :key="partner.id" @click="openModal(index)">
           <img :src="partner.logo_partner" :alt="partner.nome_partner">
-          <!-- <h4>{{ partner.nome_partner }}</h4>
-                <p>{{ partner.partnership_info }}
-                </p>
-              -->
+
+
           <Modal :text="partner.partnership_info" :imagePath="partner.logo_partner" :index="index"
             :visibleIndex="visibleIndex" @update:visibleIndex="updateVisibleIndex" />
 
@@ -71,6 +81,8 @@
       </div>
     </div>
     <hr>
+
+    <!-- ORGANIZZATORE -->
     <div class="accordion-item">
       <div class="accordion-header" @click="toggle(2)">
         <h3>ORGANIZZATORE</h3>
@@ -91,12 +103,75 @@
       </div>
     </div>
 
-    <div class="accordion-item download-bando" v-if="seminarDetails.stato[0].name === 'Corrente' " >
+    <!-- SCARICA IL BANDO -->
+    <div class="accordion-item download-bando" v-if="seminarDetails.stato[0].name === 'Corrente'">
       <a class="accordion-header" :href="seminarDetails.seminario_allegati[0].guid" target="_blank">
         <h3>SCARICA IL BANDO</h3>
         <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/arrow_download.svg" />
       </a>
     </div>
+
+    <!-- IF 'ARCHIVIATO' PARTECIPANTI -->
+    <hr v-if="seminarDetails.stato[0].name === 'Archiviato' && seminarDetails.partecipanti_al_seminario.length > 0">
+    <div v-if="seminarDetails.stato[0].name === 'Archiviato' && seminarDetails.partecipanti_al_seminario.length > 0" class="accordion-item">
+      <div class="accordion-header" @click="toggle(3)">
+        <h3>PARTECIPANTI</h3>
+        <img :src="activeIndex === 3 ? upArrow : downArrow" alt="Toggle arrow">
+      </div>
+      <div v-show="activeIndex === 3" class="accordion-content">
+        <div class="accordion-content--partecipante" v-for="partecipante in seminarDetails.partecipanti_al_seminario"
+          :key="partecipante.id">
+          <p class="nome">{{ partecipante.post_title }}</p>
+          <p class="job-title">{{ partecipante.job_title }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- IF 'ARCHIVIATO' P GALLERY -->
+    <hr v-if="seminarDetails.stato[0].name === 'Archiviato' && seminarDetails.seminario_media.length > 0"  >
+    <div v-if="seminarDetails.stato[0].name === 'Archiviato' && seminarDetails.seminario_media.length > 0" class="accordion-item">
+      <div class="accordion-header" @click="toggle(4)">
+        <h3>GALLERY</h3>
+        <img :src="activeIndex === 4 ? upArrow : downArrow" alt="Toggle arrow">
+
+      </div>
+      <div v-show="activeIndex === 4" class="accordion-content seminario-gallery-structure">
+        <div v-for="(media, index) in seminarDetails.seminario_media" :key="media.ID">
+
+          <div @click="openModalCarousel(index)" v-if="seminarDetails.stato[0].name === 'Archiviato'"
+            class="seminario-gallery--image" :style="{ 'background-image': 'url(' + media.guid + ')' }">
+            <div class="seminario-gallery-image--showmore"></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div v-if="showModalCarousel" class="modal-overlay" @click.self="closeModalCarousel">
+        <div class="modal-carousel-container">
+          <div class="close-button" @click="closeModalCarousel">
+            <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/Plus_bianco.svg" />
+          </div>
+          <div class="carousel">
+            <img :src="seminarDetails.seminario_media[currentIndex].guid" class="carousel-image" />
+          </div>
+            <div class="carousel-ui">
+              <p class="carousel-didascalia">
+                {{seminarDetails.seminario_media[currentIndex].post_content}}
+              </p>
+              <div class="carousel-commands">
+                <button class="prev-button" @click="prevImage">
+                  <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/freccina-sx.svg" alt="prossima immagine" style="width: 12px;">
+                </button>
+                <button class="next-button" @click="nextImage">
+                  <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/freccina-dx.svg" alt="prossima immagine" style="width: 12px;">
+                </button>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
 
   </main>
   <p v-else>Caricamento...</p>
@@ -107,7 +182,7 @@
 import { ref, onMounted, inject, computed, onBeforeMount, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 import Modal from './../components/Modal.vue';
-
+import { useStore } from 'vuex';
 
 export default {
   name: 'Seminario',
@@ -115,17 +190,43 @@ export default {
     Modal
   },
   setup(_, { emit }) {
+    const store = useStore();
     const route = useRoute();
-    const seminarDetails = ref(null);
-    const axios = inject('axios');
+
 
     const activeIndex = ref(null);
 
+    const showModalCarousel = ref(false);
+    const currentIndex = ref(0);
 
     const modalText = ref('Hello from the modal! This is a simple modal component.');
 
     const visibleIndex = ref(-1); // -1 significa che nessuna modale è visibile
 
+    const openModalCarousel = (index) => {
+      currentIndex.value = index;
+      showModalCarousel.value = true;
+    };
+
+    const closeModalCarousel = () => {
+      showModalCarousel.value = false;
+    };
+
+    const prevImage = () => {
+      if (currentIndex.value > 0) {
+        currentIndex.value--;
+      } else {
+        currentIndex.value = seminarDetails.value.seminario_media.length - 1;
+      }
+    };
+
+    const nextImage = () => {
+      if (currentIndex.value < seminarDetails.value.seminario_media.length - 1) {
+        currentIndex.value++;
+      } else {
+        currentIndex.value = 0;
+      }
+    };
     const openModal = (index) => {
       visibleIndex.value = index;
     };
@@ -138,12 +239,13 @@ export default {
       activeIndex.value = activeIndex.value === index ? null : index;
     };
 
-    const fetchSeminarDetails = async () => {
-      try {
-        const response = await axios.get(`/wp/v2/seminario/${route.params.id}`);
-        seminarDetails.value = response.data;
-      } catch (error) {
-        console.error('Errore nel recuperare i dettagli del seminario:', error);
+    const seminarDetails = computed(() => {
+      return store.getters.allSeminari.find(seminario => seminario.id === parseInt(route.params.id));
+    });
+
+    const fetchData = async () => {
+      if (!seminarDetails.value) {
+        await store.dispatch('fetchSeminari');
       }
     };
 
@@ -238,16 +340,17 @@ export default {
     });
 
     onMounted(() => {
-      fetchSeminarDetails();
+      emit('componentReady', false);
+      fetchData()
       setTimeout(() => {
         emit('componentReady', true);
-      }, 
-      1000)
+      },
+        500)
     });
 
-    onBeforeMount(() =>{ 
+    onBeforeMount(() => {
       emit('componentReady', false);
-    // Fa scorrere la pagina all'inizio prima di montare il componente
+      // Fa scorrere la pagina all'inizio prima di montare il componente
       window.scrollTo(0, 0);
     });
 
@@ -269,7 +372,13 @@ export default {
       openModal,
       modalText,
       visibleIndex,
-      updateVisibleIndex
+      updateVisibleIndex,
+      openModalCarousel,
+      closeModalCarousel,
+      prevImage,
+      nextImage,
+      currentIndex,
+      showModalCarousel
     };
   }
 };

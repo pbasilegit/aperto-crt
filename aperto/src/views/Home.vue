@@ -1,12 +1,13 @@
 <template>
-  
+
   <main id="home">
     <!--Inizio Hero mobile -->
     <header class="mobile-hero">
       <div>
         <!-- prima immagine header mobile -->
         <div :class="['sticky-image', { sticky: isSticky }]" id="logo_01_mobile">
-          <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/logo_01.svg" alt="aperto logo" style="width: 100%;">
+          <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/logo_01.svg" alt="aperto logo"
+            style="width: 100%;">
         </div>
 
         <!-- Testo introduttivo -->
@@ -17,7 +18,8 @@
           <p id="intro" v-if="testoHome" v-html="testoHome.content.rendered"></p>
         </div>
       </div>
-      <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/logo_02.svg" alt="aperto logo" style="width: 100%;">
+      <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/logo_02.svg" alt="aperto logo"
+        style="width: 100%;">
     </header>
     <!--Fine Hero mobile -->
 
@@ -26,7 +28,8 @@
       <div class="desktop-hero--container">
         <!-- prima immagine header desktop -->
         <div :class="['sticky-image', { sticky: isSticky }]" style="align-self: flex-start;" id="logo_01">
-          <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/dkstp_logo_01.svg" alt="aperto logo" class="desktop-hero--img" >
+          <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/dkstp_logo_01.svg" alt="aperto logo"
+            class="desktop-hero--img">
         </div>
 
         <!-- Testo introduttivo -->
@@ -37,11 +40,13 @@
           <p id="intro" v-if="testoHome" v-html="testoHome.content.rendered"></p>
           <div style="display: flex;">
             <div style="flex-basis: 50%;" class="desktop-hero--img">
-              <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/dkstp_logo_02.svg" alt="aperto logo" style="width: 100%;">
+              <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/dkstp_logo_02.svg" alt="aperto logo"
+                style="width: 100%;">
             </div>
 
             <div style="flex-basis: 50%;" class="desktop-hero--img">
-              <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/dkstp_logo_03.svg" alt="aperto logo" style="width: 100%;">
+              <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/dkstp_logo_03.svg" alt="aperto logo"
+                style="width: 100%;">
             </div>
           </div>
         </div>
@@ -50,24 +55,50 @@
     </header>
     <!--Fine Hero desktop -->
 
+    <!-- IMMAGINE ULTIMO SEMINARIO ARCHIVIATO-->
+
+    <router-link :to="'/seminario/' + idUltimoArchiviato">
+      <section v-if="linkImmagineHeaderRecente">
+        <figure class="home-seminario-gallery">
+          <img :src="linkImmagineHeaderRecente" alt="Gallery ultimo seminario">
+          <img class="home-gallery-arrow" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/arrow_left.svg"
+            alt="scopri di più">
+          <figcaption>
+            Seminario {{ numeroSeminario }} <br>
+            Gallery
+          </figcaption>
+        </figure>
+      </section>
+    </router-link>
+
+
     <!--Inizio lista seminari 2024-->
+
 
     <!--questo titolo non è visibile ha una posizione absolute fuori dal viewport-->
     <h2>Seminari 2024</h2>
 
-    <img class="tipografia-2024" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/2024.svg" alt="aperto logo">
+    <img class="tipografia-2024" src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/2024.svg"
+      alt="aperto logo">
 
     <section class="homeSeminari-lista--elemento" v-for="seminario in sortedSeminari" :key="seminario.id">
 
       <!--Archiviato e Corrente-->
-      <router-link v-if="seminario.stato[0].name === 'Archiviato' || seminario.stato[0].name == 'Corrente' " 
-                        :to="{ name: 'Seminario', params: { id: seminario.id } }" :class="[{'homeSeminari--elementoCorrente' : seminario.stato[0].name == 'Corrente' }]">
+      <router-link v-if="seminario.stato[0].name === 'Archiviato' || seminario.stato[0].name == 'Corrente'"
+        :to="{ name: 'Seminario', params: { id: seminario.id } }"
+        :class="[
+          { 
+            'homeSeminari--elementoCorrente': seminario.stato[0].name == 'Corrente',
+            'homeSeminari--elementoArchiviato' : seminario.stato[0].name == 'Archiviato'
+            }
+            ]">
 
         <p class="homeSeminari-lista--numero">Seminario {{ seminario.seminari_numero }}</p>
 
-        <p  class="homeSeminari-lista--stato">{{ seminario.stato[0].name == 'Archiviato' ? 'Closed' : 'Open Call' }}</p>
+        <p class="homeSeminari-lista--stato">{{ seminario.stato[0].name == 'Archiviato' ? 'Closed' : 'Open Call' }}</p>
 
-        <button v-if="seminario.stato[0].name == 'Corrente' "> <img src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/arrow_left.svg" alt="scopri di più"></button>
+        <button v-if="seminario.stato[0].name == 'Corrente'"> <img
+            src="https://www.aperto-crt.it/core/wp-content/uploads/2024/07/arrow_left.svg" alt="scopri di più"></button>
 
         <h2>{{ seminario.title.rendered }}</h2>
         <h3>{{ formatSeminarioDate(seminario.seminario_data_inizio, seminario.seminario_data_fine) }}</h3>
@@ -79,15 +110,12 @@
       <a v-else>
         <p class="homeSeminari-lista--numero">Seminario {{ seminario.seminari_numero }}</p>
 
-        <p  class="homeSeminari-lista--stato">Coming soon</p>
+        <p class="homeSeminari-lista--stato">Coming soon</p>
 
         <h2>{{ seminario.title.rendered }}</h2>
         <h3>{{ formatSeminarioDate(seminario.seminario_data_inizio, seminario.seminario_data_fine) }}</h3>
 
       </a>
-
-
-
     </section>
   </main>
 </template>
@@ -96,8 +124,8 @@
 
 
 <script>
-import { defineComponent, ref, computed, onMounted, onBeforeMount, inject, defineEmits,onUnmounted } from 'vue';
-
+import { defineComponent, ref, computed, onMounted, onBeforeMount, inject, defineEmits, onUnmounted } from 'vue';
+import { useStore } from 'vuex';
 export default {
   name: 'Home',
   setup(_, { emit }) {
@@ -106,14 +134,17 @@ export default {
     const isSticky = ref(true);
     const content = ref(null);
     const testoHome = ref(null);
+    const linkImmagineHeaderRecente = ref(null);
+    const numeroSeminario = ref(null);
+    const idUltimoArchiviato = ref();
+
+
+    const store = useStore();
+    const allSeminari = computed(() => store.getters.allSeminari);
 
 
     const handleScroll = () => {
       const contentEl = content.value;
-      console.log('scroll top', contentEl.scrollTop)
-      console.log('clientHeight', contentEl.clientHeight)
-      console.log('scrollHeight', contentEl.scrollHeight)
-      console.log('somma', contentEl.scrollTop + contentEl.clientHeight)
       if (contentEl.scrollTop + contentEl.clientHeight >= contentEl.scrollHeight) {
         isSticky.value = false;
       } else {
@@ -122,7 +153,7 @@ export default {
     };
 
     const sortedSeminari = computed(() => {
-      return seminari.value.slice().sort((a, b) => {
+      return allSeminari.value.slice().sort((a, b) => {
         const stateOrder = {
           'Futuro': 3,
           'Corrente': 2,
@@ -141,6 +172,20 @@ export default {
         }
       });
     });
+
+    // Aggiornare la variabile ref con il seminario archiviato più recente
+    // Aggiornare la variabile ref con il link dell'immagine header del seminario archiviato più recente
+    const updateLinkImmagineHeaderRecente = () => {
+      const archiviati = sortedSeminari.value.filter(seminario => seminario.stato[0].name === 'Archiviato');
+
+      if (archiviati.length > 0) {
+        linkImmagineHeaderRecente.value = archiviati[archiviati.length - 1].immagine_header.guid;
+        idUltimoArchiviato.value = archiviati[archiviati.length - 1].id
+        numeroSeminario.value = archiviati[archiviati.length - 1].seminari_numero;
+      } else {
+        linkImmagineHeaderRecente.value = null; // O qualsiasi valore che desideri restituire se non ci sono seminari archiviati
+      }
+    };
 
     const formatSeminarioDate = (dataInizio, dataFine) => {
       const inizio = new Date(dataInizio);
@@ -167,12 +212,12 @@ export default {
     }
 
     const fetchSeminari = async () => {
-      try {
-        const response = await axios.get('/wp/v2/seminario');
-        seminari.value = response.data;
-      } catch (error) {
-        console.error('Errore nel recuperare i seminari:', error);
-      }
+      await store.dispatch('fetchSeminari');
+      store.dispatch('fetchFaculties');
+      store.dispatch('fetchPartecipanti');
+      store.dispatch('fetchFAQs');
+      updateLinkImmagineHeaderRecente()
+
     };
     function updateMarginTop() {
       const navElement = document.getElementById('myNav');
@@ -181,41 +226,38 @@ export default {
       const stickyimage = document.getElementById('logo_01');
       let stickyimageMobile = document.getElementById('logo_01_mobile');
       const herocontentMobile = document.getElementById('hero-content--mobile')
-     
-      if(window.innerWidth  < 768){
+
+      if (window.innerWidth < 768) {
         /**MOBILE */
-        
+
 
         navHeight = '5'
 
         stickyimageMobile.style.top = `${navHeight}vh`;
         stickyimageMobile.style.top = stickyimageMobile.style.top + 10;
-        console.log('Sono in MoBILE RESIZE', stickyimageMobile.style.top);
         herocontentMobile.style.marginTop = `${navHeight}vh`;
-       
-      }else{
+
+      } else {
         /**DESKTOP */
         navHeight = navElement.getBoundingClientRect().height;
-        console.log('Sono in DESKTOP RESIZE', navHeight, 'px');
         herocontentDesktop.style.marginTop = `${navHeight + 20}px`;
         stickyimage.style.top = `${navHeight}px`;
         navHeight = 0;
       }
-    
+
     }
 
-    function init(){}
+    function init() { }
 
     onMounted(() => {
       fetchSeminari();
       loadTestoHome();
       window.addEventListener('scroll', updateMarginTop);
-
       const contentEl = content.value;
       setTimeout(() => {
         emit('componentReady', true);
-      }, 
-      1000)
+      },
+        1000)
       const stickyimage = document.getElementById('logo_01');
       const herocontentDesktop = document.getElementById('hero-content--desktop')
       const stickyimageMobile = document.getElementById('logo_01_mobile');
@@ -223,34 +265,29 @@ export default {
       let navHeight = 0;
 
 
-      if(window.innerWidth  <= 768 || window.innerHeight <= 768){
-        console.log('mobile MOUNTED')
+      if (window.innerWidth <= 768 || window.innerHeight <= 768) {
         navHeight = '5'
         stickyimageMobile.style.top = `${navHeight}vh`;
         stickyimageMobile.style.top = stickyimageMobile.style.top + 10;
         herocontentMobile.style.marginTop = `${navHeight}vh`;
       }
-      if(window.innerWidth > 768 & window.innerWidth <= 1440){
-        console.log('desktop MOUNTED')
+      if (window.innerWidth > 768 & window.innerWidth <= 1440) {
         herocontentDesktop.style.marginTop = `120px`;
         stickyimage.style.top = `100px`;
       }
-      if(window.innerWidth > 1440){
-        console.log('desktop 2 MOUNTED')
+      if (window.innerWidth > 1440) {
         herocontentDesktop.style.marginTop = `140px`;
         stickyimage.style.top = `120px`;
-        console.log('Altezza top:', stickyimage, 'px'); 
       }
-     
+
     });
 
 
-    onBeforeMount(() =>{ 
+    onBeforeMount(() => {
       emit('componentReady', false);
-    // Fa scorrere la pagina all'inizio prima di montare il componente
+      // Fa scorrere la pagina all'inizio prima di montare il componente
       window.scrollTo(0, 0);
       window.addEventListener("load", () => {
-        console.log("page is fully loaded");
         updateMarginTop
       });
       window.addEventListener('resize', updateMarginTop);
@@ -258,18 +295,23 @@ export default {
     });
 
     onUnmounted(() => {
-      window.removeEventListener('scroll',updateMarginTop);
-      window.removeEventListener('resize',updateMarginTop);
+      window.removeEventListener('scroll', updateMarginTop);
+      window.removeEventListener('resize', updateMarginTop);
     });
 
     return {
       seminari,
+      allSeminari,
       formatSeminarioDate,
       isSticky,
       handleScroll,
       sortedSeminari,
       content,
-      testoHome
+      testoHome,
+      linkImmagineHeaderRecente,
+      numeroSeminario,
+      updateLinkImmagineHeaderRecente,
+      idUltimoArchiviato
     };
   }
 };

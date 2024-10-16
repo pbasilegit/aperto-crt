@@ -31,20 +31,20 @@ footer {
     grid-template-rows: auto auto auto;
     grid-template-columns: repeat(2, 1fr);
     grid-template-areas:
-    "foto nome"
-    "info info"
-    "freccia freccia";
+        "foto nome"
+        "info info"
+        "freccia freccia";
     row-gap: 2em;
     column-gap: 1em;
 
     @include border-bottom;
 
-   img {
+    img {
         grid-area: foto;
         width: 100%;
     }
 
-    h4{
+    h4 {
         grid-area: nome;
     }
 
@@ -55,13 +55,13 @@ footer {
     .bottone-toggle {
         grid-area: freccia;
         align-self: end;
-        img{
+
+        img {
             width: 30px;
             height: auto;
         }
-        @media screen and (min-width: $breakpoint-3) {
-            
-        }
+
+        @media screen and (min-width: $breakpoint-3) {}
     }
 }
 
@@ -148,6 +148,7 @@ footer {
 
 /*Varianti responsive del layout*/
 @media screen and (min-width: $breakpoint-1) {
+
     section,
     header,
     .accordion-item,
@@ -164,9 +165,9 @@ footer {
         grid-template-rows: auto auto;
         grid-template-columns: repeat(12, 1fr);
         gap: 1rem;
-        grid-template-areas: 
-        "foto foto foto foto nome nome nome nome nome nome nome nome "
-        "foto foto foto foto info info info info  info info info freccia";
+        grid-template-areas:
+            "foto foto foto foto nome nome nome nome nome nome nome nome "
+            "foto foto foto foto info info info info  info info info freccia";
     }
 }
 
@@ -197,8 +198,7 @@ footer {
 /* HOME */
 .homeSeminari-lista--elemento {
     @include border-bottom;
-
-    a {
+    a{
         * {
             align-content: center;
         }
@@ -235,6 +235,7 @@ footer {
             max-width: 100%;
             justify-self: end;
             align-self: self-end;
+
             img {
 
                 width: 35px;
@@ -262,4 +263,198 @@ footer {
 
 .homeSeminari-lista--elemento:last-of-type {
     border-bottom: none;
+}
+
+
+
+//PAGINA DOCENTE SINGOLA
+
+.pagina-docente--back {
+    grid-column: 1;
+    justify-self: left;
+
+    img {
+        width: 35px;
+    }
+}
+
+.pagina-docente--testata {
+    @include grid-6-col;
+    gap: 1rem;
+    padding-bottom: $lg-1;
+}
+
+.pagina-docente--bio {
+    padding: $md-3 0 $lg-3 0;
+}
+
+.pagina-docente--nome-docente {
+    grid-column: 2 / 7;
+    align-self: center;
+    justify-self: left;
+
+    @media screen and (min-width: $breakpoint-1) {
+        grid-column: 2 / 3;
+    }
+}
+
+.pagina-docente--job-title {
+    grid-column: 2;
+    align-self: end;
+
+    @media screen and (min-width: $breakpoint-1) {
+        grid-column: 4;
+    }
+}
+
+.pagina-docente--tipologia {
+    align-self: end;
+    grid-column: 4 / 7;
+
+    @media screen and (min-width: $breakpoint-1) {
+        grid-column: 6 / 7;
+    }
+}
+
+.ritratto-docente {
+    img {
+        width: 100%;
+    }
+}
+
+// GALLERY SEMINARIO
+// griglia dentro accordion
+.seminario-gallery-structure {
+    @include grid-50-50;
+    gap: 1vw;
+    padding-top: $lg-3;
+}
+
+.seminario-gallery--image {
+    display: grid;
+    height: 25vw;
+    justify-content: end;
+    align-items: end;
+    background-size: cover;
+    cursor: pointer;
+    background-position: center;
+}
+
+.seminario-gallery-image--showmore {
+    width: 35px;
+    height: 35px;
+    padding: 0.3em;
+    background-color: $color-primary;
+    content: url(https://www.aperto-crt.it/core/wp-content/uploads/2024/07/Plus_bianco.svg);
+}
+
+//galleria modale
+
+.modal-carousel-container {
+    height: 80vh;
+    width: 90vw;
+
+}
+
+
+.carousel {
+    height: 100%;
+    text-align: center;
+    background: white;
+    align-content: center;
+    justify-content: center;
+}
+
+.carousel-image {
+    max-height: 100%;
+    max-width: 100%;
+    position: relative;
+}
+
+.carousel-ui {
+    display: flex;
+    background-color: $color-primary;
+    padding: $sm-1 $lg-1 $sm-1 $lg-1;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.close-button {
+    position: absolute;
+    right: 5vw;
+    z-index: 999;
+    padding: 5px;
+    height: fit-content;
+    width: fit-content;
+    background-color: $color-primary;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    img{
+        width: 25px;
+        transform: rotate(45deg);
+    }  
+}
+
+.carousel-commands {
+    justify-self: end;
+    display: flex;
+}
+
+.carousel-didascalia {
+    justify-self: start;
+    align-self: center;
+    color: rgb(255, 255, 255);
+    flex-grow: initial;
+}
+
+.prev-button,
+.next-button {
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+}
+
+// Lista seminari archiviati
+
+.elemento-lista-seminari-archiviato{
+    @include grid-6-col;
+    @include border-bottom;
+    gap: 1rem;
+    padding: 2rem 0 2rem 0;
+}
+
+.seminario-archiviato-immagine{
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    grid-column: 1 / 4;
+    @media screen and (min-width: $breakpoint-1) {
+        height: 30vw;
+        grid-column: 1 / 3;
+    }
+}
+
+.seminario-archiviato-info{
+    grid-column: 4 / 7;
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    gap: 1rem;
+    @media screen and (min-width: $breakpoint-1) {
+        grid-column: 3 / 7;
+    }
+    .arrow{
+        align-self: end;
+    }
+}
+
+.seminario-archiviato-data,
+.seminario-archiviato-location{
+    align-self: center;
+}
+
+
+img.arrow{
+    width: 35px;
 }

@@ -74,7 +74,7 @@ td
 }
 
 body {
-	line-height: 1;
+	line-height: 0;
 }
 
 ol,
@@ -118,4 +118,13 @@ table {
 button {
 	background-color: rgba(250, 250, 250, 0);
 	border: none;
+}
+
+figure {
+    display: block;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    unicode-bidi: isolate;
 }

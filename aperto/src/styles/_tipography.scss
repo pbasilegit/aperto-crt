@@ -39,7 +39,7 @@ h4 {
     text-transform: none;
 }
 
-#intro p {
+#intro * {
     font-size: $font-size-md;
     line-height: $line-height-md;
     font-weight: $type-regular;
@@ -52,12 +52,43 @@ h4 {
     font-weight: $type-regular;
     color: $color-primary;
     @media screen and (min-width: $breakpoint-2) {
+        font-size: 1.8rem  
+    }
+}
+
+//COMPONENTE ACCORDION
+.accordion-header *{
+    &:hover{
+        color: $color-secondary;
+    }
+}
+
+// ELEMENTI PAGINA DOCENTE:
+
+h1.pagina-docente--nome-docente{
+    font-size: $font-size-lg;
+    font-weight: $type-regular;
+    line-height: $line-height-md;
+}
+h2.pagina-docente--tipologia, h2.pagina-docente--job-title{
+    font-size: $font-size-md;
+    line-height: $line-height-md;
+    font-weight: $type-regular;
+    color: $color-primary;
+}
+p.pagina-docente--bio{
+    font-size: $font-size-md;
+    line-height: $line-height-md;
+    font-weight: $type-regular;
+    color: $color-primary;
+    @media screen and (min-width: $breakpoint-2) {
         font-size: clamp(2rem, 2.2vw, 2.4rem);  
     }
 }
 
+
 nav{
-    a{
+    a, .menu-button {
         text-decoration: none;
         font-size: $font-size-xs;
         line-height: $line-height-md;
@@ -95,6 +126,7 @@ nav{
         font-size: 2rem;
         font-weight: $type-medium;
 
+
         @media screen and (min-width: $breakpoint-1) {
             font-size: $font-size-xl;
             line-height: $line-height-sm;
@@ -111,13 +143,60 @@ nav{
 
 }
 
-a.homeSeminari--elementoCorrente {
+a.homeSeminari--elementoCorrente, 
+.homeSeminari--elementoCorrente {
     * {
         color: $color-secondary;
+        cursor: pointer;
     }
-
+    h2:hover{
+            text-decoration: underline;  
+            text-decoration-thickness: $underline-thickness;
+            text-underline-offset: $underline-offset;
+    }
 }
+
+.homeSeminari--elementoArchiviato{
+
+    h2:hover{
+            text-decoration: underline;  
+            text-decoration-thickness: $underline-thickness;
+            text-underline-offset: $underline-offset;
+    }
+}
+
+
 
 .footer-features--contacts p {
     font-size: 18px;
+}
+
+// ELEMENTI LISTING SEMINARI
+
+//Correnti
+
+//Archiviati
+.elemento-lista-seminari-archiviato{
+    cursor: pointer;
+    &:hover{
+        h3{
+            text-decoration: underline;
+            text-decoration-thickness: $underline-thickness;
+            text-underline-offset: $underline-offset;
+        }
+    }
+}
+
+.seminario-archiviato-info{
+    p {
+        font-size: $font-size-sm;
+        font-weight: $type-regular;
+        color: $color-primary;
+        line-height: normal;
+    }
+}
+
+.seminario-archiviato-titolo,
+.seminario-archiviato-data {
+    text-transform: uppercase;
 }
