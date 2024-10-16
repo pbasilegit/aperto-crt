@@ -11,7 +11,7 @@
     
     <router-view @componentReady="onComponentReady"></router-view>
 
-    <Footer  v-if="isComponentReady"/>
+    <Footer  style="margin-top:auto" v-if="isComponentReady"/>
 
   </div>
 </template>
@@ -60,5 +60,14 @@ export default {
 }
 
 </script>
+
+<style scoped>
+#app{
+  display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+}
+
+</style>
 
 
